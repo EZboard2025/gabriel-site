@@ -50,30 +50,8 @@ window.addEventListener('scroll', () => {
         navbar.style.boxShadow = 'none';
     }
 
-    // Fade out space background gradually until FAQ section
-    const faqSection = document.querySelector('.faq');
-    const fadeStartPoint = windowHeight * 0.5; // Start fading halfway through first viewport
-
-    let fadeEndPoint = documentHeight * 0.85; // Default fallback
-    if (faqSection) {
-        // Fade should complete when FAQ section reaches middle of viewport
-        fadeEndPoint = faqSection.offsetTop - (windowHeight / 2);
-    }
-
-    const fadeRange = fadeEndPoint - fadeStartPoint;
-
-    let opacity = 1;
-    if (currentScroll > fadeStartPoint) {
-        const scrollInFadeRange = currentScroll - fadeStartPoint;
-        const fadeProgress = scrollInFadeRange / fadeRange;
-        opacity = 1 - (fadeProgress * 0.80); // Fade from 1.0 to 0.2
-    }
-
-    opacity = Math.max(0.2, Math.min(1, opacity)); // Keep minimum 20% visibility
-
-    if (spaceBackground) {
-        spaceBackground.style.opacity = opacity;
-    }
+    // Keep space background visible throughout entire page (no fade)
+    // Opacity stays constant at 1
 
     lastScroll = currentScroll;
 });
