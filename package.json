@@ -1,0 +1,21 @@
+{
+  "name": "ramppy-landing-page",
+  "version": "1.0.0",
+  "description": "Landing page oficial da Ramppy - Plataforma de Inteligência Comercial com IA",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx http-server -p 8000 -o",
+    "start": "npx http-server -p 8000",
+    "preview": "npx http-server -p 8000 -o"
+  },
+  "keywords": [
+    "ramppy",
+    "sales",
+    "ai",
+    "landing-page",
+    "spin-selling"
+  ],
+  "author": "Ramppy Team",
+  "license": "UNLICENSED",
+  "private": true
+}

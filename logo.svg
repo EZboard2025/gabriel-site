@@ -1,0 +1,38 @@
+<svg width="160" height="36" viewBox="0 0 160 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Ícone de crescimento (barras + seta) -->
+  <g transform="translate(4, 6)">
+    <!-- Três barras crescentes -->
+    <rect x="0" y="18" width="5" height="6" fill="#22c55e"/>
+    <rect x="7" y="12" width="5" height="12" fill="#22c55e"/>
+    <rect x="14" y="6" width="5" height="18" fill="#22c55e"/>
+
+    <!-- Seta curva crescente -->
+    <path d="M 2 20 C 2 20, 8 14, 12 10 C 16 6, 20 2, 24 0 L 22 4 L 28 2 L 24 -2 L 24 0 C 20 2, 16 6, 12 10 C 8 14, 2 20, 2 20"
+          fill="#22c55e" opacity="0.9"/>
+  </g>
+
+  <!-- Texto "Ramppy" -->
+  <g transform="translate(40, 0)">
+    <!-- "Rampp" em branco -->
+    <text x="0" y="24"
+          font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+          font-size="20"
+          font-weight="700"
+          fill="#ffffff">Rampp</text>
+
+    <!-- "y" em verde -->
+    <text x="65" y="24"
+          font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+          font-size="20"
+          font-weight="700"
+          fill="#22c55e">y</text>
+
+    <!-- Subtítulo pequeno -->
+    <text x="0" y="32"
+          font-family="'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+          font-size="8"
+          font-weight="400"
+          fill="#22c55e"
+          opacity="0.8">Ramp up your sales</text>
+  </g>
+</svg>
