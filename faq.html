@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perguntas Frequentes (FAQ) - Ramppy</title>
+    <meta name="description" content="Encontre respostas para as perguntas mais frequentes sobre a Ramppy, nossa plataforma de treinamento de vendas com IA.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="64x64" href="logo.png?v=3">
+    <link rel="icon" type="image/png" sizes="48x48" href="logo.png?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png?v=3">
+    <link rel="shortcut icon" href="logo.png?v=3">
+    <link rel="apple-touch-icon" sizes="180x180" href="logo.png?v=3">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- Space Background (Fixed) -->
+    <div class="space-background">
+        <div class="stars"></div>
+        <div class="shooting-stars"></div>
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="logo.svg" alt="Ramppy" class="logo-img">
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="como-funciona.html">Como Funciona</a></li>
+                    <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="fila-espera.html">Fila de Espera</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="#login" class="btn-login">Login</a>
+                    <a href="#signup" class="btn-signup">Cadastro</a>
+                    <a href="fila-espera.html" class="btn-primary">Entrar na Fila</a>
+                </div>
+                <button class="mobile-menu-btn" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 40vh; padding: 120px 0 60px;">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                    <span class="section-tag">FAQ</span>
+                    <h1 class="hero-title" style="font-size: 56px;">
+                        Perguntas Frequentes
+                    </h1>
+                    <p class="hero-description">
+                        Encontre respostas rápidas para as dúvidas mais comuns sobre a Ramppy e como ela pode transformar seu time de vendas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" style="padding: 80px 0;">
+        <div class="container">
+            <div class="faq-list">
+                <!-- Geral -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>O que é a Ramppy?</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>A Ramppy é uma plataforma de treinamento de vendas que utiliza Inteligência Artificial para acelerar o desenvolvimento de vendedores. Através de simulações realistas, chat com mentor IA especializado em SPIN Selling e feedbacks personalizados, transformamos treinamento em performance real de vendas.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Quando a Ramppy estará disponível?</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Estamos finalizando nosso protótipo e esperamos lançar a versão 1.0 no primeiro semestre de 2025. Quem entrar na fila de espera terá acesso antecipado à plataforma e condições especiais de lançamento.</p>
+                    </div>
+                </div>
+
+                <!-- Funcionalidades -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Como funciona o treinamento com IA?</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Nossa IA foi treinada com a metodologia SPIN Selling e simula conversas reais de vendas. Ela analisa suas respostas em tempo real, identifica pontos de melhoria e fornece feedback personalizado. O sistema adapta a dificuldade conforme seu progresso, garantindo desafios adequados ao seu nível.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Preciso ter conhecimento em SPIN Selling?</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Não! A Ramppy ensina SPIN Selling do zero. Nosso Chat IA explica todos os conceitos de forma clara e prática, e o Roleplay permite que você pratique gradualmente, independente do seu nível de conhecimento. Tanto iniciantes quanto vendedores experientes se beneficiam da plataforma.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Quais tipos de simulações estão disponíveis?</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Oferecemos múltiplos perfis de cliente (decisor, técnico, cético, entusiasta) e cenários variados incluindo prospecção, qualificação, gestão de objeções e fechamento. As simulações são customizáveis por indústria e produto, adaptando-se ao seu contexto de vendas específico.</p>
+                    </div>
+                </div>
+
+                <!-- Preços -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Qual o investimento necessário?</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Estamos finalizando nosso modelo de precificação com planos flexíveis para diferentes tamanhos de equipe. Entre na fila de espera para receber condições especiais de lançamento com descontos exclusivos para early adopters.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Existe período de teste gratuito?</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sim! Planejamos oferecer um período de teste gratuito para que você possa experimentar todas as funcionalidades da plataforma antes de fazer qualquer compromisso. Os detalhes do período de trial serão anunciados em breve.</p>
+                    </div>
+                </div>
+
+                <!-- Aplicabilidade -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>A plataforma funciona para qualquer segmento?</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sim! SPIN Selling é uma metodologia universal aplicável a qualquer tipo de venda consultiva. A Ramppy pode ser customizada para diferentes segmentos, produtos e perfis de cliente. Já trabalhamos com empresas de tecnologia, serviços, manufatura e diversos outros setores.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Quantas pessoas da minha equipe podem usar?</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>A Ramppy é totalmente escalável. Ofereceremos planos para equipes de todos os tamanhos, desde vendedores individuais até grandes times comerciais com centenas de pessoas. Cada usuário terá acesso completo às funcionalidades e seu próprio PDI personalizado.</p>
+                    </div>
+                </div>
+
+                <!-- Técnico -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Preciso instalar algum software?</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Não! A Ramppy é 100% baseada na web. Você só precisa de um navegador moderno e conexão com internet. Acesse de qualquer lugar, seja no escritório, em casa ou em viagem, através de desktop, tablet ou smartphone.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>A Ramppy integra com CRM ou outras ferramentas?</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sim! Estamos desenvolvendo integrações com os principais CRMs do mercado (Salesforce, HubSpot, Pipedrive, etc.) para que você possa sincronizar dados de treinamento com suas métricas de vendas. Também ofereceremos uma API robusta para integrações customizadas.</p>
+                    </div>
+                </div>
+
+                <!-- Resultados -->
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Em quanto tempo verei resultados?</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Os resultados variam conforme o nível inicial e dedicação, mas nossos beta testers reportam melhoria visível em técnicas de vendas nas primeiras 2-3 semanas de uso regular. Com prática consistente, a maioria vê impacto mensurável em conversões dentro de 60-90 dias.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Posso ver um exemplo do treinamento?</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Em breve disponibilizaremos uma demonstração completa da plataforma em nosso site. Entre na fila de espera para ser um dos primeiros a testar e receber acesso à versão demo com todas as funcionalidades.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="fila-espera" style="padding: 80px 0;">
+        <div class="container">
+            <div class="section-header" style="text-align: center; max-width: 700px; margin: 0 auto;">
+                <span class="section-tag">Ainda tem dúvidas?</span>
+                <h2 class="section-title">Não encontrou sua resposta?</h2>
+                <p class="section-description" style="margin-bottom: 32px;">
+                    Nossa equipe está pronta para ajudar. Entre em contato conosco ou acesse nossa Central de Ajuda com mais artigos e tutoriais.
+                </p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="contato.html" class="btn-primary btn-large">
+                        <span>Falar com Suporte</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="central-ajuda.html" class="btn-secondary btn-large">
+                        <span>Ver Central de Ajuda</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="logo.svg" alt="Ramppy" class="footer-logo">
+                    <p>Ramp up your sales com inteligência artificial</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Produto</h4>
+                        <ul>
+                            <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                            <li><a href="como-funciona.html">Como Funciona</a></li>
+                            <li><a href="fila-espera.html">Fila de Espera</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Empresa</h4>
+                        <ul>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="carreiras.html">Carreiras</a></li>
+                            <li><a href="contato.html">Contato</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Suporte</h4>
+                        <ul>
+                            <li><a href="central-ajuda.html">Central de Ajuda</a></li>
+                            <li><a href="contato.html">Contato</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="termos.html">Termos de Uso</a></li>
+                            <li><a href="privacidade.html">Privacidade</a></li>
+                            <li><a href="cookies.html">Cookies</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ramppy. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="supabase-config.js"></script>
+    <script src="brand-color-loader.js"></script>
+    <script src="auth.js"></script>
+    <script src="auth-handlers.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

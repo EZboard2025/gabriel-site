@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funcionalidades - Ramppy</title>
+    <meta name="description" content="Conheça todas as funcionalidades da Ramppy: Chat IA, Roleplay Inteligente, Análise de Performance e PDI Personalizado.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="64x64" href="logo.png?v=3">
+    <link rel="icon" type="image/png" sizes="48x48" href="logo.png?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png?v=3">
+    <link rel="shortcut icon" href="logo.png?v=3">
+    <link rel="apple-touch-icon" sizes="180x180" href="logo.png?v=3">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- Space Background (Fixed) -->
+    <div class="space-background">
+        <div class="stars"></div>
+        <div class="shooting-stars"></div>
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="logo.svg" alt="Ramppy" class="logo-img">
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="como-funciona.html">Como Funciona</a></li>
+                    <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="fila-espera.html">Fila de Espera</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="#login" class="btn-login">Login</a>
+                    <a href="#signup" class="btn-signup">Cadastro</a>
+                    <a href="fila-espera.html" class="btn-primary">Entrar na Fila</a>
+                </div>
+                <button class="mobile-menu-btn" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 50vh; padding: 120px 0 80px;">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                    <span class="section-tag">Plataforma</span>
+                    <h1 class="hero-title">
+                        Funcionalidades que aceleram resultados
+                    </h1>
+                    <p class="hero-description">
+                        Tudo que você precisa para transformar seu time em máquinas de vendas.
+                        Tecnologia de ponta para treinamento, prática e evolução contínua.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Funcionalidades Detalhadas -->
+    <section class="funcionalidades" style="padding: 80px 0;">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card featured">
+                    <div class="feature-card-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                    </div>
+                    <h3>Chat IA Especializado em Vendas</h3>
+                    <p>Mentor de vendas disponível 24/7 para tirar dúvidas e ensinar técnicas SPIN Selling.</p>
+                    <ul class="feature-bullets">
+                        <li>Respostas instantâneas baseadas em SPIN</li>
+                        <li>Exemplos práticos de abordagens</li>
+                        <li>Orientação personalizada por contexto</li>
+                        <li>Aprenda no seu próprio ritmo</li>
+                        <li>Base de conhecimento especializada</li>
+                    </ul>
+                    <div class="feature-details">
+                        <h4>Como funciona:</h4>
+                        <p>Nosso assistente IA foi treinado com milhares de casos reais de vendas e a metodologia SPIN Selling completa. Ele entende o contexto da sua pergunta e fornece respostas práticas e aplicáveis ao seu dia a dia.</p>
+                    </div>
+                </div>
+
+                <div class="feature-card featured">
+                    <div class="feature-card-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>Roleplay Inteligente</h3>
+                    <p>Simulações realistas com diferentes perfis de clientes e cenários de vendas.</p>
+                    <ul class="feature-bullets">
+                        <li>Múltiplos perfis de cliente (decisor, técnico, cético)</li>
+                        <li>Objeções reais do mercado</li>
+                        <li>Dificuldade adaptativa ao seu nível</li>
+                        <li>Cenários customizáveis por indústria</li>
+                        <li>Gravação e replay de simulações</li>
+                    </ul>
+                    <div class="feature-details">
+                        <h4>Como funciona:</h4>
+                        <p>Escolha o perfil de cliente que deseja treinar e inicie uma conversa simulada. Nossa IA adapta as respostas com base no seu desempenho, aumentando gradualmente a dificuldade e apresentando objeções cada vez mais complexas.</p>
+                    </div>
+                </div>
+
+                <div class="feature-card featured">
+                    <div class="feature-card-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="20" x2="12" y2="10"/>
+                            <line x1="18" y1="20" x2="18" y2="4"/>
+                            <line x1="6" y1="20" x2="6" y2="16"/>
+                        </svg>
+                    </div>
+                    <h3>Análise de Performance</h3>
+                    <p>Métricas detalhadas e feedbacks baseados em IA sobre cada simulação.</p>
+                    <ul class="feature-bullets">
+                        <li>Feedbacks automáticos por IA</li>
+                        <li>Métricas SPIN (Situação, Problema, Implicação, Necessidade)</li>
+                        <li>Dashboard de evolução e progresso</li>
+                        <li>Comparação com benchmarks do mercado</li>
+                        <li>Identificação de pontos fortes e fracos</li>
+                    </ul>
+                    <div class="feature-details">
+                        <h4>Como funciona:</h4>
+                        <p>Após cada simulação, nossa IA analisa profundamente sua performance: quantas perguntas SPIN você fez, qualidade das suas respostas, gestão de objeções e técnicas de fechamento. Você recebe um relatório detalhado com pontos de melhoria.</p>
+                    </div>
+                </div>
+
+                <div class="feature-card featured">
+                    <div class="feature-card-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                        </svg>
+                    </div>
+                    <h3>PDI Personalizado</h3>
+                    <p>Plano de Desenvolvimento Individual adaptado ao seu perfil e necessidades.</p>
+                    <ul class="feature-bullets">
+                        <li>Treinamento adaptado ao seu perfil</li>
+                        <li>Metas e conversões rastreadas</li>
+                        <li>Sugestões de próximos passos</li>
+                        <li>Trilhas de aprendizado personalizadas</li>
+                        <li>Acompanhamento de evolução ao longo do tempo</li>
+                    </ul>
+                    <div class="feature-details">
+                        <h4>Como funciona:</h4>
+                        <p>Com base nas suas simulações e performance, criamos um plano de desenvolvimento único para você. O PDI sugere quais áreas focar, exercícios específicos e metas alcançáveis que acelerarão sua curva de aprendizado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefícios Section -->
+    <section class="como-funciona" style="background: rgba(17, 24, 39, 0.5); padding: 80px 0;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Benefícios</span>
+                <h2 class="section-title">Por que escolher a Ramppy?</h2>
+            </div>
+
+            <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                <div class="feature-card">
+                    <div class="feature-card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <h3>Treinamento 24/7</h3>
+                    <p>Aprenda e pratique quando quiser, no seu ritmo, sem depender de disponibilidade de instrutores.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v20M2 12h20"/>
+                        </svg>
+                    </div>
+                    <h3>Feedback Instantâneo</h3>
+                    <p>Receba análises detalhadas imediatamente após cada simulação, sem precisar esperar.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                            <line x1="12" y1="22.08" x2="12" y2="12"/>
+                        </svg>
+                    </div>
+                    <h3>Escalável</h3>
+                    <p>Treine dezenas ou centenas de vendedores simultaneamente com a mesma qualidade.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <h3>Personalizado</h3>
+                    <p>Cada vendedor recebe um plano de desenvolvimento único baseado em suas necessidades.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                        </svg>
+                    </div>
+                    <h3>Baseado em Dados</h3>
+                    <p>Todas as recomendações são baseadas em métricas reais e análise de performance.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 20h9"/>
+                            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                        </svg>
+                    </div>
+                    <h3>Prática Segura</h3>
+                    <p>Erre e aprenda em um ambiente seguro, sem risco de perder negócios reais.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="fila-espera" style="padding: 80px 0;">
+        <div class="container">
+            <div class="section-header" style="text-align: center;">
+                <span class="section-tag">Acesso Antecipado</span>
+                <h2 class="section-title">Pronto para revolucionar suas vendas?</h2>
+                <p class="section-description">
+                    Entre na fila de espera e seja um dos primeiros a experimentar todas essas funcionalidades.
+                </p>
+                <div style="margin-top: 32px;">
+                    <a href="fila-espera.html" class="btn-primary btn-large">
+                        <span>Garantir Meu Acesso Prioritário</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="logo.svg" alt="Ramppy" class="footer-logo">
+                    <p>Ramp up your sales com inteligência artificial</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Produto</h4>
+                        <ul>
+                            <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                            <li><a href="como-funciona.html">Como Funciona</a></li>
+                            <li><a href="fila-espera.html">Fila de Espera</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Empresa</h4>
+                        <ul>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="carreiras.html">Carreiras</a></li>
+                            <li><a href="contato.html">Contato</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Suporte</h4>
+                        <ul>
+                            <li><a href="central-ajuda.html">Central de Ajuda</a></li>
+                            <li><a href="contato.html">Contato</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="termos.html">Termos de Uso</a></li>
+                            <li><a href="privacidade.html">Privacidade</a></li>
+                            <li><a href="cookies.html">Cookies</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ramppy. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="supabase-config.js"></script>
+    <script src="brand-color-loader.js"></script>
+    <script src="auth.js"></script>
+    <script src="auth-handlers.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

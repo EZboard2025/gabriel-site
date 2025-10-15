@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidade - Ramppy</title>
+    <meta name="description" content="Política de Privacidade da Ramppy. Saiba como coletamos, usamos e protegemos seus dados pessoais em conformidade com a LGPD.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="64x64" href="logo.png?v=3">
+    <link rel="icon" type="image/png" sizes="48x48" href="logo.png?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png?v=3">
+    <link rel="shortcut icon" href="logo.png?v=3">
+    <link rel="apple-touch-icon" sizes="180x180" href="logo.png?v=3">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <style>
+        .legal-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(20, 20, 20, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 48px;
+        }
+
+        .legal-content h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-top: 40px;
+            margin-bottom: 16px;
+        }
+
+        .legal-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .legal-content h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        .legal-content p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 16px;
+            font-size: 16px;
+        }
+
+        .legal-content ul, .legal-content ol {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 16px;
+            padding-left: 24px;
+        }
+
+        .legal-content li {
+            margin-bottom: 8px;
+        }
+
+        .legal-content strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .last-updated {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 100px;
+            color: var(--primary-green);
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 32px;
+        }
+
+        .highlight-box {
+            background: rgba(34, 197, 94, 0.05);
+            border-left: 3px solid var(--primary-green);
+            padding: 16px 20px;
+            margin: 24px 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .legal-content {
+                padding: 32px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Space Background (Fixed) -->
+    <div class="space-background">
+        <div class="stars"></div>
+        <div class="shooting-stars"></div>
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="logo.svg" alt="Ramppy" class="logo-img">
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="como-funciona.html">Como Funciona</a></li>
+                    <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="fila-espera.html">Fila de Espera</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="#login" class="btn-login">Login</a>
+                    <a href="#signup" class="btn-signup">Cadastro</a>
+                    <a href="fila-espera.html" class="btn-primary">Entrar na Fila</a>
+                </div>
+                <button class="mobile-menu-btn" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 40vh; padding: 120px 0 60px;">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                    <span class="section-tag">Legal</span>
+                    <h1 class="hero-title" style="font-size: 56px;">
+                        Política de Privacidade
+                    </h1>
+                    <p class="hero-description">
+                        Como coletamos, usamos e protegemos seus dados pessoais
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Content -->
+    <section style="padding: 40px 0 100px 0;">
+        <div class="container">
+            <div class="legal-content">
+                <span class="last-updated">Última atualização: 15 de outubro de 2025</span>
+
+                <div class="highlight-box">
+                    <p><strong>Compromisso com a LGPD:</strong> Esta Política de Privacidade está em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018) e descreve como a Ramppy coleta, usa, armazena e protege seus dados pessoais.</p>
+                </div>
+
+                <h2>1. Introdução</h2>
+                <p>A Ramppy valoriza e respeita sua privacidade. Esta Política de Privacidade explica como tratamos as informações pessoais que coletamos através de nossa plataforma de treinamento de vendas com inteligência artificial.</p>
+                <p>Ao utilizar nossos serviços, você concorda com a coleta e uso de informações de acordo com esta política. Se você não concordar com qualquer parte desta política, recomendamos que não use nossos serviços.</p>
+
+                <h2>2. Definições</h2>
+                <p>Para os fins desta Política de Privacidade:</p>
+                <ul>
+                    <li><strong>Dados Pessoais:</strong> Qualquer informação relacionada a uma pessoa natural identificada ou identificável.</li>
+                    <li><strong>Titular:</strong> Pessoa natural a quem se referem os dados pessoais (você, o usuário).</li>
+                    <li><strong>Controlador:</strong> A Ramppy, responsável pelas decisões sobre o tratamento de dados pessoais.</li>
+                    <li><strong>Tratamento:</strong> Toda operação realizada com dados pessoais, como coleta, armazenamento, uso, compartilhamento e eliminação.</li>
+                    <li><strong>Anonimização:</strong> Processo que torna impossível a identificação do titular dos dados.</li>
+                </ul>
+
+                <h2>3. Dados Coletados</h2>
+                <h3>3.1 Dados Fornecidos Diretamente por Você</h3>
+                <p>Coletamos os seguintes dados quando você se cadastra ou usa nossa plataforma:</p>
+                <ul>
+                    <li><strong>Dados de Identificação:</strong> Nome completo, email, telefone, cargo, nome da empresa</li>
+                    <li><strong>Dados de Acesso:</strong> Senha (armazenada de forma criptografada), preferências de idioma e notificações</li>
+                    <li><strong>Dados Profissionais:</strong> Área de atuação, experiência em vendas, setor de mercado</li>
+                    <li><strong>Dados de Pagamento:</strong> Informações de faturamento e método de pagamento (processados por provedores seguros terceirizados)</li>
+                </ul>
+
+                <h3>3.2 Dados Coletados Automaticamente</h3>
+                <p>Durante o uso da plataforma, coletamos automaticamente:</p>
+                <ul>
+                    <li><strong>Dados de Uso:</strong> Páginas visitadas, tempo de uso, funcionalidades acessadas, simulações realizadas</li>
+                    <li><strong>Dados de Performance:</strong> Resultados de simulações, métricas SPIN, feedbacks recebidos, progresso no PDI</li>
+                    <li><strong>Dados Técnicos:</strong> Endereço IP, tipo de navegador, sistema operacional, dispositivo utilizado</li>
+                    <li><strong>Cookies e Tecnologias Similares:</strong> Para melhorar a experiência do usuário (veja nossa <a href="cookies.html" style="color: var(--primary-green);">Política de Cookies</a>)</li>
+                </ul>
+
+                <h3>3.3 Dados de Treinamento e IA</h3>
+                <p>Para fornecer nossos serviços de treinamento com IA:</p>
+                <ul>
+                    <li>Gravamos e analisamos suas interações com as simulações de vendas</li>
+                    <li>Processamos o conteúdo de suas conversas com o mentor IA</li>
+                    <li>Analisamos padrões de aprendizado para personalizar seu PDI</li>
+                    <li>Coletamos feedback sobre a qualidade das simulações e respostas da IA</li>
+                </ul>
+
+                <h2>4. Finalidades do Tratamento de Dados</h2>
+                <p>Utilizamos seus dados pessoais para as seguintes finalidades:</p>
+
+                <h3>4.1 Prestação de Serviços</h3>
+                <ul>
+                    <li>Criar e gerenciar sua conta na plataforma</li>
+                    <li>Fornecer acesso às funcionalidades de treinamento com IA</li>
+                    <li>Gerar simulações personalizadas de vendas</li>
+                    <li>Criar e atualizar seu PDI (Plano de Desenvolvimento Individual)</li>
+                    <li>Gerar relatórios e análises de performance</li>
+                    <li>Processar pagamentos e emitir faturas</li>
+                </ul>
+
+                <h3>4.2 Melhorias e Personalização</h3>
+                <ul>
+                    <li>Personalizar sua experiência na plataforma</li>
+                    <li>Melhorar nossos algoritmos de IA e qualidade das simulações</li>
+                    <li>Desenvolver novos recursos e funcionalidades</li>
+                    <li>Realizar pesquisas e análises agregadas</li>
+                </ul>
+
+                <h3>4.3 Comunicação</h3>
+                <ul>
+                    <li>Enviar notificações sobre sua conta e serviço</li>
+                    <li>Responder suas dúvidas e solicitações de suporte</li>
+                    <li>Enviar atualizações sobre novos recursos (se você optou por receber)</li>
+                    <li>Enviar newsletters e conteúdo educacional sobre vendas (com seu consentimento)</li>
+                </ul>
+
+                <h3>4.4 Segurança e Conformidade</h3>
+                <ul>
+                    <li>Detectar, prevenir e combater fraudes e abusos</li>
+                    <li>Garantir a segurança da plataforma e dos dados</li>
+                    <li>Cumprir obrigações legais e regulatórias</li>
+                    <li>Resolver disputas e fazer cumprir nossos termos de uso</li>
+                </ul>
+
+                <h2>5. Base Legal para o Tratamento</h2>
+                <p>Tratamos seus dados pessoais com base nas seguintes bases legais previstas na LGPD:</p>
+                <ul>
+                    <li><strong>Execução de Contrato:</strong> Para fornecimento dos serviços solicitados</li>
+                    <li><strong>Consentimento:</strong> Para comunicações de marketing e uso de cookies não essenciais</li>
+                    <li><strong>Legítimo Interesse:</strong> Para melhorias da plataforma, segurança e prevenção de fraudes</li>
+                    <li><strong>Cumprimento de Obrigação Legal:</strong> Para atendimento de requisitos fiscais e regulatórios</li>
+                </ul>
+
+                <h2>6. Compartilhamento de Dados</h2>
+                <h3>6.1 Quando Compartilhamos</h3>
+                <p>Podemos compartilhar seus dados pessoais nas seguintes situações:</p>
+
+                <ul>
+                    <li><strong>Provedores de Serviço:</strong> Empresas que nos auxiliam na operação da plataforma (hospedagem, processamento de pagamentos, análise de dados, suporte ao cliente)</li>
+                    <li><strong>Parceiros de Negócio:</strong> Quando você autoriza expressamente o compartilhamento</li>
+                    <li><strong>Requisições Legais:</strong> Quando exigido por lei, ordem judicial ou autoridade competente</li>
+                    <li><strong>Proteção de Direitos:</strong> Para proteger nossos direitos, propriedade ou segurança, ou de nossos usuários</li>
+                    <li><strong>Transações Corporativas:</strong> Em caso de fusão, aquisição ou venda de ativos</li>
+                </ul>
+
+                <h3>6.2 Transferência Internacional</h3>
+                <p>Alguns de nossos provedores de serviço podem estar localizados fora do Brasil. Nestes casos, garantimos que os dados sejam transferidos com as salvaguardas apropriadas conforme exigido pela LGPD.</p>
+
+                <h2>7. Segurança dos Dados</h2>
+                <p>Implementamos medidas técnicas e organizacionais para proteger seus dados pessoais contra acesso não autorizado, alteração, divulgação ou destruição:</p>
+                <ul>
+                    <li>Criptografia de dados em trânsito (TLS/SSL) e em repouso</li>
+                    <li>Controles de acesso rigorosos e autenticação multifator</li>
+                    <li>Monitoramento contínuo de segurança e testes de vulnerabilidade</li>
+                    <li>Treinamento regular de nossa equipe sobre proteção de dados</li>
+                    <li>Backups regulares e plano de recuperação de desastres</li>
+                    <li>Pseudonimização e anonimização quando possível</li>
+                </ul>
+
+                <h2>8. Retenção de Dados</h2>
+                <p>Mantemos seus dados pessoais apenas pelo tempo necessário para as finalidades descritas nesta política ou conforme exigido por lei:</p>
+                <ul>
+                    <li><strong>Dados de Conta Ativa:</strong> Enquanto sua conta estiver ativa ou conforme necessário para fornecer serviços</li>
+                    <li><strong>Dados de Conta Cancelada:</strong> Até 90 dias após o cancelamento, exceto dados necessários para cumprimento de obrigações legais</li>
+                    <li><strong>Dados de Treinamento Anonimizados:</strong> Podemos reter indefinidamente para melhorias da plataforma</li>
+                    <li><strong>Dados Fiscais:</strong> 5 anos conforme legislação brasileira</li>
+                </ul>
+
+                <h2>9. Seus Direitos (LGPD)</h2>
+                <p>Como titular de dados pessoais, você tem os seguintes direitos garantidos pela LGPD:</p>
+                <ul>
+                    <li><strong>Confirmação e Acesso:</strong> Confirmar a existência de tratamento e acessar seus dados</li>
+                    <li><strong>Correção:</strong> Solicitar a correção de dados incompletos, inexatos ou desatualizados</li>
+                    <li><strong>Anonimização, Bloqueio ou Eliminação:</strong> De dados desnecessários, excessivos ou tratados em desconformidade</li>
+                    <li><strong>Portabilidade:</strong> Receber seus dados em formato estruturado e interoperável</li>
+                    <li><strong>Eliminação:</strong> De dados tratados com seu consentimento, exceto nas hipóteses legais de retenção</li>
+                    <li><strong>Informação:</strong> Sobre entidades públicas e privadas com as quais compartilhamos dados</li>
+                    <li><strong>Revogação do Consentimento:</strong> A qualquer momento, mediante manifestação expressa</li>
+                    <li><strong>Oposição:</strong> Ao tratamento realizado com base em legítimo interesse</li>
+                </ul>
+
+                <p><strong>Para exercer seus direitos, entre em contato através de:</strong></p>
+                <ul>
+                    <li>Email: privacidade@ramppy.com</li>
+                    <li>Formulário de contato em nossa <a href="contato.html" style="color: var(--primary-green);">página de contato</a></li>
+                    <li>Configurações da conta na plataforma</li>
+                </ul>
+
+                <h2>10. Crianças e Adolescentes</h2>
+                <p>Nossos serviços são destinados a profissionais maiores de 18 anos. Não coletamos intencionalmente dados de menores de idade. Se tomarmos conhecimento de que coletamos dados de menores sem o consentimento dos pais ou responsáveis, tomaremos medidas para excluir essas informações.</p>
+
+                <h2>11. Cookies e Tecnologias Similares</h2>
+                <p>Utilizamos cookies e tecnologias similares para melhorar sua experiência. Para mais informações, consulte nossa <a href="cookies.html" style="color: var(--primary-green);">Política de Cookies</a>.</p>
+
+                <h2>12. Alterações nesta Política</h2>
+                <p>Podemos atualizar esta Política de Privacidade periodicamente. Notificaremos você sobre alterações significativas através de email ou aviso destacado na plataforma. Recomendamos que revise esta política regularmente para se manter informado sobre como protegemos seus dados.</p>
+
+                <h2>13. Encarregado de Proteção de Dados (DPO)</h2>
+                <p>Nomeamos um Encarregado de Proteção de Dados (DPO) para atuar como canal de comunicação entre a Ramppy, os titulares de dados e a Autoridade Nacional de Proteção de Dados (ANPD).</p>
+                <p><strong>Contato do DPO:</strong></p>
+                <ul>
+                    <li>Email: dpo@ramppy.com</li>
+                    <li>Para questões relacionadas à proteção de dados e exercício de direitos</li>
+                </ul>
+
+                <h2>14. Reclamações</h2>
+                <p>Se você acredita que seus dados pessoais foram tratados de maneira inadequada, você tem o direito de apresentar uma reclamação à Autoridade Nacional de Proteção de Dados (ANPD) através do site: <a href="https://www.gov.br/anpd" style="color: var(--primary-green);" target="_blank">www.gov.br/anpd</a></p>
+
+                <h2>15. Contato</h2>
+                <p>Para dúvidas, solicitações ou exercício de seus direitos relacionados a esta Política de Privacidade:</p>
+                <ul>
+                    <li><strong>Email:</strong> privacidade@ramppy.com</li>
+                    <li><strong>DPO:</strong> dpo@ramppy.com</li>
+                    <li><strong>Central de Ajuda:</strong> <a href="central-ajuda.html" style="color: var(--primary-green);">www.ramppy.com/central-ajuda</a></li>
+                    <li><strong>Contato:</strong> <a href="contato.html" style="color: var(--primary-green);">www.ramppy.com/contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="logo.svg" alt="Ramppy" class="footer-logo">
+                    <p>Ramp up your sales com inteligência artificial</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Produto</h4>
+                        <ul>
+                            <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                            <li><a href="como-funciona.html">Como Funciona</a></li>
+                            <li><a href="fila-espera.html">Fila de Espera</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Empresa</h4>
+                        <ul>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="carreiras.html">Carreiras</a></li>
+                            <li><a href="contato.html">Contato</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Suporte</h4>
+                        <ul>
+                            <li><a href="central-ajuda.html">Central de Ajuda</a></li>
+                            <li><a href="contato.html">Contato</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="termos.html">Termos de Uso</a></li>
+                            <li><a href="privacidade.html">Privacidade</a></li>
+                            <li><a href="cookies.html">Cookies</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ramppy. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="supabase-config.js"></script>
+    <script src="brand-color-loader.js"></script>
+    <script src="auth.js"></script>
+    <script src="auth-handlers.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

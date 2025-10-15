@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulações e Roleplay - Ramppy</title>
+    <meta name="description" content="Aprenda como funcionam as simulações, perfis de cliente e cenários de treinamento na Ramppy.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="64x64" href="logo.png?v=3">
+    <link rel="icon" type="image/png" sizes="48x48" href="logo.png?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png?v=3">
+    <link rel="shortcut icon" href="logo.png?v=3">
+    <link rel="apple-touch-icon" sizes="180x180" href="logo.png?v=3">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- Space Background (Fixed) -->
+    <div class="space-background">
+        <div class="stars"></div>
+        <div class="shooting-stars"></div>
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="logo.svg" alt="Ramppy" class="logo-img">
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="como-funciona.html">Como Funciona</a></li>
+                    <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="fila-espera.html">Fila de Espera</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="#login" class="btn-login">Login</a>
+                    <a href="#signup" class="btn-signup">Cadastro</a>
+                    <a href="fila-espera.html" class="btn-primary">Entrar na Fila</a>
+                </div>
+                <button class="mobile-menu-btn" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 40vh; padding: 120px 0 60px;">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                    <a href="central-ajuda.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--primary-green); text-decoration: none; margin-bottom: 16px; font-size: 14px;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Voltar para Central de Ajuda
+                    </a>
+                    <span class="section-tag">Simulações e Roleplay</span>
+                    <h1 class="hero-title" style="font-size: 48px;">Treine com Simulações Realistas</h1>
+                    <p class="hero-description">
+                        Como funcionam as simulações, perfis de cliente e cenários de treinamento.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="funcionalidades" style="padding: 0 0 80px 0;">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto;">
+
+                <!-- Artigo 1 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </span>
+                        O que são as simulações de vendas na Ramppy
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            As simulações da Ramppy são sessões de roleplay onde a IA assume o papel de diferentes perfis de clientes, criando cenários realistas de vendas para você praticar suas habilidades em um ambiente seguro e controlado.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Como funciona:</strong> Você escolhe um perfil de cliente (C-Level, Gerente, Técnico, etc.) e um cenário (discovery call, apresentação de proposta, negociação, etc.). A IA então simula uma conversa realista, respondendo às suas perguntas, apresentando objeções e reagindo às suas técnicas de vendas de forma autêntica.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Realismo extremo:</strong> A IA foi treinada com milhares de conversas reais de vendas B2B. Ela reproduz comportamentos autênticos: clientes apressados que interrompem, executivos céticos que fazem perguntas difíceis, compradores técnicos que se perdem em detalhes, e prospects amigáveis mas sem urgência.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            Durante a simulação, você pratica aplicar técnicas SPIN, lidar com objeções, construir rapport e conduzir o cliente pela jornada de compra. Cada simulação dura 10-30 minutos e ao final você recebe feedback detalhado sobre seu desempenho com métricas objetivas e insights de melhoria.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 2 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </span>
+                        Tipos de perfis de cliente disponíveis
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            A Ramppy oferece mais de 15 perfis de cliente diferentes, cada um com personalidade, objetivos e comportamentos únicos. Escolher o perfil certo maximiza o valor do treinamento.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">C-Level (CEO, CFO, CTO):</strong> Executivos de alta senioridade, extremamente ocupados, focados em ROI e impacto estratégico. Fazem perguntas diretas, são céticos e não toleram perda de tempo. Ideal para praticar vendas consultivas de alto valor.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Gerente/Diretor:</strong> Líderes de departamento com poder de influência mas nem sempre decisão final. Precisam justificar investimentos para C-Level. Buscam equilibrar custo, benefício e risco. Perfeito para praticar construção de business case.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Técnico/Especialista:</strong> Profundos conhecedores do assunto, focados em especificações, integrações e funcionalidades. Fazem perguntas detalhadas sobre features. Ótimo para treinar demonstrações técnicas e discovery profundo.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Comprador/Procurement:</strong> Focados 100% em preço e termos contratuais. Negociadores experientes, conhecem táticas de vendas. Excelente para praticar negociação e defesa de valor.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Cliente em Comitê:</strong> Simulação mais complexa com múltiplos stakeholders em uma reunião. Cada persona tem agenda diferente. Avançado para praticar navegação política e venda para grupos.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            Também temos perfis específicos por setor (Saúde, Financeiro, Varejo, Tecnologia) e por momento da jornada (Prospect Frio, Lead Aquecido, Cliente Ativo, Cliente Churn Risk). Cada perfil pode ter variações de humor: colaborativo, neutro, resistente ou hostil.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 3 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                            </svg>
+                        </span>
+                        Como escolher o cenário de simulação ideal
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Escolher o cenário certo é fundamental para focar seu treinamento nas áreas que mais precisam de desenvolvimento. Cada cenário simula uma etapa específica do ciclo de vendas.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Para iniciantes:</strong> Comece com "Discovery Call - Nível Básico". Este cenário tem um cliente colaborativo que responde bem a perguntas SPIN. Foco em praticar a estrutura básica de discovery sem pressão de objeções complexas.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Desenvolvimento intermediário:</strong> Escolha cenários como "Apresentação de Proposta", "Negociação de Contrato" ou "Recuperação de Cliente". Aqui você enfrenta objeções reais, precisa construir valor e conduzir para fechamento.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Nível avançado:</strong> Experimente "Venda em Comitê", "Cliente com Concorrente Forte" ou "Renovação com Risco de Churn". São cenários complexos com múltiplas variáveis, objeções difíceis e necessidade de estratégia avançada.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Baseado em gaps:</strong> Após algumas simulações, o sistema identifica suas áreas fracas e recomenda cenários específicos. Se você tem dificuldade com objeção de preço, ele sugere "Negociação com Comprador de Procurement". Se trava em descoberta de dor, recomenda "Discovery Profundo com Cliente Técnico".
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            Dica: Alterne entre cenários confortáveis (para construir confiança) e desafiadores (para crescer). Uma boa proporção é 70% treinando fraquezas, 30% reforçando forças.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 4 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                <circle cx="8.5" cy="8.5" r="1.5"/>
+                                <polyline points="21 15 16 10 5 21"/>
+                            </svg>
+                        </span>
+                        Personalizando cenários para seu contexto
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Além dos cenários pré-definidos, você pode personalizar cada simulação para refletir exatamente sua realidade de vendas, tornando o treinamento ainda mais relevante e aplicável.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Configurar produto/serviço:</strong> Na tela de configuração, descreva o que você vende: "Software de RH com módulos de recrutamento, folha de pagamento e avaliação de desempenho, ticket de R$30k/ano". A IA adaptará toda a conversa a esse contexto.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Definir empresa e setor:</strong> Especifique o perfil do cliente: "Empresa de varejo com 200 funcionários, crescendo 30% ao ano, usando planilhas para RH". A IA criará dores, objeções e perguntas coerentes com esse perfil.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Objeções específicas:</strong> Você pode pré-programar objeções que quer enfrentar: "Cliente deve dizer que está feliz com concorrente X" ou "Cliente deve questionar ROI e pedir estudos de caso do meu setor". A IA garante que essas objeções apareçam.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Nível de dificuldade:</strong> Ajuste o quão colaborativo ou difícil o cliente será. No modo "Fácil", ele responde perguntas completamente. No modo "Realista", às vezes é vago. No modo "Difícil", ele ativamente resiste, desvia e desafia.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Salvar configurações:</strong> Personalizações podem ser salvas como "Meus Cenários Customizados". Útil quando você tem produtos diferentes ou quer praticar situações específicas recorrentemente sem reconfigurar toda vez.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 5 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <polygon points="23 7 16 12 23 17 23 7"/>
+                                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                            </svg>
+                        </span>
+                        O que acontece durante uma simulação
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Durante a simulação, você interage com a IA em tempo real através de chat de texto ou voz. A experiência é projetada para ser imersiva e refletir fielmente uma conversa de vendas real.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Início da conversa:</strong> A simulação começa com a IA fazendo uma entrada contextual: "Oi, você deve ser o [seu nome] da Ramppy. Tenho só 20 minutos, pode me explicar rapidamente do que se trata?" Isso simula pressão de tempo e necessidade de ser direto.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Interação natural:</strong> Você digita ou fala suas perguntas e respostas. A IA responde em 2-3 segundos, mantendo o fluxo natural. Ela demonstra emoções através de texto ("*suspira*", "*animado*") ou tom de voz se estiver no modo áudio.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Feedback em tempo real:</strong> No canto da tela, você vê dicas sutis sem pausar a conversa: "Boa pergunta de Problema!", "Tente aprofundar a dor", "Cliente está receptivo, hora de implicar". Isso funciona como um coach ao seu lado.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Objeções dinâmicas:</strong> A IA apresenta objeções baseadas no que você diz. Se você menciona preço muito cedo, ela questiona valor. Se você não descobriu dor suficiente, ela diz "não vejo necessidade urgente". Cada simulação é única.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Encerramento:</strong> A simulação termina naturalmente quando atinge um ponto de conclusão (fechamento, agendamento de próxima etapa, ou rejeição clara) ou após o tempo definido (10-30min). Você então acessa o relatório completo de performance.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 6 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="12" y1="8" x2="12" y2="12"/>
+                                <line x1="12" y1="16" x2="12.01" y2="16"/>
+                            </svg>
+                        </span>
+                        Dicas para se sair bem nas simulações
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Algumas estratégias podem aumentar significativamente a qualidade do seu treinamento e os resultados das simulações. Aqui estão as mais eficazes.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Prepare-se antes:</strong> Reserve 5 minutos antes da simulação para revisar suas notas sobre SPIN, definir 2-3 objetivos específicos ("vou focar em perguntas de Implicação hoje") e visualizar mentalmente a conversa. Preparação aumenta a performance em 40%.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Trate como real:</strong> Não relaxe só porque é simulação. Vista-se profissionalmente se for fazer por voz, sente-se em postura adequada, elimine distrações. Seu cérebro aprende melhor quando você cria as mesmas condições de uma call real.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Ouça ativamente:</strong> Muitos vendem mal porque não ouvem. Na simulação, leia/ouça completamente o que a IA diz antes de responder. Procure palavras-chave que indicam dor, urgência ou abertura. A IA dá pistas sutis.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Experimente técnicas novas:</strong> Simulação é ambiente seguro para testar. Tente aquela pergunta de Implicação que nunca teve coragem de fazer. Teste uma abertura diferente. Se falhar, não perdeu o deal - aprendeu o que não fazer.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Não desista nas objeções:</strong> Quando receber objeção, resista ao impulso de aceitar ou recuar imediatamente. Pratique técnicas de handle: faça perguntas, valide o sentimento, descubra a objeção por trás da objeção.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Revise imediatamente:</strong> Logo após terminar, enquanto está fresco, anote 3 coisas que fez bem e 3 que pode melhorar. Depois leia o feedback detalhado da IA. Essa reflexão imediata acelera o aprendizado.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 7 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </span>
+                        Como gravar e revisar suas simulações
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Todas as simulações são automaticamente gravadas e ficam disponíveis para revisão. Isso permite que você analise sua performance com calma e identifique pontos de melhoria que podem ter passado despercebidos durante a conversa.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Acesso às gravações:</strong> Vá em "Minhas Simulações" no menu e você verá todas as sessões anteriores com data, perfil de cliente, cenário e nota. Clique em qualquer uma para ver a transcrição completa ou ouvir o áudio (se usou modo voz).
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Anotações durante revisão:</strong> Você pode adicionar marcadores temporais com notas: "2:35 - Perdi oportunidade de fazer pergunta de Implicação aqui", "5:20 - Boa construção de rapport". Isso cria uma biblioteca de aprendizados.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Análise de padrões:</strong> A plataforma identifica padrões através das gravações: "Você sempre usa a mesma abertura", "Você para de fazer perguntas depois da primeira objeção", "Sua taxa de fechamento é 80% quando você faz 3+ perguntas de Implicação".
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Compartilhar para coaching:</strong> Se você tem um gestor ou coach na plataforma, pode compartilhar gravações específicas pedindo feedback: "Consegue revisar essa simulação e me dar dicas sobre como melhorar na negociação de preço?"
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Comparação antes/depois:</strong> Marque simulações para comparação. A plataforma mostra lado a lado como você lidou com o mesmo cenário em momentos diferentes, destacando progressos e regressões. É motivador ver evolução concreta.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 8 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="8 12 12 16 16 12"/>
+                                <line x1="12" y1="8" x2="12" y2="16"/>
+                            </svg>
+                        </span>
+                        Pausando e retomando simulações
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Você pode pausar uma simulação a qualquer momento e retomá-la depois exatamente de onde parou. Isso é útil quando você precisa de uma pausa para pensar, consultar material ou lidar com interrupções.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Como pausar:</strong> Clique no botão "Pausar" no canto da interface ou digite "/pausa" no chat. A simulação congela imediatamente. Você pode ficar pausado por quanto tempo quiser - minutos, horas ou dias.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Durante a pausa:</strong> Você pode consultar suas anotações, perguntar ao mentor IA sobre a situação atual ("Como devo lidar com essa objeção que recebi?"), revisar o histórico da conversa ou pesquisar técnicas. É como ter um timeout estratégico.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Retomar:</strong> Quando voltar, clique em "Retomar" ou acesse "Simulações Pausadas" no menu. A IA recapitula brevemente onde você parou: "Certo, estávamos discutindo a objeção de budget. Como gostaria de continuar?" O contexto é preservado 100%.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Modo Reflexão:</strong> Existe um modo especial "Pausa para Reflexão" onde a plataforma automaticamente pausa em momentos-chave e pede sua reflexão: "O cliente acabou de dar objeção. Antes de responder, qual sua estratégia?" Isso desenvolve pensamento estratégico.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Simulações não concluídas:</strong> Se você abandonar sem encerrar formalmente, a simulação fica em "Rascunhos". Você pode retomá-la em até 7 dias ou descartá-la. Após 7 dias, ela é arquivada automaticamente sem impactar suas métricas.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 9 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                            </svg>
+                        </span>
+                        Entendendo o feedback em tempo real
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Durante a simulação, o sistema fornece feedback sutil em tempo real para acelerar seu aprendizado sem interromper o fluxo da conversa. Entender como interpretar esses sinais maximiza o valor de cada sessão.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Indicadores visuais:</strong> No canto superior direito, você vê barras de progresso: Rapport (qualidade da conexão), Discovery (profundidade das perguntas), Valor (quão bem você construiu o case). Cores mudam de vermelho para verde conforme você melhora.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Dicas contextuais:</strong> Pequenas notificações aparecem discretamente: "Cliente deu uma pista de dor - explore mais", "Momento ideal para pergunta de Implicação", "Cliente está perdendo interesse - retome rapport". São orientações do que fazer agora.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Contador SPIN:</strong> Uma métrica mostra quantas perguntas de cada tipo você fez (Situação: 3, Problema: 2, Implicação: 0, Necessidade: 0). Isso ajuda você perceber se está desequilibrado e ajustar em tempo real.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Alertas de erro:</strong> Se você comete um erro crítico, recebe alerta: "Você mencionou preço antes de estabelecer valor", "Pergunta muito fechada - tente aberta". Mas o alerta não aparece para o cliente IA, só para você.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Modo coach vs modo avaliação:</strong> Você pode alternar entre "Modo Coach" (feedback abundante em tempo real) e "Modo Avaliação" (sem dicas, feedback só no final). Use Coach para aprender, Avaliação para testar suas habilidades sem ajuda.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 10 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                                <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                            </svg>
+                        </span>
+                        Simulações recomendadas baseadas no seu PDI
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            A Ramppy integra seu Plano de Desenvolvimento Individual (PDI) com as simulações, recomendando sessões específicas que aceleram seu progresso nas áreas que mais importam para você.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Recomendações personalizadas:</strong> Na tela de "Nova Simulação", você vê uma seção "Recomendado para Você" com 3-5 simulações priorizadas baseadas nos gaps identificados no seu PDI. Se seu PDI diz "Desenvolver perguntas de Implicação", aparecerão cenários focados nisso.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Trilha de progresso:</strong> O sistema cria uma sequência de simulações progressivas. Você começa com cenário básico de Implicação, depois intermediário, depois avançado. Só libera o próximo nível quando você atinge nota 7+ no anterior.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Desafios semanais:</strong> Toda semana você recebe um desafio de simulação alinhado ao PDI: "Esta semana, faça 3 simulações focando em objeção de preço e atinja nota média 8". Completar desafios acelera progressão no PDI.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Ajuste dinâmico:</strong> Conforme você evolui, as recomendações mudam. Dominou Implicação? O sistema para de recomendar e foca na próxima área. Regrediu em algo? Volta a recomendar reforço. É adaptativo ao seu momento.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Ignorar recomendações:</strong> Você sempre pode escolher fazer qualquer simulação que quiser, não é obrigado a seguir recomendações. Mas estatisticamente, usuários que seguem 70%+ das recomendações evoluem 3x mais rápido que os que escolhem aleatoriamente.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 11 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </span>
+                        Simulações em grupo (para equipes)
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Planos Team e Enterprise têm acesso a simulações em grupo, onde múltiplos vendedores participam da mesma sessão, assumindo diferentes papéis e aprendendo juntos.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Como funciona:</strong> O gestor cria uma "Sala de Simulação" e convida membros da equipe. Define quem será o vendedor principal, quem serão observadores, e quem pode assumir papéis de stakeholders adicionais. A IA gera um cenário complexo com múltiplos clientes.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Cenários de comitê:</strong> Um membro é o AE principal, outros são SEs, SDRs ou observadores. A IA simula um comitê de compras com 3-5 personas. A equipe precisa colaborar em tempo real para navegar a venda complexa, cada um contribuindo conforme seu papel.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Rodízio de papéis:</strong> Após cada simulação, os papéis rodam. Quem foi vendedor vira observador, observador vira vendedor. Isso desenvolve empatia e visão sistêmica. Cada pessoa vê a venda por múltiplas perspectivas.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Debriefing coletivo:</strong> Após a simulação, o sistema abre uma sala de debriefing onde a equipe discute: "O que funcionou?", "Onde travamos?", "Como melhorar na próxima?". O gestor pode adicionar observações e direcionamentos.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Competições amigáveis:</strong> Gestores podem criar "Torneios de Simulação" onde equipes competem no mesmo cenário. A IA avalia qual equipe teve melhor desempenho. Isso cria engajamento, camaradagem e aprendizado colaborativo.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 12 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </span>
+                        Frequência ideal de prática
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            A frequência de prática impacta diretamente sua evolução. Dados de milhares de usuários mostram padrões claros sobre o que funciona melhor para desenvolvimento acelerado de habilidades de vendas.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Mínimo recomendado:</strong> 2-3 simulações por semana de 15-20 minutos cada. Isso mantém as habilidades frescas e permite progressão constante. Menos que isso, você perde continuidade e esquece os aprendizados entre sessões.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Ritmo acelerado:</strong> Para evolução rápida, faça 1 simulação diária de segunda a sexta. Usuários nesse ritmo atingem proficiência em SPIN 70% mais rápido. É como ir à academia - consistência diária traz resultados exponenciais.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Timing ideal:</strong> Melhor horário é pela manhã antes de calls reais. Você aquece as habilidades e entra no "modo vendas". Evite fazer simulação após dia exaustivo de vendas reais - seu cérebro precisa estar fresco para aprender.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Ciclos de intensidade:</strong> Alterne semanas intensas (5-7 simulações) com semanas leves (2-3 simulações). Intensidade desenvolve, recuperação consolida. Como treino físico, músculos mentais precisam de descanso para crescer.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Preparação para eventos:</strong> Antes de reuniões críticas ou períodos de vendas importantes, faça um "sprint de simulação": 2-3 simulações por dia durante 3-5 dias focando no cenário exato que vai enfrentar. Aumenta confiança e performance em 60%.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CTA -->
+            <div style="text-align: center; margin-top: 64px; padding: 48px; background: rgba(34, 197, 94, 0.1); border-radius: 16px; border: 1px solid rgba(34, 197, 94, 0.2); max-width: 700px; margin-left: auto; margin-right: auto;">
+                <h3 style="margin-bottom: 16px; color: var(--primary-green);">Ainda tem dúvidas?</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 24px;">
+                    Explore outras categorias de ajuda ou entre em contato com nosso suporte.
+                </p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="central-ajuda.html" class="btn-primary">
+                        <span>Voltar para Ajuda</span>
+                    </a>
+                    <a href="contato.html" class="btn-secondary">
+                        <span>Falar com Suporte</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="logo.svg" alt="Ramppy" class="footer-logo">
+                    <p>Ramp up your sales com inteligência artificial</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Produto</h4>
+                        <ul>
+                            <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                            <li><a href="como-funciona.html">Como Funciona</a></li>
+                            <li><a href="fila-espera.html">Fila de Espera</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Empresa</h4>
+                        <ul>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="carreiras.html">Carreiras</a></li>
+                            <li><a href="contato.html">Contato</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Suporte</h4>
+                        <ul>
+                            <li><a href="central-ajuda.html">Central de Ajuda</a></li>
+                            <li><a href="contato.html">Contato</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="termos.html">Termos de Uso</a></li>
+                            <li><a href="privacidade.html">Privacidade</a></li>
+                            <li><a href="cookies.html">Cookies</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ramppy. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="supabase-config.js"></script>
+    <script src="brand-color-loader.js"></script>
+    <script src="auth.js"></script>
+    <script src="auth-handlers.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

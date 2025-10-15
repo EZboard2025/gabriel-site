@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primeiros Passos - Ramppy</title>
+    <meta name="description" content="Aprenda como começar a usar a Ramppy e configurar sua conta pela primeira vez.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="64x64" href="logo.png?v=3">
+    <link rel="icon" type="image/png" sizes="48x48" href="logo.png?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png?v=3">
+    <link rel="shortcut icon" href="logo.png?v=3">
+    <link rel="apple-touch-icon" sizes="180x180" href="logo.png?v=3">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- Space Background (Fixed) -->
+    <div class="space-background">
+        <div class="stars"></div>
+        <div class="shooting-stars"></div>
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="logo.svg" alt="Ramppy" class="logo-img">
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="como-funciona.html">Como Funciona</a></li>
+                    <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="fila-espera.html">Fila de Espera</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="#login" class="btn-login">Login</a>
+                    <a href="#signup" class="btn-signup">Cadastro</a>
+                    <a href="fila-espera.html" class="btn-primary">Entrar na Fila</a>
+                </div>
+                <button class="mobile-menu-btn" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 40vh; padding: 120px 0 60px;">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                    <a href="central-ajuda.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--primary-green); text-decoration: none; margin-bottom: 16px; font-size: 14px;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Voltar para Central de Ajuda
+                    </a>
+                    <span class="section-tag">Primeiros Passos</span>
+                    <h1 class="hero-title" style="font-size: 48px;">Começando na Ramppy</h1>
+                    <p class="hero-description">
+                        Aprenda como começar a usar a Ramppy e configurar sua conta pela primeira vez.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="funcionalidades" style="padding: 0 0 80px 0;">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto;">
+
+                <div class="feature-card" style="margin-bottom: 24px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <span style="background: var(--gradient-primary); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </span>
+                        Como criar sua conta na Ramppy
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-left: 52px;">
+                        Para começar, acesse a página inicial e clique em "Cadastro" no canto superior direito. Preencha seus dados básicos: nome completo, email corporativo e uma senha segura. Você receberá um email de confirmação - clique no link para ativar sua conta. Após a ativação, faça login e você será direcionado para o painel inicial.
+                    </p>
+                </div>
+
+                <div class="feature-card" style="margin-bottom: 24px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <span style="background: var(--gradient-primary); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                            </svg>
+                        </span>
+                        Configurando seu perfil inicial
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-left: 52px;">
+                        Após o primeiro login, complete seu perfil profissional. Adicione informações sobre sua experiência em vendas, produtos que comercializa e objetivos de desenvolvimento. Essas informações ajudam a IA a personalizar suas simulações e feedbacks. Você também pode adicionar uma foto de perfil e configurar suas preferências de notificação.
+                    </p>
+                </div>
+
+                <div class="feature-card" style="margin-bottom: 24px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <span style="background: var(--gradient-primary); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            </svg>
+                        </span>
+                        Sua primeira conversa com o mentor IA
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-left: 52px;">
+                        No painel principal, clique em "Conversar com Mentor" para iniciar seu primeiro diálogo. Comece fazendo perguntas simples sobre SPIN Selling ou técnicas de vendas que você quer aprender. O mentor está sempre disponível para esclarecer dúvidas, explicar conceitos e dar exemplos práticos. Não tenha receio de fazer perguntas - quanto mais você interage, melhor a IA entende suas necessidades.
+                    </p>
+                </div>
+
+                <div class="feature-card" style="margin-bottom: 24px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <span style="background: var(--gradient-primary); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </span>
+                        Iniciando sua primeira simulação
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-left: 52px;">
+                        Quando se sentir pronto, acesse "Simulações" no menu. Escolha um perfil de cliente para praticar - recomendamos começar com um "Cliente Decisor (C-Level)" ou "Cliente Técnico". Selecione um cenário que se aproxime da sua realidade de vendas. Durante a simulação, a IA atuará como o cliente, apresentando objeções e dúvidas reais. Pratique aplicar as técnicas SPIN que aprendeu.
+                    </p>
+                </div>
+
+                <div class="feature-card" style="margin-bottom: 24px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <span style="background: var(--gradient-primary); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <line x1="12" y1="20" x2="12" y2="10"/>
+                                <line x1="18" y1="20" x2="18" y2="4"/>
+                                <line x1="6" y1="20" x2="6" y2="16"/>
+                            </svg>
+                        </span>
+                        Entendendo seu primeiro feedback
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-left: 52px;">
+                        Após cada simulação, você receberá um relatório detalhado com métricas de performance. Analise quantas perguntas SPIN você fez, como lidou com objeções e a qualidade do rapport estabelecido. O feedback inclui pontos fortes e áreas de melhoria específicas. Use esses insights para guiar suas próximas sessões de prática e conversas com o mentor.
+                    </p>
+                </div>
+
+                <div class="feature-card" style="margin-bottom: 24px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <span style="background: var(--gradient-primary); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                            </svg>
+                        </span>
+                        Acessando seu Plano de Desenvolvimento Individual (PDI)
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-left: 52px;">
+                        Após algumas simulações, a plataforma gerará automaticamente seu PDI personalizado. Acesse "Meu PDI" no menu para ver objetivos de curto, médio e longo prazo baseados no seu desempenho. O PDI inclui exercícios específicos para suas áreas de desenvolvimento, trilha de aprendizado recomendada e metas mensuráveis. Revise seu PDI regularmente para acompanhar sua evolução.
+                    </p>
+                </div>
+
+                <div class="feature-card" style="margin-bottom: 24px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <span style="background: var(--gradient-primary); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </span>
+                        Dicas para aproveitar melhor a plataforma
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-left: 52px;">
+                        Para resultados ótimos: pratique regularmente (pelo menos 2-3 simulações por semana), varie os perfis de cliente para ampliar seu repertório, anote insights importantes após cada sessão, compartilhe dúvidas específicas com o mentor IA, e revise seus relatórios de performance mensalmente para identificar padrões de evolução.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- CTA -->
+            <div style="text-align: center; margin-top: 64px; padding: 48px; background: rgba(34, 197, 94, 0.1); border-radius: 16px; border: 1px solid rgba(34, 197, 94, 0.2); max-width: 700px; margin-left: auto; margin-right: auto;">
+                <h3 style="margin-bottom: 16px; color: var(--primary-green);">Ainda tem dúvidas?</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 24px;">
+                    Explore outras categorias de ajuda ou entre em contato com nosso suporte.
+                </p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="central-ajuda.html" class="btn-primary">
+                        <span>Voltar para Ajuda</span>
+                    </a>
+                    <a href="contato.html" class="btn-secondary">
+                        <span>Falar com Suporte</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="logo.svg" alt="Ramppy" class="footer-logo">
+                    <p>Ramp up your sales com inteligência artificial</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Produto</h4>
+                        <ul>
+                            <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                            <li><a href="como-funciona.html">Como Funciona</a></li>
+                            <li><a href="fila-espera.html">Fila de Espera</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Empresa</h4>
+                        <ul>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="carreiras.html">Carreiras</a></li>
+                            <li><a href="contato.html">Contato</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Suporte</h4>
+                        <ul>
+                            <li><a href="central-ajuda.html">Central de Ajuda</a></li>
+                            <li><a href="contato.html">Contato</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="termos.html">Termos de Uso</a></li>
+                            <li><a href="privacidade.html">Privacidade</a></li>
+                            <li><a href="cookies.html">Cookies</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ramppy. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="supabase-config.js"></script>
+    <script src="brand-color-loader.js"></script>
+    <script src="auth.js"></script>
+    <script src="auth-handlers.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

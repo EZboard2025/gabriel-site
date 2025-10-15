@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Conta - Ramppy</title>
+    <meta name="description" content="Gerencie seu perfil, configurações, senha e preferências de usuário na Ramppy.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div class="space-background">
+        <div class="stars"></div>
+        <div class="shooting-stars"></div>
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <a href="index.html"><img src="logo.svg" alt="Ramppy" class="logo-img"></a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="como-funciona.html">Como Funciona</a></li>
+                    <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="fila-espera.html">Fila de Espera</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="#login" class="btn-login">Login</a>
+                    <a href="#signup" class="btn-signup">Cadastro</a>
+                    <a href="fila-espera.html" class="btn-primary">Entrar na Fila</a>
+                </div>
+                <button class="mobile-menu-btn" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" style="min-height: 40vh; padding: 120px 0 60px;">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                    <a href="central-ajuda.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--primary-green); text-decoration: none; margin-bottom: 16px; font-size: 14px;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Voltar para Central de Ajuda
+                    </a>
+                    <span class="section-tag">Gerenciamento de Conta</span>
+                    <h1 class="hero-title" style="font-size: 48px;">Gerencie Sua Conta</h1>
+                    <p class="hero-description">
+                        Gerencie seu perfil, configurações, senha e preferências de usuário.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="funcionalidades" style="padding: 0 0 80px 0;">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto;">
+
+                <!-- Artigo 1 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </span>
+                        Como editar informações do seu perfil
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Para editar suas informações pessoais, acesse o menu principal e clique em "Meu Perfil" no canto superior direito. Na página de perfil, você encontrará todas as suas informações organizadas em seções editáveis.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Informações básicas:</strong> Você pode atualizar seu nome completo, cargo atual, empresa, e-mail de contato alternativo e número de telefone. Para alterar o e-mail principal da conta, será necessário confirmar a mudança através de um código enviado para ambos os e-mails (atual e novo).
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Foto de perfil:</strong> Clique na foto de perfil atual para fazer upload de uma nova imagem. Formatos aceitos: JPG, PNG ou GIF (máximo 5MB). Recomendamos fotos com fundo neutro e rosto bem visível para melhor identificação nas simulações gravadas.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Informações profissionais:</strong> Atualize sua experiência em vendas (em anos), produtos/serviços que comercializa, setor de atuação, ticket médio de vendas e ciclo de vendas típico. Essas informações ajudam a IA a personalizar simulações mais relevantes para seu contexto.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 2 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            </svg>
+                        </span>
+                        Como alterar sua senha de acesso
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Acesse "Meu Perfil" e clique na aba "Segurança". Role até a seção "Alterar Senha" e clique no botão "Trocar Senha". Você precisará informar sua senha atual para confirmar sua identidade.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Requisitos de senha:</strong> A nova senha deve ter no mínimo 8 caracteres, incluindo pelo menos uma letra maiúscula, uma minúscula, um número e um caractere especial (!@#$%&*). Evite usar senhas óbvias ou sequências numéricas.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Recuperação de senha:</strong> Se você esqueceu sua senha, clique em "Esqueci minha senha" na tela de login. Digite seu e-mail cadastrado e receberá um link para redefinir a senha. O link expira em 1 hora por segurança.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            Após alterar a senha, você será desconectado de todos os dispositivos e precisará fazer login novamente. Isso garante que apenas você tenha acesso à conta após a mudança.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 3 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                                <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                            </svg>
+                        </span>
+                        Configurando preferências de notificação
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Acesse "Configurações" no menu principal e depois "Notificações". Você encontrará opções organizadas por canal (e-mail, push no navegador, SMS) e por tipo de notificação.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Notificações por e-mail:</strong> Você pode escolher receber resumos diários das suas atividades, alertas de novos recursos, lembretes de simulações pendentes, relatórios semanais de progresso e novidades da plataforma. Configure a frequência (diária, semanal ou mensal) ou desative completamente.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Notificações push:</strong> Receba alertas em tempo real diretamente no navegador quando: uma simulação for concluída e o feedback estiver disponível, o mentor IA responder uma dúvida, metas do PDI forem atingidas ou quando houver atualizações importantes na plataforma.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Modo Não Perturbe:</strong> Ative esta opção para pausar todas as notificações durante horários específicos. Ideal para manter o foco durante reuniões ou finais de semana. Configure os horários em "Configurações Avançadas".
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 4 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="2" y1="12" x2="22" y2="12"/>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                            </svg>
+                        </span>
+                        Alterando idioma e fuso horário
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Em "Configurações" > "Preferências", você pode ajustar o idioma da interface e seu fuso horário. Atualmente a Ramppy está disponível em Português (Brasil), Inglês (EUA) e Espanhol (Espanha e Latam).
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Mudança de idioma:</strong> Ao selecionar um novo idioma, a interface será atualizada instantaneamente. Importante: suas simulações anteriores, feedbacks e conversas com o mentor permanecerão no idioma original. Novas interações serão no idioma selecionado.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Fuso horário:</strong> Configure seu fuso horário para garantir que os horários de simulações agendadas, relatórios e lembretes sejam exibidos corretamente. O sistema detecta automaticamente seu fuso na primeira vez, mas você pode ajustá-lo manualmente se necessário.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 5 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                            </svg>
+                        </span>
+                        Conectando integrações (CRM, calendário, etc)
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Vá em "Configurações" > "Integrações" para conectar suas ferramentas favoritas com a Ramppy. As integrações disponíveis incluem Salesforce, HubSpot, Pipedrive, Google Calendar, Outlook e Slack.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Integração com CRM:</strong> Conecte seu CRM para sincronizar dados de clientes e oportunidades. Isso permite que as simulações sejam baseadas em cenários reais do seu pipeline. Clique em "Conectar" ao lado do CRM desejado e autorize o acesso. A sincronização leva alguns minutos na primeira vez.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Calendário:</strong> Integre seu Google Calendar ou Outlook para agendar automaticamente suas sessões de prática. A Ramppy pode sugerir horários ideais baseado em sua disponibilidade e enviar lembretes antes de cada simulação agendada.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Slack:</strong> Receba notificações importantes diretamente no Slack do seu time. Configure webhooks personalizados para compartilhar conquistas, relatórios semanais ou pedir ajuda para toda a equipe de vendas.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 6 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </span>
+                        Gerenciando membros da equipe (para gestores)
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Se você tem um plano Team ou Enterprise, pode gerenciar sua equipe em "Equipe" no menu lateral. Aqui você visualiza todos os membros, seus progressos individuais e pode adicionar ou remover usuários.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Adicionando membros:</strong> Clique em "+ Novo Membro" e insira o e-mail corporativo da pessoa. Ela receberá um convite por e-mail para criar sua conta. Você pode definir a função (Vendedor, Gerente ou Admin) no momento do convite.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Acompanhamento:</strong> Veja métricas consolidadas da equipe: total de simulações realizadas, média de performance, áreas de desenvolvimento mais comuns e ranking de progresso. Use esses dados para coaching individual ou treinamentos em grupo.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Permissões:</strong> Admins podem gerenciar plano e faturamento. Gerentes podem ver relatórios da equipe e enviar mensagens. Vendedores têm acesso apenas ao próprio conteúdo. Ajuste permissões em "Configurações de Equipe".
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 7 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="12" y1="18" x2="12" y2="12"/>
+                                <line x1="9" y1="15" x2="15" y2="15"/>
+                            </svg>
+                        </span>
+                        Exportando seus dados e relatórios
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Você tem controle total sobre seus dados. Acesse "Configurações" > "Privacidade" e clique em "Exportar Meus Dados" para solicitar uma cópia completa de todas as suas informações.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">O que é exportado:</strong> Perfil completo, histórico de simulações com transcrições, todos os feedbacks recebidos, conversas com o mentor IA, métricas de performance ao longo do tempo, PDI completo e configurações da conta.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Formato:</strong> Os dados são fornecidos em formato JSON (para desenvolvedores) e também em arquivos Excel/CSV para fácil análise. Relatórios em PDF também são incluídos com visualizações gráficas.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            O processo de exportação pode levar até 48 horas dependendo do volume de dados. Você receberá um e-mail com link para download quando estiver pronto. O link expira em 7 dias por segurança.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 8 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <polyline points="3 6 5 6 21 6"/>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                            </svg>
+                        </span>
+                        Como pausar ou cancelar sua conta
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Se você precisa fazer uma pausa ou cancelar sua assinatura, acesse "Configurações" > "Assinatura" e role até o final da página onde encontrará as opções "Pausar Conta" ou "Cancelar Assinatura".
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Pausar conta:</strong> Esta opção mantém seus dados salvos mas interrompe a cobrança. Você pode pausar por 1, 3 ou 6 meses. Durante a pausa, não é possível acessar a plataforma, mas todos os seus dados permanecem intactos. Ideal para férias prolongadas ou períodos sabáticos.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Cancelar assinatura:</strong> Ao cancelar, você mantém acesso até o final do período já pago. Após isso, sua conta entra em modo somente leitura - você pode visualizar relatórios e exportar dados por 90 dias, mas não pode fazer novas simulações.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Reativar:</strong> Você pode reativar sua conta a qualquer momento clicando em "Reativar Assinatura" na tela de login. Todos os seus dados históricos serão restaurados e você pode continuar de onde parou.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 9 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                <path d="M9 12l2 2 4-4"/>
+                            </svg>
+                        </span>
+                        Ativando autenticação de dois fatores (2FA)
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Para maior segurança, recomendamos fortemente ativar a autenticação de dois fatores. Vá em "Configurações" > "Segurança" e clique em "Ativar 2FA".
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Configuração:</strong> Você pode escolher entre receber códigos por SMS ou usar um aplicativo autenticador (Google Authenticator, Authy, Microsoft Authenticator). Recomendamos o app por ser mais seguro. Escaneie o QR Code mostrado na tela com seu app autenticador.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Códigos de backup:</strong> Após ativar, você receberá 10 códigos de backup. Guarde-os em local seguro (gerenciador de senhas). Use esses códigos se perder acesso ao seu dispositivo 2FA.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            Com 2FA ativado, além de senha, você precisará do código de 6 dígitos toda vez que fizer login de um novo dispositivo. Isso protege sua conta mesmo se alguém descobrir sua senha.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 10 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                            </svg>
+                        </span>
+                        Gerenciando dispositivos conectados
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Em "Configurações" > "Segurança" > "Dispositivos Conectados", você vê todos os dispositivos que acessaram sua conta nos últimos 90 dias.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Informações exibidas:</strong> Para cada dispositivo você vê: tipo (Desktop, Mobile, Tablet), navegador, sistema operacional, localização aproximada (cidade), último acesso e se é o dispositivo atual.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Remover dispositivo:</strong> Se você não reconhece algum dispositivo, clique em "Desconectar" ao lado dele. Aquela sessão será encerrada imediatamente e será necessário fazer login novamente naquele dispositivo.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Desconectar todos:</strong> Use o botão "Desconectar Todos os Dispositivos" para fazer logout de todas as sessões ativas simultaneamente. Útil se você suspeita que alguém tem acesso não autorizado.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 11 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </span>
+                        Personalizando preferências de e-mail
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Em "Configurações" > "E-mails", você pode personalizar exatamente quais tipos de e-mail deseja receber e com qual frequência.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Categorias disponíveis:</strong> E-mails transacionais (confirmações, redefinição de senha - não podem ser desativados), relatórios de performance (diário, semanal ou mensal), novidades e atualizações da plataforma, dicas e conteúdos educacionais sobre vendas, ofertas especiais e promoções.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Resumos consolidados:</strong> Em vez de receber vários e-mails separados, você pode optar por um único e-mail de resumo diário ou semanal que consolida todas as atualizações, feedbacks e notificações em uma mensagem.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Link de cancelamento:</strong> Todo e-mail da Ramppy inclui um link para gerenciar preferências no rodapé. Você pode se descadastrar de categorias específicas diretamente dali.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 12 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                                <polyline points="16 17 21 12 16 7"/>
+                                <line x1="21" y1="12" x2="9" y2="12"/>
+                            </svg>
+                        </span>
+                        Excluindo permanentemente sua conta
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Se você decidir excluir permanentemente sua conta, vá em "Configurações" > "Conta" e role até o final onde está o botão vermelho "Excluir Conta Permanentemente". Esta ação é irreversível.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Processo de exclusão:</strong> Você precisará confirmar digitando "EXCLUIR" (em maiúsculas) e sua senha. Também pedimos um breve feedback sobre o motivo da exclusão para melhorarmos nosso serviço.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">O que acontece:</strong> Todos os seus dados pessoais são removidos permanentemente após 30 dias. Durante este período de 30 dias, você pode reverter a exclusão fazendo login novamente. Após os 30 dias, não há como recuperar a conta ou dados.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Dados retidos:</strong> Por obrigações legais e fiscais, mantemos registros de transações financeiras por 7 anos, mas completamente anonimizados e desassociados do seu perfil. Nenhum dado pessoal identificável é retido além dos 30 dias.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CTA -->
+            <div style="text-align: center; margin-top: 64px; padding: 48px; background: rgba(34, 197, 94, 0.1); border-radius: 16px; border: 1px solid rgba(34, 197, 94, 0.2); max-width: 700px; margin-left: auto; margin-right: auto;">
+                <h3 style="margin-bottom: 16px; color: var(--primary-green);">Ainda tem dúvidas?</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 24px;">
+                    Explore outras categorias de ajuda ou entre em contato com nosso suporte.
+                </p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="central-ajuda.html" class="btn-primary">
+                        <span>Voltar para Ajuda</span>
+                    </a>
+                    <a href="contato.html" class="btn-secondary">
+                        <span>Falar com Suporte</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="logo.svg" alt="Ramppy" class="footer-logo">
+                    <p>Ramp up your sales com inteligência artificial</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                        <a href="#" aria-label="Instagram"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                        <a href="#" aria-label="YouTube"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Produto</h4>
+                        <ul>
+                            <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                            <li><a href="como-funciona.html">Como Funciona</a></li>
+                            <li><a href="fila-espera.html">Fila de Espera</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Empresa</h4>
+                        <ul>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="carreiras.html">Carreiras</a></li>
+                            <li><a href="contato.html">Contato</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Suporte</h4>
+                        <ul>
+                            <li><a href="central-ajuda.html">Central de Ajuda</a></li>
+                            <li><a href="contato.html">Contato</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="termos.html">Termos de Uso</a></li>
+                            <li><a href="privacidade.html">Privacidade</a></li>
+                            <li><a href="cookies.html">Cookies</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ramppy. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="supabase-config.js"></script>
+    <script src="brand-color-loader.js"></script>
+    <script src="auth.js"></script>
+    <script src="auth-handlers.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

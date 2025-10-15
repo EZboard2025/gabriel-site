@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - Ramppy</title>
+    <meta name="description" content="Gerencie seu perfil Ramppy">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="64x64" href="logo.png?v=3">
+    <link rel="icon" type="image/png" sizes="48x48" href="logo.png?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png?v=3">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="perfil.css">
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- Space Background (Fixed) -->
+    <div class="space-background">
+        <div class="stars"></div>
+        <div class="shooting-stars"></div>
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar visible">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="logo.svg" alt="Ramppy" class="logo-img">
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#como-funciona">Como Funciona</a></li>
+                    <li><a href="index.html#funcionalidades">Funcionalidades</a></li>
+                    <li><a href="index.html#fila-espera">Fila de Espera</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="perfil.html" class="btn-login">Meu Perfil</a>
+                    <a href="index.html#fila-espera" class="btn-primary">Entrar na Fila</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Section -->
+    <section class="profile-section">
+        <div class="container">
+            <div class="profile-container">
+                <!-- Profile Header -->
+                <div class="profile-header">
+                    <div class="profile-avatar-container">
+                        <div class="profile-avatar" id="profile-avatar">
+                            <span class="avatar-initials" id="avatar-initials">GM</span>
+                        </div>
+                        <button class="avatar-edit-btn" id="change-avatar-btn" title="Alterar foto">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                                <circle cx="12" cy="13" r="4"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="profile-info">
+                        <h1 class="profile-name" id="profile-name">Carregando...</h1>
+                        <p class="profile-email" id="profile-email">carregando@email.com</p>
+                        <span class="profile-badge">Membro desde <span id="member-since">2025</span></span>
+                    </div>
+                </div>
+
+                <!-- Profile Content -->
+                <div class="profile-content">
+                    <!-- Profile Form -->
+                    <div class="profile-card">
+                        <div class="card-header">
+                            <h2>Informações Pessoais</h2>
+                            <button class="btn-edit" id="edit-profile-btn">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                                </svg>
+                                Editar
+                            </button>
+                        </div>
+                        <form id="profile-form" class="profile-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="edit-nome">Nome Completo</label>
+                                    <input type="text" id="edit-nome" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit-empresa">Empresa</label>
+                                    <input type="text" id="edit-empresa" disabled>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="edit-email">Email</label>
+                                    <input type="email" id="edit-email" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit-telefone">Telefone</label>
+                                    <input type="tel" id="edit-telefone" placeholder="(00) 00000-0000" disabled>
+                                </div>
+                            </div>
+                            <div class="form-actions" style="display: none;" id="form-actions">
+                                <button type="button" class="btn-secondary" id="cancel-edit-btn">Cancelar</button>
+                                <button type="submit" class="btn-primary">Salvar Alterações</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Security Settings -->
+                    <div class="profile-card">
+                        <div class="card-header">
+                            <h2>Segurança</h2>
+                        </div>
+                        <div class="security-options">
+                            <div class="security-item">
+                                <div class="security-info">
+                                    <h3>Alterar Senha</h3>
+                                    <p>Atualize sua senha regularmente para manter sua conta segura</p>
+                                </div>
+                                <button class="btn-secondary" id="change-password-btn">Alterar</button>
+                            </div>
+                            <div class="security-item">
+                                <div class="security-info">
+                                    <h3>Autenticação em Dois Fatores</h3>
+                                    <p>Adicione uma camada extra de segurança à sua conta</p>
+                                </div>
+                                <button class="btn-secondary" disabled>Em Breve</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Personalização de Cores -->
+                    <div class="profile-card">
+                        <div class="card-header">
+                            <h2>Cor da Marca</h2>
+                        </div>
+                        <div class="customization-info">
+                            <p>Escolha a cor principal da sua empresa. Esta cor substituirá o verde padrão em toda a plataforma - botões, destaques, estrelas no fundo e outros elementos visuais.</p>
+                        </div>
+                        <form id="brand-color-form" class="brand-color-form">
+                            <div class="brand-color-selector">
+                                <div class="color-picker-group">
+                                    <label for="brand-color">
+                                        <span class="color-label-text">Cor da Marca</span>
+                                        <span class="color-description">Esta será a cor principal da sua empresa na plataforma</span>
+                                    </label>
+                                    <div class="color-input-wrapper">
+                                        <input type="color" id="brand-color" value="#22c55e">
+                                        <input type="text" id="brand-color-text" value="#22C55E" pattern="^#[0-9A-Fa-f]{6}$" maxlength="7">
+                                    </div>
+                                </div>
+
+                                <div class="color-preview">
+                                    <h3>Pré-visualização</h3>
+                                    <div class="preview-container" id="brand-preview">
+                                        <button class="preview-btn-primary" type="button">Botão de Ação</button>
+                                        <div class="preview-badge">
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M20 6L9 17l-5-5"/>
+                                            </svg>
+                                            <span>Badge de Destaque</span>
+                                        </div>
+                                        <div class="preview-stars">
+                                            <div class="preview-star"></div>
+                                            <div class="preview-star"></div>
+                                            <div class="preview-star"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn-secondary" id="reset-color-btn">Resetar para Verde Padrão</button>
+                                <button type="submit" class="btn-primary">Salvar Cor da Marca</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Danger Zone -->
+                    <div class="profile-card danger-zone">
+                        <div class="danger-content">
+                            <div class="danger-item">
+                                <div class="danger-info">
+                                    <h3>Excluir Conta</h3>
+                                    <p>Uma vez excluída, sua conta não poderá ser recuperada</p>
+                                </div>
+                                <button class="btn-danger" id="delete-account-btn">Excluir Conta</button>
+                            </div>
+                            <div class="danger-item">
+                                <div class="danger-info">
+                                    <h3>Sair da Conta</h3>
+                                    <p>Encerrar sua sessão neste dispositivo</p>
+                                </div>
+                                <button class="btn-secondary" id="logout-btn">Sair</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Ramppy. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="supabase-config.js"></script>
+    <script src="brand-color-loader.js"></script>
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+    <script src="perfil.js"></script>
+</body>
+</html>

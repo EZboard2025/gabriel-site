@@ -5,10 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ramppy - Ramp up your sales</title>
     <meta name="description" content="Sua Inteligência Comercial potencializada por IA. Treine sua equipe, simule vendas e evolua com SPIN Selling.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="64x64" href="logo.png?v=3">
+    <link rel="icon" type="image/png" sizes="48x48" href="logo.png?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png?v=3">
+    <link rel="shortcut icon" href="logo.png?v=3">
+    <link rel="apple-touch-icon" sizes="180x180" href="logo.png?v=3">
+
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
     <!-- Space Background (Fixed) -->
@@ -28,14 +39,17 @@
                     <img src="logo.svg" alt="Ramppy" class="logo-img">
                 </div>
                 <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#como-funciona">Como Funciona</a></li>
-                    <li><a href="#funcionalidades">Funcionalidades</a></li>
-                    <li><a href="#fila-espera">Fila de Espera</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="como-funciona.html">Como Funciona</a></li>
+                    <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="fila-espera.html">Fila de Espera</a></li>
                 </ul>
                 <div class="nav-actions">
                     <a href="#login" class="btn-login">Login</a>
-                    <a href="#fila-espera" class="btn-primary">Entrar na Fila</a>
+                    <a href="#signup" class="btn-signup">Cadastro</a>
+                    <a href="fila-espera.html" class="btn-primary">Entrar na Fila</a>
                 </div>
                 <button class="mobile-menu-btn" aria-label="Menu">
                     <span></span>
@@ -52,15 +66,15 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1 class="hero-title">
-                        Sua Inteligência Comercial, <span class="gradient-text">em um lugar</span>
+                        Aumente suas vendas com <a href="#fila-espera" class="gradient-text secret-link">Inteligência Artificial</a>
                     </h1>
                     <p class="hero-description">
-                        Potencialize sua equipe de vendas com IA. Treine, simule conversas reais,
-                        receba feedbacks automáticos e evolua aplicando a metodologia SPIN Selling.
+                        A Ramppy transforma treinamento em performance real simulando conversas com clientes,
+                        avaliando seu desempenho e criando um plano de evolução contínuo.
                     </p>
                     <div class="hero-cta">
                         <a href="#fila-espera" class="btn-primary btn-large">
-                            <span>Garantir Acesso Antecipado</span>
+                            <span>Quero fazer parte da revolução em vendas</span>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M5 12h14M12 5l7 7-7 7"/>
                             </svg>
@@ -90,8 +104,8 @@
                             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                         </svg>
                     </div>
-                    <h3>Chat com IA</h3>
-                    <p>Converse com nosso assistente especializado em SPIN Selling para tirar dúvidas e aprender técnicas</p>
+                    <h3>Aprenda com um mentor de vendas IA</h3>
+                    <p>Converse com nosso assistente especializado em SPIN Selling para tirar dúvidas e dominar técnicas de vendas consultivas</p>
                 </div>
 
                 <div class="step-connector"></div>
@@ -106,8 +120,8 @@
                             <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                         </svg>
                     </div>
-                    <h3>Pratique com Roleplay</h3>
-                    <p>Simule vendas reais com nossa IA que age como diferentes perfis de clientes</p>
+                    <h3>Treine com clientes simulados em tempo real</h3>
+                    <p>Pratique com IA que simula diferentes perfis de clientes, objeções reais e cenários complexos de vendas</p>
                 </div>
 
                 <div class="step-connector"></div>
@@ -121,8 +135,8 @@
                             <line x1="6" y1="20" x2="6" y2="16"/>
                         </svg>
                     </div>
-                    <h3>Receba Avaliação</h3>
-                    <p>Obtenha feedback detalhado e métricas de performance das suas simulações</p>
+                    <h3>Receba feedbacks automáticos e métricas precisas</h3>
+                    <p>Obtenha análise detalhada do seu desempenho com insights acionáveis baseados na metodologia SPIN</p>
                 </div>
 
                 <div class="step-connector"></div>
@@ -134,8 +148,8 @@
                             <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
                         </svg>
                     </div>
-                    <h3>Desenvolva-se com PDI</h3>
-                    <p>Siga seu Plano de Desenvolvimento Individual personalizado para evoluir continuamente</p>
+                    <h3>Transforme feedbacks em evolução com PDIs personalizados</h3>
+                    <p>Siga seu Plano de Desenvolvimento Individual criado especialmente para você evoluir continuamente</p>
                 </div>
             </div>
         </div>
@@ -144,7 +158,14 @@
     <!-- Funcionalidades Section -->
     <section id="funcionalidades" class="funcionalidades">
         <div class="container">
-            <h2 class="funcionalidades-title">Sessão de funcionalidades</h2>
+            <div class="section-header">
+                <span class="section-tag">Plataforma</span>
+                <h2 class="section-title">Funcionalidades que aceleram resultados</h2>
+                <p class="section-description">
+                    Tudo que você precisa para transformar seu time em máquinas de vendas
+                </p>
+            </div>
+
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-card-icon">
@@ -152,8 +173,13 @@
                             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                         </svg>
                     </div>
-                    <h3>Chat IA</h3>
-                    <p>Tire conversas, tire dúvidas e aprenda com nosso chatbot baseado em SPIN Selling.</p>
+                    <h3>Chat IA Especializado</h3>
+                    <p>Mentor de vendas disponível 24/7 para tirar dúvidas e ensinar técnicas SPIN Selling</p>
+                    <ul class="feature-bullets">
+                        <li>Respostas instantâneas baseadas em SPIN</li>
+                        <li>Exemplos práticos de abordagens</li>
+                        <li>Orientação personalizada por contexto</li>
+                    </ul>
                 </div>
 
                 <div class="feature-card">
@@ -165,8 +191,45 @@
                             <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                         </svg>
                     </div>
-                    <h3>Roleplay</h3>
-                    <p>Roleplays interativos simulando vendas com clientes reais de IA.</p>
+                    <h3>Roleplay Inteligente</h3>
+                    <p>Simulações realistas com diferentes perfis de clientes e cenários de vendas</p>
+                    <ul class="feature-bullets">
+                        <li>Múltiplos perfis de cliente (decisor, técnico, cético)</li>
+                        <li>Objeções reais do mercado</li>
+                        <li>Dificuldade adaptativa ao seu nível</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="20" x2="12" y2="10"/>
+                            <line x1="18" y1="20" x2="18" y2="4"/>
+                            <line x1="6" y1="20" x2="6" y2="16"/>
+                        </svg>
+                    </div>
+                    <h3>Análise de Performance</h3>
+                    <p>Métricas detalhadas e feedbacks baseados em IA sobre cada simulação</p>
+                    <ul class="feature-bullets">
+                        <li>Feedbacks automáticos por IA</li>
+                        <li>Métricas SPIN (Situação, Problema, Implicação, Necessidade)</li>
+                        <li>Dashboard de evolução e progresso</li>
+                    </ul>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                        </svg>
+                    </div>
+                    <h3>PDI Personalizado</h3>
+                    <p>Plano de Desenvolvimento Individual adaptado ao seu perfil e necessidades</p>
+                    <ul class="feature-bullets">
+                        <li>Treinamento adaptado ao seu perfil</li>
+                        <li>Metas e conversões rastreadas</li>
+                        <li>Sugestões de próximos passos</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -183,6 +246,15 @@
                         Seja um dos primeiros a experimentar a revolução do treinamento de vendas.
                         Garanta sua vaga e receba acesso exclusivo quando lançarmos.
                     </p>
+                    <div class="urgency-badges">
+                        <div class="urgency-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            <span>Vagas limitadas para a fase de validação</span>
+                        </div>
+                    </div>
                     <div class="benefits-list">
                         <div class="benefit-item">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -214,55 +286,29 @@
                     <form id="waitlist-form" class="waitlist-form">
                         <div class="form-group">
                             <label for="nome">Nome Completo</label>
-                            <input type="text" id="nome" name="nome" required>
+                            <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email Profissional</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" placeholder="seu@email.com" required>
                         </div>
                         <div class="form-group">
                             <label for="empresa">Empresa</label>
-                            <input type="text" id="empresa" name="empresa" required>
+                            <input type="text" id="empresa" name="empresa" placeholder="Nome da sua empresa" required>
                         </div>
                         <div class="form-group">
                             <label for="cargo">Cargo</label>
-                            <input type="text" id="cargo" name="cargo" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="telefone">Telefone (WhatsApp)</label>
-                            <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="tamanho-equipe">Tamanho da Equipe de Vendas</label>
-                            <select id="tamanho-equipe" name="tamanho-equipe" required>
-                                <option value="">Selecione...</option>
-                                <option value="1-5">1-5 vendedores</option>
-                                <option value="6-20">6-20 vendedores</option>
-                                <option value="21-50">21-50 vendedores</option>
-                                <option value="51-100">51-100 vendedores</option>
-                                <option value="100+">Mais de 100 vendedores</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="interesse">Principal Interesse</label>
-                            <select id="interesse" name="interesse" required>
-                                <option value="">Selecione...</option>
-                                <option value="treinamento">Treinamento de equipe</option>
-                                <option value="onboarding">Onboarding de novos vendedores</option>
-                                <option value="spin">Implementação SPIN Selling</option>
-                                <option value="performance">Melhoria de performance</option>
-                                <option value="outros">Outros</option>
-                            </select>
+                            <input type="text" id="cargo" name="cargo" placeholder="Seu cargo atual" required>
                         </div>
                         <button type="submit" class="btn-primary btn-full">
-                            <span>Garantir Minha Vaga</span>
+                            <span>Garantir Meu Acesso Prioritário</span>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
                             </svg>
                         </button>
                         <p class="form-privacy">
                             Ao se inscrever, você concorda em receber comunicações da Ramppy.
-                            Seus dados estão seguros e não serão compartilhados.
+                            Seus dados estão seguros e não serão compartilhados. <a href="privacidade.html">Política de Privacidade</a>
                         </p>
                     </form>
                     <div id="success-message" class="success-message" style="display: none;">
@@ -342,6 +388,104 @@
                         <p>Sim! SPIN Selling é uma metodologia universal. A Ramppy pode ser customizada para diferentes segmentos, produtos e perfis de cliente.</p>
                     </div>
                 </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Posso ver um exemplo do treinamento?</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"/>
+                        </svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Em breve disponibilizaremos uma demonstração completa da plataforma. Entre na fila de espera para ser um dos primeiros a testar e receber acesso à versão demo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Explore Mais Section -->
+    <section class="funcionalidades" style="padding: 80px 0; background: rgba(17, 24, 39, 0.5);">
+        <div class="container">
+            <div class="section-header" style="text-align: center;">
+                <span class="section-tag">Explore</span>
+                <h2 class="section-title">Descubra Mais Sobre a Ramppy</h2>
+                <p class="section-description">
+                    Navegue por nossa plataforma e descubra tudo que preparamos para você
+                </p>
+            </div>
+
+            <div class="features-grid explore-grid" style="margin-top: 64px;">
+
+                <a href="blog.html" class="feature-card" style="text-decoration: none; cursor: pointer; transition: transform 0.3s ease;">
+                    <div class="feature-card-icon" style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                        </svg>
+                    </div>
+                    <h3>Blog</h3>
+                    <p>Artigos e insights sobre vendas, SPIN Selling e o futuro da inteligência artificial no mundo comercial.</p>
+                    <div style="margin-top: 16px; color: var(--primary-green); font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                        Ler artigos
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </div>
+                </a>
+
+                <a href="carreiras.html" class="feature-card" style="text-decoration: none; cursor: pointer; transition: transform 0.3s ease;">
+                    <div class="feature-card-icon" style="background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 7h-9"/>
+                            <path d="M14 17H5"/>
+                            <circle cx="17" cy="17" r="3"/>
+                            <circle cx="7" cy="7" r="3"/>
+                        </svg>
+                    </div>
+                    <h3>Carreiras</h3>
+                    <p>Faça parte do time que está revolucionando o treinamento de vendas com tecnologia de ponta.</p>
+                    <div style="margin-top: 16px; color: var(--primary-green); font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                        Ver vagas
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </div>
+                </a>
+
+                <a href="contato.html" class="feature-card" style="text-decoration: none; cursor: pointer; transition: transform 0.3s ease;">
+                    <div class="feature-card-icon" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </div>
+                    <h3>Fale Conosco</h3>
+                    <p>Tire suas dúvidas, solicite uma demonstração ou saiba mais sobre como a Ramppy pode ajudar seu time.</p>
+                    <div style="margin-top: 16px; color: var(--primary-green); font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                        Entrar em contato
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </div>
+                </a>
+
+                <a href="central-ajuda.html" class="feature-card" style="text-decoration: none; cursor: pointer; transition: transform 0.3s ease;">
+                    <div class="feature-card-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                            <line x1="12" y1="17" x2="12.01" y2="17"/>
+                        </svg>
+                    </div>
+                    <h3>Central de Ajuda</h3>
+                    <p>Encontre respostas para suas perguntas, tutoriais e documentação completa sobre a plataforma.</p>
+                    <div style="margin-top: 16px; color: var(--primary-green); font-weight: 600; display: flex; align-items: center; gap: 8px;">
+                        Buscar ajuda
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -375,39 +519,39 @@
                     <div class="footer-column">
                         <h4>Produto</h4>
                         <ul>
-                            <li><a href="#funcionalidades">Funcionalidades</a></li>
-                            <li><a href="#como-funciona">Como Funciona</a></li>
-                            <li><a href="#fila-espera">Fila de Espera</a></li>
+                            <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                            <li><a href="como-funciona.html">Como Funciona</a></li>
+                            <li><a href="fila-espera.html">Fila de Espera</a></li>
                         </ul>
                     </div>
                     <div class="footer-column">
                         <h4>Empresa</h4>
                         <ul>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Carreiras</a></li>
-                            <li><a href="#">Contato</a></li>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="carreiras.html">Carreiras</a></li>
+                            <li><a href="contato.html">Contato</a></li>
                         </ul>
                     </div>
                     <div class="footer-column">
                         <h4>Suporte</h4>
                         <ul>
-                            <li><a href="#">Central de Ajuda</a></li>
-                            <li><a href="#">Contato</a></li>
-                            <li><a href="#">FAQ</a></li>
+                            <li><a href="central-ajuda.html">Central de Ajuda</a></li>
+                            <li><a href="contato.html">Contato</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
                         </ul>
                     </div>
                     <div class="footer-column">
                         <h4>Legal</h4>
                         <ul>
-                            <li><a href="#">Termos de Uso</a></li>
-                            <li><a href="#">Privacidade</a></li>
-                            <li><a href="#">Cookies</a></li>
+                            <li><a href="termos.html">Termos de Uso</a></li>
+                            <li><a href="privacidade.html">Privacidade</a></li>
+                            <li><a href="cookies.html">Cookies</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Ramppy. Todos os direitos reservados.</p>
+                <p>&copy; 2025 Ramppy. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
@@ -424,31 +568,21 @@
 
             <div class="login-header">
                 <div class="login-logo">
-                    <img src="logo.svg" alt="Ramppy" style="height: 48px;">
+                    <img src="logo.svg" alt="Ramppy" style="height: 40px;">
                 </div>
-                <h2>Ramppy Training</h2>
-                <p>Plataforma de Treinamento para Vendedores</p>
+                <h2>Bem-vindo à <span class="gradient-text">Ramppy</span></h2>
+                <p>Faça login para continuar</p>
             </div>
 
-            <form id="login-form" class="login-form">
+            <form id="login-form" class="auth-form active">
                 <div class="form-group">
                     <label for="login-email">Email</label>
-                    <div class="input-with-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                            <polyline points="22,6 12,13 2,6"/>
-                        </svg>
-                        <input type="email" id="login-email" placeholder="seu@email.com" required>
-                    </div>
+                    <input type="email" id="login-email" placeholder="seu@email.com" required>
                 </div>
 
                 <div class="form-group">
                     <label for="login-senha">Senha</label>
-                    <div class="input-with-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                        </svg>
+                    <div class="password-input">
                         <input type="password" id="login-senha" placeholder="••••••••" required>
                         <button type="button" class="toggle-password" aria-label="Mostrar senha">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -459,27 +593,86 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn-login-submit">Entrar</button>
-
                 <a href="#" class="forgot-password">Esqueceu sua senha?</a>
 
-                <div class="login-divider">
-                    <span>ou</span>
-                </div>
+                <button type="submit" class="btn-primary btn-full btn-auth">Entrar</button>
 
-                <button type="button" class="btn-dev-login">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="16 18 22 12 16 6"/>
-                        <polyline points="8 6 2 12 8 18"/>
-                    </svg>
-                    Login Rápido (Dev)
-                </button>
+                <p class="auth-switch">
+                    Não tem uma conta? <a href="#signup" class="switch-link">Cadastre-se</a>
+                </p>
             </form>
 
-            <p class="login-footer">© 2024 Ramppy. Plataforma interna de Treinamento.</p>
+            <p class="login-footer">© 2025 Ramppy. Todos os direitos reservados.</p>
         </div>
     </div>
 
+    <!-- Modal de Cadastro -->
+    <div id="signup-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Fechar">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <div class="login-header">
+                <div class="login-logo">
+                    <img src="logo.svg" alt="Ramppy" style="height: 40px;">
+                </div>
+                <h2>Criar sua conta <span class="gradient-text">Ramppy</span></h2>
+                <p>Comece a potencializar suas vendas</p>
+            </div>
+
+            <form id="signup-form" class="auth-form active">
+                <div class="form-group">
+                    <label for="signup-nome">Nome Completo</label>
+                    <input type="text" id="signup-nome" placeholder="Seu nome" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" placeholder="seu@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="signup-senha">Senha</label>
+                    <div class="password-input">
+                        <input type="password" id="signup-senha" placeholder="••••••••" required>
+                        <button type="button" class="toggle-password" aria-label="Mostrar senha">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="signup-empresa">Empresa</label>
+                    <input type="text" id="signup-empresa" placeholder="Nome da empresa" required>
+                </div>
+
+                <button type="submit" class="btn-primary btn-full btn-auth">Criar Conta</button>
+
+                <p class="auth-terms">
+                    Ao criar uma conta, você concorda com nossos
+                    <a href="termos.html">Termos de Uso</a> e <a href="privacidade.html">Política de Privacidade</a>
+                </p>
+
+                <p class="auth-switch">
+                    Já tem uma conta? <a href="#login" class="switch-link">Faça login</a>
+                </p>
+            </form>
+
+            <p class="login-footer">© 2025 Ramppy. Todos os direitos reservados.</p>
+        </div>
+    </div>
+
+    <script src="supabase-config.js"></script>
+    <script src="brand-color-loader.js"></script>
+    <script src="auth.js"></script>
+    <script src="auth-handlers.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

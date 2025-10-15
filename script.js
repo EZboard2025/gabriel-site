@@ -31,30 +31,44 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar Visibility on Scroll + Space Background Fade
+// Navbar Visibility on Scroll (only on homepage)
 const navbar = document.querySelector('.navbar');
 const spaceBackground = document.querySelector('.space-background');
 let lastScroll = 0;
 
-window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight;
+// Check if we're on the homepage
+const isHomepage = window.location.pathname === '/' || window.location.pathname.endsWith('index.html') || window.location.pathname === '/index.html';
 
-    // Show navbar when scrolling down past 100px
-    if (currentScroll > 100) {
-        navbar.classList.add('visible');
-        navbar.style.boxShadow = '0 4px 16px rgba(0, 0, 0, 0.5)';
+// Debug: check if navbar exists
+if (navbar) {
+    console.log('Navbar encontrado!');
+
+    // Only apply hide/show effect on homepage
+    if (isHomepage) {
+        console.log('Homepage detectada - efeito de navbar ativado');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            // Show navbar when scrolled down (more than 50px from top)
+            if (currentScroll > 50) {
+                navbar.classList.add('visible');
+                console.log('Navbar visível - scroll:', currentScroll);
+            } else {
+                navbar.classList.remove('visible');
+                console.log('Navbar escondido - scroll:', currentScroll);
+            }
+
+            lastScroll = currentScroll;
+        });
     } else {
-        navbar.classList.remove('visible');
-        navbar.style.boxShadow = 'none';
+        // On other pages, always show navbar
+        console.log('Página secundária - navbar sempre visível');
+        navbar.classList.add('visible');
     }
-
-    // Keep space background visible throughout entire page (no fade)
-    // Opacity stays constant at 1
-
-    lastScroll = currentScroll;
-});
+} else {
+    console.error('Navbar não encontrado!');
+}
 
 // FAQ Accordion
 const faqQuestions = document.querySelectorAll('.faq-question');
@@ -436,130 +450,117 @@ if ('performance' in window) {
     });
 }
 
-// Login Modal
+// Login & Signup Modals
 const loginModal = document.getElementById('login-modal');
-const loginButton = document.querySelector('.btn-login');
-const modalClose = document.querySelector('.modal-close');
+const signupModal = document.getElementById('signup-modal');
+const loginButtons = document.querySelectorAll('.btn-login, a[href="#login"]');
+const signupButtons = document.querySelectorAll('.btn-signup, a[href="#signup"]');
+const modalCloseButtons = document.querySelectorAll('.modal-close');
 const loginForm = document.getElementById('login-form');
-const togglePassword = document.querySelector('.toggle-password');
 
-// Open modal
-if (loginButton) {
-    loginButton.addEventListener('click', (e) => {
+// Open login modal
+loginButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
         e.preventDefault();
-        loginModal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent scrolling
-    });
-}
-
-// Close modal
-if (modalClose) {
-    modalClose.addEventListener('click', () => {
-        loginModal.classList.remove('active');
-        document.body.style.overflow = ''; // Restore scrolling
-    });
-}
-
-// Close modal when clicking outside
-if (loginModal) {
-    loginModal.addEventListener('click', (e) => {
-        if (e.target === loginModal) {
-            loginModal.classList.remove('active');
-            document.body.style.overflow = '';
+        if (signupModal) signupModal.classList.remove('active');
+        if (loginModal) {
+            loginModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
     });
-}
+});
 
-// Close modal with Escape key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && loginModal.classList.contains('active')) {
-        loginModal.classList.remove('active');
+// Open signup modal
+signupButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (loginModal) loginModal.classList.remove('active');
+        if (signupModal) {
+            signupModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    });
+});
+
+// Close modals
+modalCloseButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        if (loginModal) loginModal.classList.remove('active');
+        if (signupModal) signupModal.classList.remove('active');
         document.body.style.overflow = '';
+    });
+});
+
+// Close modal when clicking outside
+[loginModal, signupModal].forEach(modal => {
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
     }
 });
 
-// Toggle password visibility
-if (togglePassword) {
-    togglePassword.addEventListener('click', () => {
-        const passwordInput = document.getElementById('login-senha');
-        const type = passwordInput.type === 'password' ? 'text' : 'password';
-        passwordInput.type = type;
-
-        // Change icon
-        const eyeIcon = togglePassword.querySelector('svg');
-        if (type === 'text') {
-            eyeIcon.innerHTML = `
-                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
-                <line x1="1" y1="1" x2="23" y2="23"/>
-            `;
-        } else {
-            eyeIcon.innerHTML = `
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                <circle cx="12" cy="12" r="3"/>
-            `;
-        }
-    });
-}
-
-// Handle login form submission
-if (loginForm) {
-    loginForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const email = document.getElementById('login-email').value;
-        const senha = document.getElementById('login-senha').value;
-
-        // Show loading state
-        const submitBtn = loginForm.querySelector('.btn-login-submit');
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Entrando...';
-        submitBtn.disabled = true;
-
-        try {
-            // Simulate API call (replace with actual authentication)
-            await new Promise(resolve => setTimeout(resolve, 1500));
-
-            // Store login state (demo purposes)
-            localStorage.setItem('user', JSON.stringify({
-                email: email,
-                loginTime: new Date().toISOString()
-            }));
-
-            // Close modal
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        if (loginModal && loginModal.classList.contains('active')) {
             loginModal.classList.remove('active');
             document.body.style.overflow = '';
-
-            // Show success message
-            alert('Login realizado com sucesso! Bem-vindo à Ramppy.');
-
-            // Reset form
-            loginForm.reset();
-
-        } catch (error) {
-            console.error('Erro no login:', error);
-            alert('Erro ao fazer login. Verifique suas credenciais e tente novamente.');
-        } finally {
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
         }
+        if (signupModal && signupModal.classList.contains('active')) {
+            signupModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+});
+
+// Toggle password visibility (for all password toggle buttons)
+function setupPasswordToggles() {
+    const togglePasswordButtons = document.querySelectorAll('.toggle-password');
+    console.log('Password toggle buttons found:', togglePasswordButtons.length);
+
+    togglePasswordButtons.forEach((toggleBtn, index) => {
+        console.log(`Setting up toggle button ${index + 1}`);
+
+        toggleBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Toggle button clicked');
+
+            // Find the password input in the same parent container
+            const passwordContainer = toggleBtn.closest('.password-input');
+            const passwordInput = passwordContainer.querySelector('input[type="password"], input[type="text"]');
+
+            if (passwordInput) {
+                const type = passwordInput.type === 'password' ? 'text' : 'password';
+                passwordInput.type = type;
+                console.log('Password visibility toggled to:', type);
+
+                // Change icon
+                const eyeIcon = toggleBtn.querySelector('svg');
+                if (type === 'text') {
+                    eyeIcon.innerHTML = `
+                        <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                        <line x1="1" y1="1" x2="23" y2="23"/>
+                    `;
+                } else {
+                    eyeIcon.innerHTML = `
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    `;
+                }
+            }
+        });
     });
 }
 
-// Dev Login button (bypass authentication for development)
-const devLoginBtn = document.querySelector('.btn-dev-login');
-if (devLoginBtn) {
-    devLoginBtn.addEventListener('click', () => {
-        localStorage.setItem('user', JSON.stringify({
-            email: 'dev@ramppy.com',
-            loginTime: new Date().toISOString(),
-            isDev: true
-        }));
+// Call setup immediately and after modals open
+setupPasswordToggles();
 
-        loginModal.classList.remove('active');
-        document.body.style.overflow = '';
-        alert('Dev Login realizado! Bem-vindo.');
-    });
-}
+// Authentication is handled by auth-handlers.js
 
 // Liquid Glass Mouse Follow Effect on Cards
 const featureCards = document.querySelectorAll('.feature-card');
@@ -579,3 +580,5 @@ featureCards.forEach(card => {
         card.style.setProperty('--mouse-y', '50%');
     });
 });
+
+// All authentication logic is handled by auth-handlers.js

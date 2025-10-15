@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat IA e Mentor - Ramppy</title>
+    <meta name="description" content="Aprenda como usar o assistente IA e tirar máximo proveito do mentor virtual na Ramppy.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="64x64" href="logo.png?v=3">
+    <link rel="icon" type="image/png" sizes="48x48" href="logo.png?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png?v=3">
+    <link rel="shortcut icon" href="logo.png?v=3">
+    <link rel="apple-touch-icon" sizes="180x180" href="logo.png?v=3">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- Space Background (Fixed) -->
+    <div class="space-background">
+        <div class="stars"></div>
+        <div class="shooting-stars"></div>
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="logo.svg" alt="Ramppy" class="logo-img">
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="como-funciona.html">Como Funciona</a></li>
+                    <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="fila-espera.html">Fila de Espera</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="#login" class="btn-login">Login</a>
+                    <a href="#signup" class="btn-signup">Cadastro</a>
+                    <a href="fila-espera.html" class="btn-primary">Entrar na Fila</a>
+                </div>
+                <button class="mobile-menu-btn" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 40vh; padding: 120px 0 60px;">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                    <a href="central-ajuda.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--primary-green); text-decoration: none; margin-bottom: 16px; font-size: 14px;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Voltar para Central de Ajuda
+                    </a>
+                    <span class="section-tag">Chat IA e Mentor</span>
+                    <h1 class="hero-title" style="font-size: 48px;">Mentor IA da Ramppy</h1>
+                    <p class="hero-description">
+                        Aprenda como usar o assistente IA e tirar máximo proveito do mentor virtual.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="funcionalidades" style="padding: 0 0 80px 0;">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto;">
+
+                <!-- Artigo 1 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            </svg>
+                        </span>
+                        Como iniciar uma conversa com o mentor IA
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Para iniciar uma conversa com o mentor IA, acesse o painel principal e clique no ícone de chat no canto superior direito ou selecione "Mentor IA" no menu lateral. A interface de chat se abrirá imediatamente, pronta para receber suas perguntas.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Primeira interação:</strong> Na primeira vez que você usa o chat, o mentor se apresenta e pergunta sobre seus objetivos de aprendizado. Seja específico sobre o que você quer melhorar em vendas - isso ajuda a IA a personalizar as respostas e recomendações futuras.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Interface do chat:</strong> A interface é dividida em três áreas: histórico de conversas à esquerda (onde você pode acessar diálogos anteriores), área principal de mensagens no centro, e sugestões inteligentes à direita com perguntas relacionadas ao contexto atual da conversa.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            Você pode digitar suas perguntas na caixa de texto inferior ou usar comandos de voz clicando no ícone de microfone. O mentor IA responde em segundos, e você pode continuar o diálogo de forma natural, como se estivesse conversando com um colega experiente.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 2 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="m21 21-4.35-4.35"/>
+                            </svg>
+                        </span>
+                        Tipos de perguntas que você pode fazer
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            O mentor IA está preparado para responder uma ampla variedade de perguntas sobre vendas, SPIN Selling e desenvolvimento profissional. Você pode fazer perguntas conceituais, pedir exemplos práticos, solicitar feedback ou buscar orientação estratégica.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Perguntas conceituais:</strong> "O que são perguntas de situação no SPIN?", "Como funciona o fechamento consultivo?", "Qual a diferença entre objeção e dúvida?". O mentor explica conceitos de forma clara, com definições, exemplos e casos de uso.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Exemplos práticos:</strong> "Me dê 5 exemplos de perguntas de implicação para software B2B", "Como lidar com objeção de preço em vendas consultivas?", "Quais são boas aberturas para cold calls?". O mentor fornece exemplos adaptados ao seu setor.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Análise de situações:</strong> Você pode descrever um cenário real que vivenciou e pedir conselhos: "Tive um cliente que disse X, como eu deveria ter respondido?". O mentor analisa a situação e sugere abordagens alternativas.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Planejamento estratégico:</strong> "Como devo preparar uma reunião com C-level?", "Qual a melhor sequência de perguntas SPIN para descobrir dor?". O mentor ajuda você a estruturar sua abordagem de vendas.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 3 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M12 20h9"/>
+                                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                            </svg>
+                        </span>
+                        Usando linguagem natural nas perguntas
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Uma das grandes vantagens do mentor IA é que você não precisa formular perguntas de maneira técnica ou estruturada. Escreva naturalmente, como se estivesse conversando com um colega de trabalho.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Seja casual e direto:</strong> Em vez de "Qual é a definição técnica de rapport no contexto de vendas consultivas?", você pode simplesmente perguntar "Como eu crio conexão com o cliente logo no início?". O mentor entende a intenção e responde apropriadamente.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Use gírias e termos do seu dia a dia:</strong> "Como desenrolo quando o cliente trava na objeção?", "Qual a melhor forma de aquecer um lead frio?". O mentor reconhece terminologia informal e expressões coloquiais do universo de vendas.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Conte histórias:</strong> Você pode narrar situações completas: "Estava numa call ontem, o cara ficou super interessado no início mas quando falei do investimento ele fechou a cara e disse que precisa pensar. O que faço?". O mentor analisa o contexto completo.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            A IA foi treinada para entender contexto, interpretar ambiguidades e até mesmo corrigir erros de digitação. Não se preocupe com gramática perfeita - foque em expressar sua dúvida claramente.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 4 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                            </svg>
+                        </span>
+                        Como o mentor mantém contexto das conversas
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            O mentor IA da Ramppy possui memória contextual avançada, ou seja, ele "lembra" de conversas anteriores e entende o contexto completo das suas interações ao longo do tempo.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Memória de sessão:</strong> Durante uma conversa, o mentor lembra de tudo que foi discutido. Se você fez uma pergunta sobre objeções de preço e depois pergunta "e como aplicar isso em B2B?", ele entende que "isso" se refere às técnicas de objeção discutidas anteriormente.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Memória entre sessões:</strong> O mentor também acessa informações de conversas passadas. Se você mencionou há uma semana que trabalha com software B2B, ele incorpora esse contexto automaticamente nas respostas futuras, sem você precisar repetir.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Personalização progressiva:</strong> Quanto mais você usa, mais personalizado o mentor fica. Ele aprende seu nível de conhecimento, seu estilo de aprendizado preferido (teórico vs prático), seu setor de atuação e até seus desafios recorrentes.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Resetar contexto:</strong> Se você quiser começar uma conversa "do zero", basta clicar em "Nova Conversa" no topo do chat. Isso inicia uma sessão limpa, útil quando você quer discutir um tópico completamente diferente sem influência do histórico.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 5 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </span>
+                        Acessando histórico de conversas anteriores
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Todas as suas conversas com o mentor são salvas automaticamente e podem ser acessadas a qualquer momento. No painel esquerdo do chat, você encontra o histórico completo organizado cronologicamente.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Organização do histórico:</strong> As conversas são agrupadas por período: "Hoje", "Ontem", "Últimos 7 dias", "Este mês" e "Mais antigas". Cada conversa recebe um título automático baseado no tópico principal discutido, facilitando a localização.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Busca no histórico:</strong> Use a barra de pesquisa no topo do histórico para encontrar conversas específicas. Digite palavras-chave como "objeção", "SPIN" ou "cold call" e o sistema mostra todas as conversas onde esses tópicos foram discutidos.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Favoritar conversas:</strong> Clique no ícone de estrela ao lado de uma conversa para marcá-la como favorita. Isso é útil para conversas importantes que você quer revisar frequentemente, como quando o mentor criou um roteiro personalizado para você.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Gerenciar histórico:</strong> Você pode renomear conversas (clique nos 3 pontos > "Renomear"), deletar conversas antigas que não precisa mais, ou arquivar conversas para manter o histórico limpo sem perder o conteúdo permanentemente.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 6 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <circle cx="18" cy="5" r="3"/>
+                                <circle cx="6" cy="12" r="3"/>
+                                <circle cx="18" cy="19" r="3"/>
+                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                            </svg>
+                        </span>
+                        Compartilhando conversas com a equipe
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Uma conversa valiosa com o mentor pode beneficiar toda sua equipe. A Ramppy permite compartilhar conversas específicas com colegas de trabalho de forma simples e segura.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Como compartilhar:</strong> Abra a conversa que deseja compartilhar, clique nos 3 pontos no canto superior direito e selecione "Compartilhar". Você pode escolher entre gerar um link público (qualquer pessoa com o link pode ver) ou compartilhar internamente apenas com membros da sua equipe na Ramppy.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Compartilhamento interno:</strong> Selecione os membros da equipe que devem ter acesso. Eles receberão uma notificação e poderão visualizar a conversa completa em seus painéis. Útil quando o mentor criou um material rico que pode ajudar outros vendedores.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Link público:</strong> Ideal para compartilhar insights com pessoas fora da plataforma - seu gestor, parceiros ou até em redes sociais. Você pode definir expiração do link (24h, 7 dias, 30 dias ou sem expiração) e revogar acesso quando quiser.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Privacidade:</strong> Ao compartilhar, suas informações pessoais são ocultadas automaticamente. O destinatário vê apenas o conteúdo da conversa, sem dados sensíveis como seu nome completo, email ou empresa.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 7 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                <polyline points="10 9 9 9 8 9"/>
+                            </svg>
+                        </span>
+                        Exportando conversas para estudar offline
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Você pode exportar qualquer conversa com o mentor para estudar offline, criar materiais de treinamento ou simplesmente ter uma cópia de backup de insights valiosos.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Formatos disponíveis:</strong> Clique em "Exportar" no menu da conversa e escolha entre PDF (formatado e pronto para impressão), Markdown (para editar em outras ferramentas), ou TXT (texto puro). O PDF mantém cores e formatação da interface.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Exportação em lote:</strong> Na página de histórico, você pode selecionar múltiplas conversas (use Ctrl+clique ou Cmd+clique) e exportar todas de uma vez. Útil para criar uma biblioteca pessoal de conhecimento sobre tópicos específicos.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Anotações na exportação:</strong> Antes de exportar, você pode adicionar notas pessoais que serão incluídas no documento. Isso ajuda a contextualizar o conteúdo quando você revisar no futuro - anote porque aquela conversa foi importante ou como você aplicou os aprendizados.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            O arquivo exportado inclui carimbo de data/hora, todos os tópicos discutidos, e até mesmo sugestões relacionadas que o mentor forneceu. É uma forma excelente de criar seu próprio manual de vendas personalizado.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 8 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                            </svg>
+                        </span>
+                        Pedindo exemplos práticos e casos reais
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            O mentor IA é extremamente eficaz em fornecer exemplos práticos e casos reais adaptados ao seu contexto. Quanto mais específico você for no pedido, mais relevante será o exemplo fornecido.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Seja específico no contexto:</strong> Em vez de "Me dê exemplos de perguntas SPIN", diga "Me dê 5 perguntas de Necessidade de Solução para venda de software de RH para empresas de 500+ funcionários". O mentor ajustará os exemplos para seu cenário exato.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Peça variações:</strong> Após receber um exemplo, você pode pedir variações: "Agora me mostre como essa abordagem mudaria se o cliente for do setor financeiro" ou "Como eu adaptaria isso para um cliente mais técnico?". O mentor gera versões alternativas.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Casos de sucesso e fracasso:</strong> Peça "Me conte um caso onde essa técnica funcionou muito bem" e também "Me mostre um exemplo onde essa abordagem pode falhar". Isso dá uma visão completa de quando e como aplicar cada estratégia.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Diálogos completos:</strong> Você pode pedir "Me mostre um diálogo completo de uma discovery call usando SPIN", e o mentor criará uma conversa exemplo com todas as nuances - perguntas, respostas do cliente, reações, objeções e fechamento.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 9 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <polyline points="22 4 12 14.01 9 11.01"/>
+                            </svg>
+                        </span>
+                        Dicas para obter respostas mais úteis
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Existem estratégias simples que tornam as respostas do mentor ainda mais valiosas e aplicáveis ao seu dia a dia de vendas. Seguir essas dicas maximiza o valor de cada interação.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Forneça contexto completo:</strong> Antes de fazer a pergunta, dê contexto: "Trabalho com SaaS B2B, ticket médio de R$50k, ciclo de 90 dias. Como devo estruturar minha discovery?" Isso permite respostas muito mais precisas e aplicáveis.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Seja claro sobre seu nível:</strong> Diga se você é iniciante, intermediário ou avançado no tópico. "Sou novo em SPIN, explica de forma básica" resulta em resposta diferente de "Já domino SPIN básico, quero técnicas avançadas para lidar com múltiplos stakeholders".
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Peça formato específico:</strong> "Me dê isso em formato de checklist", "Explica com analogias", "Me dá um passo a passo", "Quero ver em bullet points". O mentor ajusta a estrutura da resposta conforme seu pedido.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Continue a conversa:</strong> Se a resposta ficou vaga, peça esclarecimentos: "Pode detalhar mais o ponto 3?", "Me dá um exemplo concreto disso?". Não hesite em aprofundar até entender completamente.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Valide o aprendizado:</strong> Após receber uma explicação, teste seu entendimento: "Então, se eu entendi certo, devo fazer X, depois Y, certo?". O mentor confirma ou corrige seu entendimento, solidificando o aprendizado.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 10 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M18 20V10"/>
+                                <path d="M12 20V4"/>
+                                <path d="M6 20v-6"/>
+                            </svg>
+                        </span>
+                        Usando sugestões inteligentes do mentor
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            O mentor IA não apenas responde suas perguntas - ele também sugere proativamente tópicos relacionados e perguntas de aprofundamento que podem enriquecer seu aprendizado.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Sugestões contextuais:</strong> Após cada resposta, o mentor mostra 3-5 sugestões de continuação na lateral direita. Se você perguntou sobre perguntas de Situação, ele sugere "Exemplos de perguntas de Problema", "Como combinar Situação e Problema", "Erros comuns em perguntas de Situação".
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Tópicos relacionados:</strong> O sistema identifica lacunas no seu conhecimento. Se você pergunta sobre fechamento mas nunca discutiu qualificação, ele sugere "Antes de falar de fechamento, vamos entender qualificação?". Isso cria um caminho de aprendizado estruturado.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Recursos complementares:</strong> Quando relevante, o mentor sugere simulações práticas: "Quer praticar isso em uma simulação?", ou recomenda materiais: "Temos um artigo completo sobre isso no blog, quer ver?". Ele conecta teoria com prática.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Sequências de aprendizado:</strong> Para tópicos complexos, o mentor sugere uma sequência: "Vamos dividir isso em 3 partes. Começamos pela parte 1?". Isso evita sobrecarga cognitiva e estrutura o aprendizado de forma progressiva e digerível.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 11 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>
+                            </svg>
+                        </span>
+                        Solicitando análise de suas simulações
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            O mentor pode analisar suas simulações passadas e fornecer insights profundos sobre seu desempenho, identificando padrões de comportamento e oportunidades de melhoria específicas.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Análise sob demanda:</strong> Durante uma conversa, você pode pedir "Analisa minhas últimas 5 simulações e me diz onde devo melhorar". O mentor acessa seus dados de performance e gera uma análise personalizada com pontos fortes, fracos e plano de ação.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Comparação temporal:</strong> Peça "Compara minha performance deste mês com o mês passado" ou "Mostrar evolução das minhas perguntas SPIN nos últimos 3 meses". O mentor visualiza sua jornada de desenvolvimento e destaca progressos ou regressões.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Análise de padrões:</strong> O mentor identifica padrões inconscientes: "Notei que você tem dificuldade com clientes técnicos, mas vai bem com C-levels. Vamos trabalhar nisso?". Ou "Você usa bem perguntas de Situação e Problema, mas evita perguntas de Implicação. Por quê?".
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Simulação direcionada:</strong> Baseado na análise, o mentor sugere simulações específicas: "Vi que você trava quando o cliente dá objeção de urgência. Quer fazer uma simulação focada nisso?". Isso transforma insights em prática direcionada.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 12 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                            </svg>
+                        </span>
+                        Melhor momento para consultar o mentor
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            O mentor IA está disponível 24/7, mas existem momentos estratégicos onde a consulta traz mais valor e acelera seu desenvolvimento em vendas.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Antes de reuniões importantes:</strong> Consulte o mentor antes de calls críticas. "Tenho uma reunião com CFO amanhã, é primeira vez com C-level. Como me preparar?" O mentor cria um roteiro personalizado de preparação, perguntas-chave e possíveis objeções.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Logo após simulações:</strong> Termine uma simulação e vá direto ao chat. "Acabei de fazer uma simulação com cliente técnico, recebi nota 6. Por quê?" O mentor analisa a simulação recente e explica exatamente onde você pode melhorar enquanto está fresco na memória.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Quando travar em um deal:</strong> Está travado em uma negociação real? Descreva a situação: "Cliente adorou demo, budget aprovado, mas está 3 semanas 'pensando'. O que fazer?" O mentor oferece estratégias de destravamento baseadas em SPIN.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Durante planejamento semanal:</strong> Toda segunda, reserve 15min com o mentor: "Quais habilidades devo focar esta semana?" Baseado no seu PDI e performance recente, ele sugere prioridades de desenvolvimento.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Revisão pós-call real:</strong> Após uma call real (boa ou ruim), relate ao mentor: "Fechei um deal hoje, usei técnica X e funcionou porque Y" ou "Perdi uma venda, acho que errei em Z". O mentor valida seus acertos e corrige erros, transformando cada experiência em aprendizado.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CTA -->
+            <div style="text-align: center; margin-top: 64px; padding: 48px; background: rgba(34, 197, 94, 0.1); border-radius: 16px; border: 1px solid rgba(34, 197, 94, 0.2); max-width: 700px; margin-left: auto; margin-right: auto;">
+                <h3 style="margin-bottom: 16px; color: var(--primary-green);">Ainda tem dúvidas?</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 24px;">
+                    Explore outras categorias de ajuda ou entre em contato com nosso suporte.
+                </p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="central-ajuda.html" class="btn-primary">
+                        <span>Voltar para Ajuda</span>
+                    </a>
+                    <a href="contato.html" class="btn-secondary">
+                        <span>Falar com Suporte</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="logo.svg" alt="Ramppy" class="footer-logo">
+                    <p>Ramp up your sales com inteligência artificial</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Produto</h4>
+                        <ul>
+                            <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                            <li><a href="como-funciona.html">Como Funciona</a></li>
+                            <li><a href="fila-espera.html">Fila de Espera</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Empresa</h4>
+                        <ul>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="carreiras.html">Carreiras</a></li>
+                            <li><a href="contato.html">Contato</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Suporte</h4>
+                        <ul>
+                            <li><a href="central-ajuda.html">Central de Ajuda</a></li>
+                            <li><a href="contato.html">Contato</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="termos.html">Termos de Uso</a></li>
+                            <li><a href="privacidade.html">Privacidade</a></li>
+                            <li><a href="cookies.html">Cookies</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ramppy. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="supabase-config.js"></script>
+    <script src="brand-color-loader.js"></script>
+    <script src="auth.js"></script>
+    <script src="auth-handlers.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

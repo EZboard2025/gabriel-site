@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Métricas e Relatórios - Ramppy</title>
+    <meta name="description" content="Entenda suas métricas de performance, relatórios e análises de progresso na Ramppy.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="64x64" href="logo.png?v=3">
+    <link rel="icon" type="image/png" sizes="48x48" href="logo.png?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png?v=3">
+    <link rel="shortcut icon" href="logo.png?v=3">
+    <link rel="apple-touch-icon" sizes="180x180" href="logo.png?v=3">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- Space Background (Fixed) -->
+    <div class="space-background">
+        <div class="stars"></div>
+        <div class="shooting-stars"></div>
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="logo.svg" alt="Ramppy" class="logo-img">
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="como-funciona.html">Como Funciona</a></li>
+                    <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="fila-espera.html">Fila de Espera</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="#login" class="btn-login">Login</a>
+                    <a href="#signup" class="btn-signup">Cadastro</a>
+                    <a href="fila-espera.html" class="btn-primary">Entrar na Fila</a>
+                </div>
+                <button class="mobile-menu-btn" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 40vh; padding: 120px 0 60px;">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                    <a href="central-ajuda.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--primary-green); text-decoration: none; margin-bottom: 16px; font-size: 14px;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Voltar para Central de Ajuda
+                    </a>
+                    <span class="section-tag">Métricas e Relatórios</span>
+                    <h1 class="hero-title" style="font-size: 48px;">Acompanhe Sua Performance</h1>
+                    <p class="hero-description">
+                        Entenda suas métricas de performance, relatórios e análises de progresso.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="funcionalidades" style="padding: 0 0 80px 0;">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto;">
+
+                <!-- Artigo 1 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="3" y1="9" x2="21" y2="9"/>
+                                <line x1="9" y1="21" x2="9" y2="9"/>
+                            </svg>
+                        </span>
+                        Navegando no dashboard de performance
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            O dashboard é sua central de comando para acompanhar progresso e identificar oportunidades de melhoria. Localizado na página inicial após login, ele apresenta uma visão completa e consolidada de suas métricas mais importantes.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Visão geral no topo:</strong> Os cards principais mostram: nota média geral (1-10), total de simulações realizadas, horas de prática acumuladas, e nível atual de proficiência (Iniciante, Intermediário, Avançado, Expert). Esses números atualizam em tempo real após cada simulação.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Gráficos de evolução:</strong> Logo abaixo, você vê um gráfico de linha mostrando sua progressão ao longo do tempo. Pode alternar entre visualizações diárias, semanais ou mensais. Tendências de alta são marcadas em verde, quedas em vermelho, estabilidade em amarelo.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Breakdown por habilidade:</strong> Gráficos de radar mostram seu nível em cada competência SPIN: Perguntas de Situação, Problema, Implicação e Necessidade. Também métricas de Rapport, Gestão de Objeções e Técnicas de Fechamento. Fica fácil ver onde você brilha e onde precisa focar.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Alertas e insights:</strong> O dashboard destaca automaticamente padrões importantes: "Sua performance em Implicação caiu 15% esta semana", "Você atingiu 100 horas de prática - parabéns!", "Usuários com seu perfil geralmente estão 20% à frente neste ponto".
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 2 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                            </svg>
+                        </span>
+                        Entendendo as métricas SPIN
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            As métricas SPIN medem sua proficiência em cada tipo de pergunta da metodologia SPIN Selling. A Ramppy analisa não apenas quantidade, mas principalmente qualidade e timing de cada pergunta.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Perguntas de Situação (S):</strong> Mede quantas perguntas você fez para entender o contexto atual do cliente, e quão relevantes foram. Nota alta significa que você coletou informações essenciais sem ser repetitivo ou invasivo. Ideal: 3-5 perguntas focadas, não mais que isso.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Perguntas de Problema (P):</strong> Avalia sua habilidade de identificar dificuldades, insatisfações e desafios do cliente. A IA verifica se suas perguntas foram abertas, se você explorou problemas múltiplos, e se aprofundou adequadamente. Score alto indica discovery eficaz.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Perguntas de Implicação (I):</strong> A métrica mais crítica. Mede se você conseguiu fazer o cliente perceber as consequências de não resolver o problema. Analisa se você ampliou a dor, criou urgência e conectou o problema a impactos de negócio. Esta é geralmente a habilidade mais difícil.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Perguntas de Necessidade de Solução (N):</strong> Avalia se você conduziu o cliente a verbalizar o valor da solução. Perguntas que fazem o cliente dizer por que ele PRECISA resolver, quais benefícios espera, e como a vida dele melhoraria. Alto score indica capacidade de fechamento consultivo.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Equilíbrio e sequência:</strong> Além de medir cada tipo, a plataforma avalia o equilíbrio. Excesso de Situação é superficial. Pular direto para Necessidade sem Problema/Implicação é venda agressiva. O ideal é S→P→I→N em proporções adequadas ao contexto.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 3 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                <line x1="12" y1="22.08" x2="12" y2="12"/>
+                            </svg>
+                        </span>
+                        Taxa de conversão nas simulações
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            A taxa de conversão mede em quantas simulações você conseguiu avançar o cliente para a próxima etapa ou fechar um acordo. É uma métrica crucial que reflete sua efetividade geral como vendedor.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Como é calculada:</strong> A IA avalia o desfecho de cada simulação. "Fechamento" (cliente aceita proposta/próximo passo) = conversão positiva. "Perdido" (cliente rejeita ou desiste) = conversão negativa. "Neutro" (cliente fica pensando sem compromisso) não conta para nenhum lado.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Benchmarks por nível:</strong> Iniciantes geralmente têm 30-40% de conversão. Intermediários 50-65%. Avançados 70-80%. Experts consistentemente acima de 85%. A plataforma mostra onde você está versus onde deveria estar no seu nível de experiência.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Análise por perfil de cliente:</strong> Seu relatório mostra conversão segmentada: "80% com clientes colaborativos, 60% com neutros, 30% com resistentes". Isso revela para quais perfis você precisa desenvolver estratégias específicas.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Correlação com técnicas:</strong> O sistema correlaciona conversão com técnicas usadas: "Quando você faz 3+ perguntas de Implicação, sua taxa de conversão sobe para 75%". "Simulações onde você estabeleceu rapport forte têm 2x mais conversão". Insights acionáveis.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Meta adaptativa:</strong> A plataforma ajusta sua meta de conversão progressivamente. Atingiu 60% consistentemente? Nova meta vira 65%. Isso mantém você sempre desafiado sem ficar frustrado com metas inalcançáveis.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 4 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                        </span>
+                        Métricas de rapport e conexão
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Rapport é a qualidade da conexão emocional e confiança estabelecida com o cliente. A Ramppy usa análise de linguagem natural para medir diversos aspectos dessa conexão ao longo da conversa.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Tom e linguagem:</strong> A IA analisa se você espelha o tom do cliente (formal/informal), se usa vocabulário adequado ao nível dele, se demonstra empatia nas respostas. Frases como "Entendo perfeitamente" ou "Isso deve ser frustrante" aumentam o score de rapport.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Escuta ativa:</strong> O sistema mede se você referencia coisas que o cliente disse anteriormente, mostrando que está ouvindo. "Você mencionou que o processo atual leva 3 dias..." demonstra atenção e aumenta a pontuação.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Timing da conexão:</strong> Rapport não é só no início. A métrica mostra se você manteve a conexão durante toda conversa, especialmente em momentos de tensão (objeções, discussão de preço). Manter rapport sob pressão separa bons de ótimos vendedores.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Reações do cliente:</strong> A IA simula reações emocionais do cliente. Quando ele diz "*animado*" ou "*relaxa*", indica rapport positivo. "*defensivo*" ou "*impaciente*" indica quebra de rapport. Seu score reflete quantas reações positivas você gerou.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Impacto nos resultados:</strong> Estatísticas mostram correlação clara: simulações com rapport 8+ têm 3x mais chance de conversão que rapport abaixo de 5. A plataforma mostra seu rapport médio e como ele impacta todos os outros resultados.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 5 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                                <line x1="12" y1="9" x2="12" y2="13"/>
+                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                            </svg>
+                        </span>
+                        Análise de gestão de objeções
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            A capacidade de lidar com objeções é crítica em vendas. A plataforma rastreia cada objeção que surge nas simulações e como você responde, gerando métricas detalhadas sobre sua eficácia.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Tipos de objeção:</strong> O sistema categoriza automaticamente: Preço, Timing, Autoridade, Necessidade, Concorrente, Recurso. Seu relatório mostra taxa de sucesso em cada tipo. Você pode ser excelente em objeção de preço mas travar em objeção de timing.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Técnicas de handle:</strong> A IA identifica qual técnica você usou: Validação + Pergunta, Isolamento, Reformulação, Prova Social, etc. Mostra qual técnica funciona melhor para você e em quais situações. "Você usa Validação 80% das vezes, mas Isolamento tem 30% mais sucesso".
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Velocidade de resposta:</strong> Métricas mostram quanto tempo você demora para responder uma objeção. Respostas muito rápidas podem parecer defensivas. Muito lentas demonstram insegurança. O ideal é 3-8 segundos. A plataforma mostra sua média.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Persistência adequada:</strong> O sistema mede se você desiste fácil ou insiste demais. Tentar apenas 1x é desistir cedo. Tentar 5x é ser insistente demais. A métrica mostra se você está equilibrado ou precisa ajustar a persistência.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Taxa de superação:</strong> Percentual de objeções que você transformou em avanço. Benchmark: iniciantes 20-30%, intermediários 40-55%, avançados 60-75%. Impossível superar 100% das objeções - algumas são reais e insuperáveis. O segredo é identificar quais vale insistir.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 6 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                <polyline points="10 9 9 9 8 9"/>
+                            </svg>
+                        </span>
+                        Relatórios semanais automáticos
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Toda segunda-feira você recebe um relatório semanal consolidado por email e na plataforma, resumindo sua performance dos últimos 7 dias e comparando com semanas anteriores.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Resumo executivo:</strong> O topo do relatório mostra os destaques: total de simulações (vs meta), nota média (vs semana passada), maior vitória (melhor simulação) e maior oportunidade (área que mais precisa atenção). Em 30 segundos você sabe exatamente onde está.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Análise de tendências:</strong> Gráficos mostram progressão das principais métricas: SPIN, Rapport, Conversão, Objeções. Setas verdes indicam melhora, vermelhas indicam queda. Cada métrica vem com insight: "Suas perguntas de Implicação melhoraram 18% - Continue assim!"
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Destaques da semana:</strong> Seção mostra momentos notáveis: "Você superou uma objeção difícil de preço na Simulação #47", "Seu rapport com C-Levels melhorou significativamente", "Você manteve 100% de frequência - 7 dias seguidos praticando!"
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Plano para próxima semana:</strong> Com base na análise, o relatório sugere foco para os próximos 7 dias: "Semana que vem, priorize 3 simulações com foco em perguntas de Necessidade. Seu score está 20% abaixo do ideal nessa área."
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Comparação com pares:</strong> (Opcional, pode desativar) Mostra como você se compara com outros usuários no mesmo nível: "Você está no top 25% em Rapport, top 50% em SPIN geral, precisa melhorar em Objeções (bottom 40%)". Ajuda a calibrar expectativas.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 7 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                        </span>
+                        Relatórios mensais de progresso
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            No primeiro dia útil de cada mês, você recebe um relatório mensal abrangente que analisa sua evolução ao longo de 30 dias e projeta seu desenvolvimento futuro.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Visão macro do mês:</strong> Estatísticas consolidadas: total de horas praticadas, simulações completadas, taxa de crescimento mês a mês, nota média e variação. Gráficos de evolução mostram a jornada completa com todos os altos e baixos.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Conquistas e marcos:</strong> Lista de achievements desbloqueados: "Completou 50 simulações", "Manteve streak de 20 dias", "Atingiu nota 9 pela primeira vez", "Masterizou perguntas de Problema". Reconhecimento visual com badges virtuais.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Análise profunda de padrões:</strong> Com 30 dias de dados, a IA identifica padrões sutis: "Você performa 25% melhor em simulações matinais", "Terças e quintas são seus dias mais produtivos", "Você tem quedas de performance após 3+ simulações no mesmo dia - respeite limites".
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">ROI do treinamento:</strong> Seção especial correlaciona horas de prática com melhoria de performance. "Você praticou 12 horas este mês e sua nota subiu 1.8 pontos. Com base nessa progressão, estima-se atingir nível Expert em 4 meses mantendo esse ritmo."
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Roadmap do próximo mês:</strong> Plano detalhado com metas específicas: "Meta de Outubro: Atingir nota 8.5 geral, completar 25 simulações, focar 60% do tempo em perguntas de Implicação, melhorar taxa de conversão para 70%". Metas são desafiadoras mas alcançáveis.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 8 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7 10 12 15 17 10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                        </span>
+                        Como exportar relatórios detalhados
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Você pode exportar qualquer relatório da plataforma em múltiplos formatos para apresentar para gestores, incluir em portfólios ou simplesmente manter registros pessoais.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Formatos disponíveis:</strong> PDF (ideal para apresentações, mantém formatação visual), Excel/CSV (para análise de dados, criar gráficos customizados), PowerPoint (slides prontos para apresentar resultados), JSON (para desenvolvedores integrarem com outras ferramentas).
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Customização pré-exportação:</strong> Antes de exportar, escolha o período (última semana, mês, trimestre, ano todo, ou range customizado), selecione quais métricas incluir (todas ou apenas específicas), e decida o nível de detalhe (executivo, completo ou técnico).
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Relatório executivo:</strong> Versão resumida de 1-2 páginas com apenas os highlights. Perfeito para enviar para gestores ou RH. Foca em conquistas, progressão geral e próximos passos, sem entrar em minúcias técnicas de cada métrica.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Relatório completo:</strong> Documento de 10-20 páginas com análise profunda de todas as métricas, gráficos detalhados, comparações temporais, breakdown por tipo de simulação, análise de padrões e recomendações específicas. Para revisão pessoal ou coaching detalhado.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Exportação agendada:</strong> Configure exportações automáticas: "Todo primeiro dia útil do mês, enviar relatório mensal em PDF para meu email e do meu gestor". Elimina necessidade de lembrar de gerar manualmente.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 9 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <line x1="18" y1="20" x2="18" y2="10"/>
+                                <line x1="12" y1="20" x2="12" y2="4"/>
+                                <line x1="6" y1="20" x2="6" y2="14"/>
+                            </svg>
+                        </span>
+                        Comparando performance entre períodos
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            A ferramenta de comparação permite colocar dois períodos lado a lado para analisar evolução, identificar regressões e entender o impacto de mudanças no seu treinamento.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Como usar:</strong> Acesse "Análise Comparativa" no menu de relatórios. Selecione dois períodos para comparar - comum: "Este mês vs Mês passado", "Este trimestre vs Trimestre anterior", "Últimas 2 semanas vs 2 semanas anteriores". O sistema gera análise comparativa completa.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Visualização lado a lado:</strong> Cada métrica aparece em duas colunas com setas indicando direção: ↑ melhora (verde), ↓ piora (vermelho), → estável (amarelo). Percentual de variação aparece destacado: "+18% em Rapport", "-5% em Objeções".
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Análise de causas:</strong> A IA sugere possíveis causas das variações: "Rapport melhorou 18% provavelmente porque você aumentou frequência de validação nas respostas" ou "Objeções caíram 5% pois você reduziu prática nessa área - fez apenas 2 simulações focadas vs 8 no período anterior".
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Contexto de eventos:</strong> Você pode adicionar marcadores de eventos: "Mudança de produto vendido", "Após treinamento presencial", "Nova estratégia de abordagem". A comparação mostra performance antes e depois de cada evento, revelando o que realmente impactou.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Recomendações baseadas em comparação:</strong> "Você melhorou significativamente em X mas regrediu em Y. Sugerimos manter foco em Y nas próximas 2 semanas enquanto consolida ganhos em X com prática espaçada."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 10 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <line x1="22" y1="21" x2="16" y2="15"/>
+                                <polyline points="17 11 22 11 22 16"/>
+                            </svg>
+                        </span>
+                        Métricas de benchmark da indústria
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            A Ramppy compara sua performance com benchmarks agregados e anonimizados de milhares de usuários na plataforma, ajudando você a entender onde está em relação ao mercado.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Segmentação de benchmarks:</strong> Comparações são feitas com grupos relevantes: mesma senioridade (SDR, AE, Closer), mesmo setor (SaaS, Hardware, Serviços), mesmo tipo de venda (Enterprise, Mid-Market, SMB), mesmo tempo de experiência em vendas.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Percentis de performance:</strong> O sistema mostra em qual percentil você está: "Você está no P75 (top 25%) em SPIN geral, P60 (acima da mediana) em Rapport, P40 (abaixo da mediana) em Objeções". Isso contextualiza se você está acima ou abaixo do mercado.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Metas baseadas em top performers:</strong> "Top 10% de AEs em SaaS Enterprise têm nota média de 8.7. Você está em 7.2. Para chegar lá, dados mostram que você precisa: melhorar Implicação em 25%, Objeções em 18%, manter Rapport no nível atual."
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Evolução vs mercado:</strong> Gráficos mostram se você está evoluindo mais rápido, igual ou mais lento que a média. "Você melhorou 2.1 pontos em 3 meses. Média do mercado no mesmo período: 1.4 pontos. Você está evoluindo 50% mais rápido!"
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Privacidade garantida:</strong> Todos os benchmarks são agregados e anônimos. Ninguém vê dados individuais de outros usuários. Você só vê estatísticas coletivas que ajudam a calibrar suas expectativas e metas.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 11 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M12 20h9"/>
+                                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                            </svg>
+                        </span>
+                        Definindo metas personalizadas
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Além das metas sugeridas pelo sistema, você pode criar metas personalizadas alinhadas com seus objetivos específicos de carreira ou desenvolvimento.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Tipos de metas:</strong> Metas de performance ("Atingir nota 8.5 em Implicação"), metas de volume ("Completar 30 simulações este mês"), metas de consistência ("Praticar 5 dias por semana durante 8 semanas"), metas de conquista ("Dominar objeção de preço - 80% de superação").
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Framework SMART:</strong> O sistema ajuda você a criar metas SMART. Específica (métrica clara), Mensurável (número definido), Atingível (baseado em seu histórico), Relevante (alinhada ao PDI), Temporal (prazo definido). "Melhorar em vendas" vira "Aumentar taxa de conversão de 60% para 70% em 6 semanas".
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Rastreamento automático:</strong> Uma vez definida, a meta é rastreada automaticamente. O dashboard mostra progresso em tempo real: "Meta: Nota 8.5 em Implicação | Atual: 7.8 | Faltam 0.7 pontos | Você está 65% do caminho". Barras de progresso visuais facilitam acompanhamento.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Alertas e motivação:</strong> Notificações te mantêm no caminho: "Ótimo! Você está on track para sua meta", "Atenção: 2 semanas para deadline e você está 40% do caminho - intensifique prática", "Parabéns! Meta atingida 3 dias antes do prazo!"
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Metas em cascata:</strong> Você pode criar metas dependentes: "Primeiro atingir nota 7 em SPIN geral (8 semanas), depois focar em nota 8 especificamente em Implicação (4 semanas)". O sistema libera a segunda meta apenas quando a primeira é completada.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 12 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 16v-4"/>
+                                <path d="M12 8h.01"/>
+                            </svg>
+                        </span>
+                        Interpretando insights da IA sobre seu progresso
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            A IA não apenas coleta dados - ela analisa padrões profundos e gera insights acionáveis que você talvez não perceberia sozinho. Entender esses insights maximiza seu desenvolvimento.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Correlações de comportamento:</strong> "Detectamos que você tem 40% melhor performance quando começa simulações com perguntas abertas de Situação vs perguntas fechadas". A IA encontra o que funciona especificamente para você, não apenas teoria geral.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Padrões de bloqueio:</strong> "Você trava consistentemente quando cliente menciona concorrente específico. Em 8 de 10 casos, você muda de assunto em vez de explorar. Recomendamos simulação focada em técnicas de competição." A IA identifica seus pontos cegos.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Predições de performance:</strong> "Com base em sua trajetória, você está 85% de probabilidade de atingir nível Expert em 3 meses se mantiver frequência atual" ou "Sua curva de aprendizado em Objeções sugere plateau em 2 semanas - aumente complexidade das simulações para continuar evoluindo".
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Recomendações contextuais:</strong> "Você melhorou 30% em Implicação mas ainda não transferiu isso para conversões. Próximo passo: praticar conectar Implicação com fechamento através de perguntas de Necessidade." Insights vêm com ação clara.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Comparação temporal inteligente:</strong> "Há 3 meses você tinha essa mesma dificuldade com rapport. Você superou usando técnica X. Aplique estratégia similar para objeções." A IA aprende com seu próprio histórico de sucesso e sugere replicar o que funcionou.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CTA -->
+            <div style="text-align: center; margin-top: 64px; padding: 48px; background: rgba(34, 197, 94, 0.1); border-radius: 16px; border: 1px solid rgba(34, 197, 94, 0.2); max-width: 700px; margin-left: auto; margin-right: auto;">
+                <h3 style="margin-bottom: 16px; color: var(--primary-green);">Ainda tem dúvidas?</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 24px;">
+                    Explore outras categorias de ajuda ou entre em contato com nosso suporte.
+                </p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="central-ajuda.html" class="btn-primary">
+                        <span>Voltar para Ajuda</span>
+                    </a>
+                    <a href="contato.html" class="btn-secondary">
+                        <span>Falar com Suporte</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="logo.svg" alt="Ramppy" class="footer-logo">
+                    <p>Ramp up your sales com inteligência artificial</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Produto</h4>
+                        <ul>
+                            <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                            <li><a href="como-funciona.html">Como Funciona</a></li>
+                            <li><a href="fila-espera.html">Fila de Espera</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Empresa</h4>
+                        <ul>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="carreiras.html">Carreiras</a></li>
+                            <li><a href="contato.html">Contato</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Suporte</h4>
+                        <ul>
+                            <li><a href="central-ajuda.html">Central de Ajuda</a></li>
+                            <li><a href="contato.html">Contato</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="termos.html">Termos de Uso</a></li>
+                            <li><a href="privacidade.html">Privacidade</a></li>
+                            <li><a href="cookies.html">Cookies</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ramppy. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="supabase-config.js"></script>
+    <script src="brand-color-loader.js"></script>
+    <script src="auth.js"></script>
+    <script src="auth-handlers.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

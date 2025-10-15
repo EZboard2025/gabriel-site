@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suporte Técnico - Ramppy</title>
+    <meta name="description" content="Resolva problemas técnicos, bugs e questões de compatibilidade na Ramppy.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <div class="space-background">
+        <div class="stars"></div>
+        <div class="shooting-stars"></div>
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <a href="index.html"><img src="logo.svg" alt="Ramppy" class="logo-img"></a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="como-funciona.html">Como Funciona</a></li>
+                    <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="fila-espera.html">Fila de Espera</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="#login" class="btn-login">Login</a>
+                    <a href="#signup" class="btn-signup">Cadastro</a>
+                    <a href="fila-espera.html" class="btn-primary">Entrar na Fila</a>
+                </div>
+                <button class="mobile-menu-btn" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero" style="min-height: 40vh; padding: 120px 0 60px;">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                    <a href="central-ajuda.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--primary-green); text-decoration: none; margin-bottom: 16px; font-size: 14px;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Voltar para Central de Ajuda
+                    </a>
+                    <span class="section-tag">Suporte Técnico</span>
+                    <h1 class="hero-title" style="font-size: 48px;">Suporte Técnico</h1>
+                    <p class="hero-description">
+                        Resolva problemas técnicos, bugs e questões de compatibilidade.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="funcionalidades" style="padding: 0 0 80px 0;">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto;">
+
+                <!-- Artigo 1 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                        </span>
+                        Requisitos mínimos do sistema
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            A Ramppy é uma plataforma web que funciona diretamente no seu navegador, sem necessidade de instalação. Para garantir a melhor experiência, recomendamos usar um computador ou notebook com pelo menos 4GB de RAM e conexão de internet estável de 10 Mbps ou superior.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Navegadores compatíveis:</strong> Google Chrome 90+, Microsoft Edge 90+, Firefox 88+, Safari 14+ ou Opera 76+. Recomendamos sempre manter seu navegador atualizado para a versão mais recente. Navegadores desatualizados podem apresentar problemas de compatibilidade e segurança.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Requisitos de áudio e vídeo:</strong> Para as simulações funcionarem corretamente, você precisa de um microfone funcional (interno ou externo) e, idealmente, uma webcam para simulações com vídeo. Fones de ouvido são altamente recomendados para melhor qualidade de áudio e evitar eco.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Dispositivos móveis:</strong> A plataforma funciona em tablets e smartphones modernos (iOS 14+ ou Android 9+), mas a experiência completa é otimizada para desktop. Algumas funcionalidades avançadas podem ter limitações em dispositivos móveis.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 2 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                                <polyline points="10 17 15 12 10 7"/>
+                                <line x1="15" y1="12" x2="3" y2="12"/>
+                            </svg>
+                        </span>
+                        Problemas para fazer login na conta
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Se você está tendo dificuldades para acessar sua conta, primeiro verifique se está digitando o e-mail e senha corretamente. Lembre-se que a senha diferencia maiúsculas de minúsculas. Se esqueceu sua senha, clique em "Esqueci minha senha" na tela de login.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Erro "E-mail ou senha incorretos":</strong> Isso indica que as credenciais não correspondem aos nossos registros. Tente recuperar sua senha ou verifique se está usando o e-mail correto que foi cadastrado. Se você se cadastrou com Google ou LinkedIn, use o botão de login social correspondente.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Conta bloqueada temporariamente:</strong> Após 5 tentativas de login incorretas, sua conta é bloqueada por 30 minutos como medida de segurança. Aguarde esse período ou use a opção "Esqueci minha senha" para redefinir imediatamente. Se o bloqueio persistir, entre em contato com o suporte.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Problemas com 2FA:</strong> Se você ativou autenticação de dois fatores e não tem acesso ao código, use um dos códigos de backup que foram fornecidos na ativação. Se perdeu os códigos de backup, entre em contato com nosso suporte para verificação de identidade e desativação temporária do 2FA.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 3 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M23 7l-7 5 7 5V7z"/>
+                                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                            </svg>
+                        </span>
+                        Resolvendo problemas de áudio e vídeo
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Problemas de áudio e vídeo são geralmente relacionados a permissões do navegador ou configurações do dispositivo. Quando iniciar uma simulação, certifique-se de clicar em "Permitir" quando o navegador solicitar acesso ao microfone e câmera.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Microfone não funciona:</strong> Verifique se o microfone está conectado e selecionado como dispositivo padrão. No navegador, clique no ícone de cadeado ao lado da URL e confirme que o microfone tem permissão concedida. Teste seu microfone em Configurações > Áudio/Vídeo antes de iniciar uma simulação.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Câmera não aparece:</strong> Além de verificar permissões do navegador, certifique-se que nenhum outro aplicativo está usando sua câmera (Zoom, Teams, Skype). Feche esses programas e recarregue a página. Se usar câmera externa, verifique a conexão USB.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Eco ou feedback de áudio:</strong> Use fones de ouvido para evitar que o som das caixas seja captado pelo microfone. Se o problema persistir, ajuste o volume de saída e entrada nas configurações do sistema operacional. Evite usar o microfone embutido do laptop se possível.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 4 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </span>
+                        Plataforma está lenta ou travando
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Se a plataforma está rodando lentamente ou travando, o primeiro passo é verificar sua conexão de internet. Execute um teste de velocidade e certifique-se de ter pelo menos 10 Mbps de download. Conexões instáveis ou lentas podem causar atrasos nas simulações com IA.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Muitas abas abertas:</strong> Cada aba do navegador consome memória RAM. Feche abas desnecessárias, especialmente sites que usam muito processamento como YouTube, Netflix ou redes sociais. Deixe apenas a aba da Ramppy aberta durante as simulações para melhor performance.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Limpar cache e cookies:</strong> Acesse as configurações do navegador e limpe os dados de navegação (cache, cookies e arquivos temporários) dos últimos 7 dias. Isso remove arquivos antigos que podem estar causando conflitos. Após limpar, faça login novamente.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Hardware insuficiente:</strong> Se seu computador tem menos de 4GB RAM ou um processador muito antigo, pode ter dificuldade em rodar a plataforma suavemente, especialmente simulações com vídeo. Considere fechar todos os outros programas ou usar um dispositivo mais potente.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 5 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                                <line x1="12" y1="9" x2="12" y2="13"/>
+                                <line x1="12" y1="17" x2="12.01" y2="17"/>
+                            </svg>
+                        </span>
+                        Erros comuns e suas soluções
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Erro 500 - Erro interno do servidor:</strong> Este é um erro temporário do nosso lado. Aguarde alguns minutos e tente novamente. Se persistir por mais de 15 minutos, nossa equipe já foi notificada automaticamente, mas você pode nos contatar para atualizações sobre a resolução.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Erro 404 - Página não encontrada:</strong> Verifique se a URL está correta. Se você chegou aqui por um link antigo ou marcador, ele pode estar desatualizado. Volte para a página inicial e navegue novamente. Se o erro persistir em páginas principais, entre em contato conosco.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Simulação não inicia:</strong> Certifique-se que deu permissão para microfone e câmera. Verifique se há atualizações pendentes do navegador. Tente em uma janela anônima/privada para descartar problemas com extensões. Se o problema continuar, desative temporariamente extensões de bloqueio de anúncios.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Feedback não carrega:</strong> Se o feedback de uma simulação não aparece, ele ainda pode estar sendo processado pela IA. Simulações longas podem levar até 5 minutos para gerar feedback completo. Atualize a página após alguns minutos. Se após 10 minutos ainda não aparecer, reporte o problema.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 6 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/>
+                            </svg>
+                        </span>
+                        Como limpar cache e cookies do navegador
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Limpar o cache e cookies pode resolver diversos problemas técnicos. O cache armazena arquivos temporários para carregar páginas mais rápido, mas às vezes esses arquivos ficam corrompidos ou desatualizados, causando problemas de funcionamento.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Google Chrome:</strong> Pressione Ctrl+Shift+Delete (Windows) ou Cmd+Shift+Delete (Mac). Selecione "Cookies e outros dados do site" e "Imagens e arquivos em cache". Escolha o período (recomendamos "Últimos 7 dias") e clique em "Limpar dados". Você precisará fazer login novamente após isso.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Firefox:</strong> Pressione Ctrl+Shift+Delete, selecione "Cookies" e "Cache". Escolha o intervalo de tempo e clique em "Limpar agora". Em Edge, o processo é similar ao Chrome. Em Safari, vá em Preferências > Privacidade > Gerenciar Dados do Website > Remover Todos.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Alternativa rápida:</strong> Se não quiser perder dados de login de outros sites, tente primeiro abrir a Ramppy em uma janela anônima/privada (Ctrl+Shift+N no Chrome). Se funcionar normalmente lá, o problema é mesmo relacionado a cache/cookies e você pode proceder com a limpeza.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 7 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <path d="M9 3v18"/>
+                                <path d="M15 3v18"/>
+                            </svg>
+                        </span>
+                        Navegadores compatíveis e recomendados
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            A Ramppy funciona melhor nos navegadores modernos mais populares. Recomendamos <strong style="color: var(--text-primary);">Google Chrome (versão 90 ou superior)</strong> para a melhor experiência, pois é onde testamos mais extensivamente todas as funcionalidades, especialmente as simulações com IA.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Navegadores suportados:</strong> Microsoft Edge 90+, Mozilla Firefox 88+, Safari 14+ (macOS), Opera 76+. Todos esses navegadores suportam as tecnologias necessárias (WebRTC, Web Speech API, etc) para as simulações funcionarem corretamente.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Navegadores não suportados:</strong> Internet Explorer (todas as versões - foi descontinuado pela Microsoft), versões muito antigas dos navegadores listados, navegadores de nicho ou não populares. Esses navegadores não têm as APIs modernas necessárias para nossa tecnologia de IA.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Manter atualizado:</strong> Sempre use a versão mais recente do seu navegador. Atualizações trazem melhorias de performance, correções de segurança e suporte a novos recursos. Configure seu navegador para atualizar automaticamente. Para verificar sua versão, vá em Configurações > Sobre ou Ajuda > Sobre.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 8 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                                <line x1="12" y1="18" x2="12.01" y2="18"/>
+                            </svg>
+                        </span>
+                        Usando a Ramppy no celular (app mobile)
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Atualmente a Ramppy funciona como uma aplicação web responsiva, acessível pelo navegador do seu smartphone ou tablet. Não há necessidade de instalar um aplicativo da App Store ou Google Play - basta acessar ramppy.com pelo navegador móvel.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Compatibilidade mobile:</strong> Funciona em dispositivos iOS 14+ (iPhone/iPad) usando Safari ou Chrome, e Android 9+ usando Chrome, Samsung Internet ou Firefox. Para melhor experiência, recomendamos usar em tablets ou smartphones com tela de pelo menos 5 polegadas.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Adicionar à tela inicial:</strong> Para acesso rápido, você pode adicionar a Ramppy à tela inicial do seu dispositivo. No Safari (iOS), toque no ícone de compartilhar e selecione "Adicionar à Tela de Início". No Chrome (Android), toque no menu e selecione "Adicionar à tela inicial".
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Limitações mobile:</strong> Algumas funcionalidades são otimizadas para desktop, como visualização lado a lado de múltiplos relatórios e simulações muito longas. Para prática intensiva, recomendamos usar desktop. Apps nativos para iOS e Android estão planejados para 2025.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 9 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                                <line x1="1" y1="1" x2="23" y2="23"/>
+                            </svg>
+                        </span>
+                        Problemas de conexão e timeout
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Erros de conexão geralmente indicam problemas com sua internet ou firewall corporativo. Se vê mensagens como "Conexão perdida", "Timeout" ou "Não foi possível conectar", primeiro verifique se sua internet está funcionando normalmente acessando outros sites.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Firewall corporativo:</strong> Algumas empresas bloqueiam certas conexões WebSocket ou domínios que usamos. Se você está em uma rede corporativa, peça ao seu time de TI para adicionar *.ramppy.com à whitelist e permitir conexões WebSocket. Tente também usar seu hotspot móvel para confirmar se é um problema de rede.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">VPN e Proxy:</strong> Se você usa VPN ou proxy, eles podem estar interferindo na conexão. Tente desconectar temporariamente e acessar novamente. Algumas VPNs são compatíveis, outras não - se precisar usar VPN obrigatoriamente, entre em contato conosco para orientações.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Conexão instável:</strong> WiFi instável pode causar desconexões durante simulações. Tente se aproximar do roteador, usar cabo ethernet se possível, ou reiniciar seu modem/roteador. Se em café ou espaço coworking, a rede compartilhada pode ser muito lenta nos horários de pico.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 10 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            </svg>
+                        </span>
+                        Como contatar o suporte técnico
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Se você tentou todas as soluções desta página e o problema persiste, entre em contato com nosso suporte técnico. Acesse "Ajuda" no menu principal e clique em "Falar com Suporte", ou envie e-mail para suporte@ramppy.com com detalhes do problema.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Informações importantes:</strong> Para acelerar o atendimento, inclua: descrição detalhada do problema, o que você estava tentando fazer quando ocorreu, navegador e versão (vá em Ajuda > Sobre), sistema operacional, prints da tela do erro (se houver) e se o problema acontece sempre ou só às vezes.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Tempo de resposta:</strong> Nosso suporte funciona de segunda a sexta, das 8h às 20h (horário de Brasília). Respondemos tickets em até 4 horas em horário comercial. Para planos Team e Enterprise, oferecemos suporte prioritário com resposta em até 1 hora.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Chat ao vivo:</strong> Se seu plano inclui, você pode iniciar um chat ao vivo clicando no ícone de mensagem no canto inferior direito da tela. Um agente humano responderá rapidamente durante horário comercial. Fora do horário, deixe sua mensagem e retornaremos assim que possível.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CTA -->
+            <div style="text-align: center; margin-top: 64px; padding: 48px; background: rgba(34, 197, 94, 0.1); border-radius: 16px; border: 1px solid rgba(34, 197, 94, 0.2); max-width: 700px; margin-left: auto; margin-right: auto;">
+                <h3 style="margin-bottom: 16px; color: var(--primary-green);">Ainda tem dúvidas?</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 24px;">
+                    Explore outras categorias de ajuda ou entre em contato com nosso suporte.
+                </p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="central-ajuda.html" class="btn-primary">
+                        <span>Voltar para Ajuda</span>
+                    </a>
+                    <a href="contato.html" class="btn-secondary">
+                        <span>Falar com Suporte</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="logo.svg" alt="Ramppy" class="footer-logo">
+                    <p>Ramp up your sales com inteligência artificial</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                        <a href="#" aria-label="Instagram"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                        <a href="#" aria-label="YouTube"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Produto</h4>
+                        <ul>
+                            <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                            <li><a href="como-funciona.html">Como Funciona</a></li>
+                            <li><a href="fila-espera.html">Fila de Espera</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Empresa</h4>
+                        <ul>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="carreiras.html">Carreiras</a></li>
+                            <li><a href="contato.html">Contato</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Suporte</h4>
+                        <ul>
+                            <li><a href="central-ajuda.html">Central de Ajuda</a></li>
+                            <li><a href="contato.html">Contato</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="termos.html">Termos de Uso</a></li>
+                            <li><a href="privacidade.html">Privacidade</a></li>
+                            <li><a href="cookies.html">Cookies</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ramppy. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="supabase-config.js"></script>
+    <script src="brand-color-loader.js"></script>
+    <script src="auth.js"></script>
+    <script src="auth-handlers.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

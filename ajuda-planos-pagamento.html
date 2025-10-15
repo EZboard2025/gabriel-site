@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planos e Pagamento - Ramppy</title>
+    <meta name="description" content="Informações sobre planos, assinaturas, pagamentos e faturas na Ramppy.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="64x64" href="logo.png?v=3">
+    <link rel="icon" type="image/png" sizes="48x48" href="logo.png?v=3">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png?v=3">
+    <link rel="shortcut icon" href="logo.png?v=3">
+    <link rel="apple-touch-icon" sizes="180x180" href="logo.png?v=3">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- Space Background (Fixed) -->
+    <div class="space-background">
+        <div class="stars"></div>
+        <div class="shooting-stars"></div>
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="logo.svg" alt="Ramppy" class="logo-img">
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="como-funciona.html">Como Funciona</a></li>
+                    <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                    <li><a href="fila-espera.html">Fila de Espera</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a href="#login" class="btn-login">Login</a>
+                    <a href="#signup" class="btn-signup">Cadastro</a>
+                    <a href="fila-espera.html" class="btn-primary">Entrar na Fila</a>
+                </div>
+                <button class="mobile-menu-btn" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="min-height: 40vh; padding: 120px 0 60px;">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                    <a href="central-ajuda.html" style="display: inline-flex; align-items: center; gap: 8px; color: var(--primary-green); text-decoration: none; margin-bottom: 16px; font-size: 14px;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 12H5M12 19l-7-7 7-7"/>
+                        </svg>
+                        Voltar para Central de Ajuda
+                    </a>
+                    <span class="section-tag">Planos e Pagamento</span>
+                    <h1 class="hero-title" style="font-size: 48px;">Assinaturas e Faturamento</h1>
+                    <p class="hero-description">
+                        Informações sobre planos, assinaturas, pagamentos e faturas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="funcionalidades" style="padding: 0 0 80px 0;">
+        <div class="container">
+            <div style="max-width: 900px; margin: 0 auto;">
+
+                <!-- Artigo 1 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                <line x1="12" y1="22.08" x2="12" y2="12"/>
+                            </svg>
+                        </span>
+                        Tipos de planos disponíveis
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            A Ramppy oferece quatro planos principais, cada um desenhado para diferentes necessidades e estágios de carreira em vendas. Todos os planos incluem acesso ilimitado ao mentor IA e simulações core.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Plano Free (Gratuito):</strong> Ideal para conhecer a plataforma. Inclui 5 simulações por mês, acesso ao mentor IA com limite de 20 perguntas/mês, relatórios básicos e 3 perfis de cliente. Sem período de teste - é grátis para sempre com essas limitações.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Plano Pro (Individual):</strong> R$97/mês ou R$970/ano (2 meses grátis). Simulações ilimitadas, mentor IA sem limites, todos os 15+ perfis de cliente, relatórios avançados com IA, gravação de simulações, PDI completo, comparação temporal, exportação de dados e suporte prioritário por email.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Plano Team (Equipes 5-20 pessoas):</strong> R$79/mês por usuário (mínimo 5). Tudo do Pro mais: dashboard de gestor com métricas da equipe, simulações em grupo, competições e rankings, biblioteca compartilhada de conhecimento, onboarding assistido e suporte prioritário por chat.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Plano Enterprise (21+ pessoas):</strong> Preço customizado. Tudo do Team mais: SSO/SAML, integrações personalizadas com CRM, API para dados, ambientes de desenvolvimento separados, treinamento presencial, CSM dedicado, SLA garantido e suporte 24/7 por telefone. Consulte nosso time comercial.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 2 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                            </svg>
+                        </span>
+                        Como fazer upgrade do seu plano
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Fazer upgrade é simples e você tem acesso imediato aos novos recursos. O sistema calcula automaticamente o valor proporcional (pro-rata) para não haver desperdício.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Processo de upgrade:</strong> Vá em "Configurações" > "Assinatura" e clique em "Fazer Upgrade". Selecione o novo plano desejado (mensal ou anual). O sistema mostra exatamente quanto você pagará hoje considerando o que já pagou no período atual.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Cálculo pro-rata:</strong> Se você está no meio do ciclo mensal do plano Free e faz upgrade para Pro, paga apenas a diferença proporcional aos dias restantes. Exemplo: 15 dias restantes no mês = você paga 50% do valor mensal do Pro. Justo e transparente.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Ativação imediata:</strong> Após confirmação do pagamento (cartão é instantâneo, boleto até 3 dias úteis), todos os recursos do novo plano são liberados imediatamente. Suas simulações anteriores, histórico e dados são preservados 100%.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Migração de anual:</strong> Se você tem plano anual e quer fazer upgrade (por exemplo, de Pro para Team), o sistema calcula o crédito proporcional do que você já pagou e aplica no novo plano. Você nunca perde dinheiro em upgrades.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 3 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="8 12 12 16 16 12"/>
+                                <line x1="12" y1="8" x2="12" y2="16"/>
+                            </svg>
+                        </span>
+                        Processo de downgrade de plano
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Você pode fazer downgrade a qualquer momento sem taxas de cancelamento. O downgrade é efetivado apenas no final do período já pago, garantindo que você aproveite ao máximo o que investiu.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Como fazer downgrade:</strong> Acesse "Configurações" > "Assinatura" > "Alterar Plano" > "Fazer Downgrade". Escolha o plano inferior desejado. O sistema avisa claramente quais recursos você perderá e quando a mudança será efetivada.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Quando acontece:</strong> Se você está no plano Pro mensal e faz downgrade para Free, continua com todos os recursos Pro até o final do período pago. No dia de renovação, em vez de cobrar Pro novamente, sua conta automaticamente muda para Free. Você nunca perde dias pagos.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Impacto nos dados:</strong> Seus dados não são deletados no downgrade. Simulações antigas, histórico do mentor e relatórios permanecem acessíveis no modo leitura. Você só perde capacidade de fazer novas simulações acima do limite do plano inferior.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Cancelar downgrade:</strong> Mudou de ideia? Você pode cancelar o downgrade agendado a qualquer momento antes da data de efetivação. Basta ir em "Assinatura" e clicar em "Cancelar Mudança de Plano".
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 4 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                                <line x1="1" y1="10" x2="23" y2="10"/>
+                            </svg>
+                        </span>
+                        Formas de pagamento aceitas
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            A Ramppy aceita diversas formas de pagamento para facilitar sua assinatura. Todos os pagamentos são processados de forma segura através de parceiros certificados PCI-DSS.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Cartão de crédito:</strong> Visa, Mastercard, American Express, Elo, Diners e Hipercard. Pagamento recorrente automático. Você cadastra uma vez e a cobrança acontece automaticamente a cada ciclo. Pode cancelar a qualquer momento. Processamento instantâneo.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Boleto bancário:</strong> Disponível apenas para planos anuais. Você recebe o boleto por email após confirmação da assinatura. Prazo de vencimento de 3 dias úteis. Após identificação do pagamento (1-3 dias úteis), sua conta é ativada. Boleto não é recorrente - você deve renovar manualmente.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">PIX:</strong> Para planos anuais. Gere o QR Code ou código Pix na tela de pagamento. Após confirmação (geralmente instantânea), sua conta é ativada em até 1 hora. Desconto de 5% adicional sobre o valor anual em pagamentos via PIX.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Transferência/Nota Fiscal (Enterprise):</strong> Clientes Enterprise podem pagar via transferência bancária com emissão de nota fiscal. Processo customizado com 30 dias de prazo. Entre em contato com o time comercial para configurar.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 5 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </span>
+                        Como funciona o faturamento recorrente
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Planos mensais são cobrados automaticamente todo mês no mesmo dia em que você assinou. Planos anuais cobram uma vez por ano. Você recebe avisos antes de cada cobrança.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Ciclo de cobrança mensal:</strong> Se você assinou dia 15, todo dia 15 o cartão cadastrado é cobrado automaticamente. Recebe email 3 dias antes avisando sobre a cobrança próxima. Se o dia não existir no mês (ex: 31 em fevereiro), cobra no último dia do mês.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Falha no pagamento:</strong> Se o cartão for recusado, tentamos novamente após 3 dias, depois após 7 dias. Você recebe email imediato alertando sobre a falha. Após 10 dias sem pagamento bem-sucedido, a conta é suspensa (modo somente leitura). Tem mais 20 dias para regularizar antes de perder acesso aos dados.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Atualizar forma de pagamento:</strong> Troque o cartão a qualquer momento em "Configurações" > "Pagamento". Útil quando cartão vence ou você quer usar outro cartão. Mudança é imediata e afeta a próxima cobrança.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Pausa de cobrança:</strong> Você pode pausar a assinatura (sem cobranças) por 1-6 meses em "Configurações" > "Pausar Conta". Durante pausa, não há cobrança e você não tem acesso. Útil para férias ou período sabático. Retoma automaticamente após período de pausa.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 6 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                <polyline points="10 9 9 9 8 9"/>
+                            </svg>
+                        </span>
+                        Acessando e baixando notas fiscais
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Todas as cobranças geram nota fiscal eletrônica automaticamente. Você pode acessar, baixar e enviar para email ou contabilidade a qualquer momento.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Onde encontrar:</strong> Vá em "Configurações" > "Faturamento" > "Histórico de Notas Fiscais". Lá você vê lista completa de todas as notas emitidas desde que criou a conta, ordenadas da mais recente para mais antiga.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Geração automática:</strong> Após confirmação do pagamento, a nota fiscal é gerada em até 5 dias úteis conforme legislação. Você recebe email automático com PDF da nota anexado e link para consulta online no site da prefeitura.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Dados da nota:</strong> A nota sai com seus dados cadastrados (CPF ou CNPJ, nome/razão social, endereço). Se precisar corrigir dados antes da próxima emissão, atualize em "Configurações" > "Dados Fiscais". Alterações valem para próximas notas, não retroativas.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Reenvio e segunda via:</strong> Perdeu a nota? Clique em "Baixar PDF" ou "Enviar por Email" ao lado de qualquer nota no histórico. Pode baixar quantas vezes precisar, sem custo. Formato PDF/A padrão aceito por contabilidades.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 7 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </span>
+                        Política de reembolso
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            A Ramppy oferece garantia de satisfação de 30 dias para todos os planos pagos. Se você não ficar satisfeito, devolvemos seu dinheiro sem perguntas.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Janela de reembolso:</strong> Você tem 30 dias corridos a partir da data da primeira cobrança para solicitar reembolso total. Após 30 dias, não há reembolso, mas você pode cancelar a qualquer momento sem cobranças futuras.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Como solicitar:</strong> Envie email para financeiro@ramppy.com com assunto "Solicitação de Reembolso" e seu email de cadastro. Pedimos (opcional) um breve feedback sobre porque decidiu cancelar para melhorarmos o produto. Não fazemos contra-ofertas ou insistência.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Prazo de devolução:</strong> Reembolsos em cartão de crédito aparecem na fatura em 5-10 dias úteis dependendo da operadora. Pagamentos via boleto/PIX são devolvidos via transferência bancária em até 10 dias úteis após fornecer dados bancários.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Exceções:</strong> Planos Team e Enterprise têm políticas customizadas de reembolso definidas em contrato. Geralmente 14 dias para Team e sem reembolso para Enterprise (mas sempre pode cancelar para não renovar).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 8 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M12 2v20M2 12h20"/>
+                            </svg>
+                        </span>
+                        Período de teste gratuito
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Todos os novos usuários podem testar o plano Pro gratuitamente por 14 dias, sem exigir cartão de crédito. É uma forma de conhecer a plataforma completa sem compromisso.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Como funciona:</strong> Ao criar sua conta, você automaticamente ganha 14 dias de acesso Pro completo. Pode usar todas as funcionalidades: simulações ilimitadas, mentor IA sem limites, todos os perfis, relatórios avançados, PDI, tudo. Sem precisar cadastrar cartão.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Fim do período:</strong> No 14º dia, você recebe email lembrando que o trial acaba em breve. No dia 15, se você não assinou um plano pago, sua conta automaticamente muda para o plano Free. Seus dados não são perdidos, mas você fica limitado a 5 simulações/mês.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Convertendo para pago:</strong> Durante o trial ou após, você pode assinar Pro a qualquer momento. Se assinar antes do trial acabar, começa a pagar imediatamente mas ganha acesso vitalício. Se deixar virar Free e depois quiser Pro, pode assinar normalmente.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Trial apenas uma vez:</strong> O período de teste é válido uma única vez por pessoa/empresa. Se você cancelar e criar nova conta, não terá novo trial. Detectamos através de email, CPF/CNPJ e outros identificadores para garantir fairness.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 9 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                                <line x1="7" y1="7" x2="7.01" y2="7"/>
+                            </svg>
+                        </span>
+                        Como usar cupons de desconto
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Cupons de desconto podem ser aplicados na hora da assinatura ou upgrade para reduzir o valor. Periodicamente oferecemos cupons em campanhas, parcerias ou eventos.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Onde inserir:</strong> Na tela de checkout (quando escolhe plano e forma de pagamento), há um campo "Cupom de Desconto" no rodapé do resumo de pagamento. Digite o código exatamente como recebeu (geralmente case-sensitive) e clique em "Aplicar".
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Tipos de cupom:</strong> Percentual (ex: "RAMPPY20" = 20% off), Valor fixo (ex: "50OFF" = R$50 de desconto), Meses grátis (ex: "2MESESFREE" = 2 meses sem pagar), Trial estendido (ex: "TRIAL30" = 30 dias em vez de 14). O tipo e benefício aparecem após aplicar.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Validade e restrições:</strong> Cada cupom tem validade (data de expiração) e pode ter restrições: válido só para novos usuários, só para plano anual, mínimo de licenças, etc. Se o cupom não for elegível, o sistema avisa claramente o motivo.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Cupons não acumulam:</strong> Você pode usar apenas um cupom por transação. Se tentar aplicar segundo cupom, o primeiro é removido. Escolha o cupom mais vantajoso. O desconto aparece destacado no resumo antes de confirmar pagamento.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 10 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </span>
+                        Gerenciamento de licenças (Team/Enterprise)
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Planos Team e Enterprise permitem adicionar ou remover usuários facilmente. Você é cobrado proporcionalmente pelas licenças ativas a cada momento.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Adicionar usuários:</strong> Como admin, vá em "Equipe" > "Adicionar Membro". Insira email da pessoa e ela recebe convite. Quando aceita e ativa a conta, uma nova licença é contabilizada. Cobrança pro-rata começa automaticamente.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Cobrança de novas licenças:</strong> Se você adiciona 2 usuários no dia 10 e seu ciclo fecha dia 1, você paga (~20 dias / 30 dias) do valor mensal de 2 licenças na próxima fatura. A partir do próximo ciclo, paga valores cheios.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Remover usuários:</strong> Desativar usuário em "Equipe" > "Gerenciar" > "Desativar". Ele perde acesso imediatamente. Você para de ser cobrado por aquela licença no próximo ciclo. Não há reembolso proporcional dos dias não usados no ciclo atual.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Transferir licença:</strong> Para substituir um usuário por outro sem aumentar número de licenças: desative usuário antigo, adicione novo. O novo assume a licença vaga. Dados do usuário antigo podem ser preservados ou deletados conforme LGPD.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 11 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+                            </svg>
+                        </span>
+                        Descontos para pagamento anual
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Assinantes anuais economizam significativamente comparado ao mensal. É a forma mais vantajosa de usar a Ramppy se você já está comprometido com desenvolvimento contínuo.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Desconto padrão:</strong> Plano anual oferece 2 meses grátis. Em vez de pagar R$97x12 = R$1.164, você paga R$970 (equivalente a 10 meses). Economia de R$194 por ano (16,6% de desconto).
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Descontos progressivos (Team/Enterprise):</strong> Quanto mais licenças, maior o desconto. 5-10 licenças: 15% off anual. 11-20 licenças: 20% off. 21-50: 25% off. 51+: desconto customizado negociado com comercial.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Migrar de mensal para anual:</strong> Você pode trocar a qualquer momento. O sistema calcula crédito proporcional do que falta no mês atual e aplica no valor anual. Por exemplo: 20 dias faltando no mês = ~R$64 de crédito. Você paga R$970 - R$64 = R$906.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">Benefícios adicionais anuais:</strong> Além do desconto financeiro, assinantes anuais têm prioridade no suporte, acesso antecipado a novos recursos beta, e convites para eventos exclusivos de networking e treinamento. ROI total vai além do valor monetário.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Artigo 12 -->
+                <div class="feature-card" style="margin-bottom: 32px; text-align: left;">
+                    <h3 style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px; font-size: 24px;">
+                        <span style="background: var(--gradient-primary); width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            </svg>
+                        </span>
+                        Contato com time de vendas para Enterprise
+                    </h3>
+                    <div style="margin-left: 60px;">
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            Para necessidades Enterprise (21+ usuários, integrações customizadas, ou requisitos específicos), nosso time comercial cria proposta personalizada adaptada à sua realidade.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Como entrar em contato:</strong> Preencha formulário em ramppy.com/enterprise ou envie email para vendas@ramppy.com. Informe: número estimado de usuários, setor de atuação, principais necessidades e prazo desejado de implementação. Respondemos em até 24h úteis.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Processo comercial:</strong> (1) Discovery call de 30min para entender necessidades, (2) Demonstração personalizada de 1h com casos de uso do seu setor, (3) Proposta customizada em 2-3 dias, (4) Negociação de termos e MSA, (5) Onboarding agendado.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                            <strong style="color: var(--text-primary);">Customizações disponíveis:</strong> Preços por volume, termos de pagamento flexíveis (trimestral, semestral, anual), implementação faseada, treinamento presencial para equipe, integração com ferramentas internas, relatórios customizados para C-level, branding white-label em relatórios.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            <strong style="color: var(--text-primary);">POC gratuita:</strong> Para empresas 50+ usuários, oferecemos POC (Proof of Concept) gratuita de 30 dias com até 10 usuários piloto. Permite validar valor antes de comprometer investimento completo. Inclui suporte dedicado durante todo o POC.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CTA -->
+            <div style="text-align: center; margin-top: 64px; padding: 48px; background: rgba(34, 197, 94, 0.1); border-radius: 16px; border: 1px solid rgba(34, 197, 94, 0.2); max-width: 700px; margin-left: auto; margin-right: auto;">
+                <h3 style="margin-bottom: 16px; color: var(--primary-green);">Ainda tem dúvidas?</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 24px;">
+                    Explore outras categorias de ajuda ou entre em contato com nosso suporte.
+                </p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="central-ajuda.html" class="btn-primary">
+                        <span>Voltar para Ajuda</span>
+                    </a>
+                    <a href="contato.html" class="btn-secondary">
+                        <span>Falar com Suporte</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="logo.svg" alt="Ramppy" class="footer-logo">
+                    <p>Ramp up your sales com inteligência artificial</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Produto</h4>
+                        <ul>
+                            <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                            <li><a href="como-funciona.html">Como Funciona</a></li>
+                            <li><a href="fila-espera.html">Fila de Espera</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Empresa</h4>
+                        <ul>
+                            <li><a href="blog.html">Blog</a></li>
+                            <li><a href="carreiras.html">Carreiras</a></li>
+                            <li><a href="contato.html">Contato</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Suporte</h4>
+                        <ul>
+                            <li><a href="central-ajuda.html">Central de Ajuda</a></li>
+                            <li><a href="contato.html">Contato</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="termos.html">Termos de Uso</a></li>
+                            <li><a href="privacidade.html">Privacidade</a></li>
+                            <li><a href="cookies.html">Cookies</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Ramppy. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="supabase-config.js"></script>
+    <script src="brand-color-loader.js"></script>
+    <script src="auth.js"></script>
+    <script src="auth-handlers.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
