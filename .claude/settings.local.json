@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(for file in cookies.html privacidade.html termos.html faq.html central-ajuda.html ajuda-*.html)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

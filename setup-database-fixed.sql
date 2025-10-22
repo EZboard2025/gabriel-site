@@ -1,4 +1,4 @@
--- SCRIPT DE CONFIGURAÇÃO DO BANCO RAMPPY
+  -- SCRIPT DE CONFIGURAÇÃO DO BANCO RAMPPY
 -- Execute este SQL no SQL Editor do Supabase
 
 -- 1. Criar tabela de usuários

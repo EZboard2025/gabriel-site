@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload para Webhook - Ramppy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .upload-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .subtitle {
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            margin-bottom: 32px;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        input[type="url"],
+        input[type="file"] {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="url"]:focus,
+        input[type="file"]:focus {
+            outline: none;
+            border-color: #22c55e;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        input[type="url"]::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .file-input-wrapper {
+            position: relative;
+        }
+
+        input[type="file"] {
+            cursor: pointer;
+        }
+
+        input[type="file"]::file-selector-button {
+            background: #22c55e;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-right: 12px;
+            transition: background 0.3s ease;
+        }
+
+        input[type="file"]::file-selector-button:hover {
+            background: #16a34a;
+        }
+
+        .file-list {
+            margin-top: 16px;
+            display: none;
+        }
+
+        .file-list.active {
+            display: block;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .file-item.uploading {
+            border-color: #3b82f6;
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .file-item.success {
+            border-color: #22c55e;
+            background: rgba(34, 197, 94, 0.1);
+        }
+
+        .file-item.error {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .file-item-info {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .file-item-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .file-item-details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .file-item-name {
+            color: #fff;
+            font-size: 14px;
+            font-weight: 500;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .file-item-size {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 12px;
+            margin-top: 2px;
+        }
+
+        .file-item-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .file-item-status.uploading {
+            color: #3b82f6;
+        }
+
+        .file-item-status.success {
+            color: #22c55e;
+        }
+
+        .file-item-status.error {
+            color: #ef4444;
+        }
+
+        .btn-upload {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-upload:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+        }
+
+        .btn-upload:disabled {
+            background: rgba(255, 255, 255, 0.1);
+            cursor: not-allowed;
+            transform: none;
+            opacity: 0.5;
+        }
+
+        .queue-progress {
+            margin-top: 20px;
+            padding: 16px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 8px;
+            display: none;
+        }
+
+        .queue-progress.active {
+            display: block;
+        }
+
+        .queue-progress-text {
+            color: #3b82f6;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6 0%, #22c55e 100%);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: currentColor;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .help-text {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 12px;
+            margin-top: 6px;
+        }
+
+        .queue-info {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 6px;
+            padding: 8px 12px;
+            color: #3b82f6;
+            font-size: 12px;
+            margin-top: 6px;
+        }
+
+        @media (max-width: 640px) {
+            .upload-container {
+                padding: 24px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="upload-container">
+        <h1>Upload de Arquivos</h1>
+        <p class="subtitle">Envie arquivos para o webhook do n8n (um por vez)</p>
+
+        <form id="upload-form">
+            <div class="form-group">
+                <label for="webhook-url">URL do Webhook n8n</label>
+                <input
+                    type="url"
+                    id="webhook-url"
+                    name="webhook-url"
+                    placeholder="https://seu-webhook.n8n.io/webhook/..."
+                    required
+                >
+                <p class="help-text">Cole aqui a URL do webhook do n8n</p>
+            </div>
+
+            <div class="form-group">
+                <label for="file-input">Selecione o(s) arquivo(s)</label>
+                <div class="file-input-wrapper">
+                    <input
+                        type="file"
+                        id="file-input"
+                        name="file"
+                        multiple
+                        required
+                    >
+                </div>
+                <p class="queue-info">
+                    ℹ️ Os arquivos serão enviados um por vez em fila
+                </p>
+                <div class="file-list" id="file-list"></div>
+            </div>
+
+            <button type="submit" class="btn-upload" id="upload-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="17 8 12 3 7 8"/>
+                    <line x1="12" y1="3" x2="12" y2="15"/>
+                </svg>
+                Enviar Arquivos na Fila
+            </button>
+
+            <div class="queue-progress" id="queue-progress">
+                <div class="queue-progress-text" id="progress-text">Enviando arquivos...</div>
+                <div class="progress-bar">
+                    <div class="progress-bar-fill" id="progress-fill"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const fileInput = document.getElementById('file-input');
+        const fileList = document.getElementById('file-list');
+        const uploadForm = document.getElementById('upload-form');
+        const uploadBtn = document.getElementById('upload-btn');
+        const webhookUrlInput = document.getElementById('webhook-url');
+        const queueProgress = document.getElementById('queue-progress');
+        const progressText = document.getElementById('progress-text');
+        const progressFill = document.getElementById('progress-fill');
+
+        let selectedFiles = [];
+
+        // Carregar URL do webhook do localStorage
+        const savedWebhookUrl = localStorage.getItem('webhookUrl');
+        if (savedWebhookUrl) {
+            webhookUrlInput.value = savedWebhookUrl;
+        }
+
+        // Salvar URL do webhook
+        webhookUrlInput.addEventListener('change', () => {
+            localStorage.setItem('webhookUrl', webhookUrlInput.value);
+        });
+
+        // Atualizar lista de arquivos
+        fileInput.addEventListener('change', (e) => {
+            const files = Array.from(e.target.files);
+            selectedFiles = files;
+
+            if (files.length > 0) {
+                renderFileList(files);
+                fileList.classList.add('active');
+            } else {
+                fileList.classList.remove('active');
+            }
+        });
+
+        // Renderizar lista de arquivos
+        function renderFileList(files) {
+            fileList.innerHTML = files.map((file, index) => {
+                const sizeInMB = (file.size / (1024 * 1024)).toFixed(2);
+                const sizeInKB = (file.size / 1024).toFixed(2);
+                const displaySize = file.size > 1024 * 1024 ? `${sizeInMB} MB` : `${sizeInKB} KB`;
+
+                return `
+                    <div class="file-item" id="file-item-${index}">
+                        <div class="file-item-info">
+                            <div class="file-item-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                    <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+                                    <polyline points="13 2 13 9 20 9"/>
+                                </svg>
+                            </div>
+                            <div class="file-item-details">
+                                <div class="file-item-name">${file.name}</div>
+                                <div class="file-item-size">${displaySize}</div>
+                            </div>
+                        </div>
+                        <div class="file-item-status" id="file-status-${index}">
+                            <span>Aguardando</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Atualizar status de um arquivo
+        function updateFileStatus(index, status, message) {
+            const fileItem = document.getElementById(`file-item-${index}`);
+            const fileStatus = document.getElementById(`file-status-${index}`);
+
+            if (!fileItem || !fileStatus) return;
+
+            // Remover classes antigas
+            fileItem.classList.remove('uploading', 'success', 'error');
+            fileStatus.classList.remove('uploading', 'success', 'error');
+
+            // Adicionar nova classe
+            fileItem.classList.add(status);
+            fileStatus.classList.add(status);
+
+            // Atualizar mensagem
+            if (status === 'uploading') {
+                fileStatus.innerHTML = `
+                    <span class="spinner"></span>
+                    <span>${message}</span>
+                `;
+            } else if (status === 'success') {
+                fileStatus.innerHTML = `
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    <span>${message}</span>
+                `;
+            } else if (status === 'error') {
+                fileStatus.innerHTML = `
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <line x1="15" y1="9" x2="9" y2="15"/>
+                        <line x1="9" y1="9" x2="15" y2="15"/>
+                    </svg>
+                    <span>${message}</span>
+                `;
+            }
+        }
+
+        // Enviar um arquivo individual
+        async function uploadFile(file, index, webhookUrl) {
+            updateFileStatus(index, 'uploading', 'Enviando...');
+
+            try {
+                const formData = new FormData();
+                formData.append('file', file);
+
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    mode: 'cors',
+                    body: formData
+                });
+
+                // Tentar ler a resposta
+                let responseText = '';
+                try {
+                    responseText = await response.text();
+                } catch (e) {
+                    console.log('Não foi possível ler resposta:', e);
+                }
+
+                if (response.ok || response.status === 200) {
+                    updateFileStatus(index, 'success', 'Enviado ✓');
+                    console.log(`Arquivo ${file.name} enviado com sucesso`);
+                    return { success: true, file: file.name };
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            } catch (error) {
+                console.error(`Erro ao enviar ${file.name}:`, error);
+                updateFileStatus(index, 'error', 'Erro ✗');
+                return { success: false, file: file.name, error: error.message };
+            }
+        }
+
+        // Processar fila de upload
+        async function processUploadQueue(files, webhookUrl) {
+            const results = {
+                total: files.length,
+                success: 0,
+                failed: 0,
+                errors: []
+            };
+
+            queueProgress.classList.add('active');
+            uploadBtn.disabled = true;
+
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const progress = Math.round(((i) / files.length) * 100);
+
+                progressText.textContent = `Enviando arquivo ${i + 1} de ${files.length}...`;
+                progressFill.style.width = `${progress}%`;
+
+                const result = await uploadFile(file, i, webhookUrl);
+
+                if (result.success) {
+                    results.success++;
+                } else {
+                    results.failed++;
+                    results.errors.push(result);
+                }
+
+                // Pequeno delay entre uploads
+                if (i < files.length - 1) {
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                }
+            }
+
+            // Upload completo
+            progressFill.style.width = '100%';
+            progressText.textContent = `✓ Concluído: ${results.success} enviados, ${results.failed} falharam`;
+
+            setTimeout(() => {
+                queueProgress.classList.remove('active');
+                uploadBtn.disabled = false;
+
+                // Limpar se todos foram enviados com sucesso
+                if (results.failed === 0) {
+                    setTimeout(() => {
+                        fileInput.value = '';
+                        fileList.classList.remove('active');
+                        selectedFiles = [];
+                    }, 2000);
+                }
+            }, 3000);
+
+            return results;
+        }
+
+        // Enviar arquivos
+        uploadForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const webhookUrl = webhookUrlInput.value;
+
+            if (!webhookUrl) {
+                alert('Por favor, insira a URL do webhook.');
+                return;
+            }
+
+            if (selectedFiles.length === 0) {
+                alert('Por favor, selecione pelo menos um arquivo.');
+                return;
+            }
+
+            // Validar URL
+            try {
+                new URL(webhookUrl);
+            } catch (error) {
+                alert('URL do webhook inválida.');
+                return;
+            }
+
+            // Processar fila
+            const results = await processUploadQueue(selectedFiles, webhookUrl);
+            console.log('Resultados do upload:', results);
+        });
+    </script>
+</body>
+</html>
