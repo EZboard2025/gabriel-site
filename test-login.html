@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Teste de Login Ramppy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        button {
+            background: #FF6B00;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #ff5500;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 4px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Teste de Login - Ramppy</h1>
+
+    <div class="test-section">
+        <h2>Status dos Scripts</h2>
+        <div id="script-status"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Teste de Login</h2>
+        <input type="email" id="test-email" placeholder="Email" value="teste@exemplo.com">
+        <input type="password" id="test-password" placeholder="Senha" value="Senha123!">
+        <br><br>
+        <button onclick="testLogin()">Testar Login</button>
+        <button onclick="testSignup()">Testar Cadastro</button>
+        <div id="login-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Console Log</h2>
+        <pre id="console-log"></pre>
+    </div>
+
+    <!-- Carregar scripts na ordem correta -->
+    <script src="security-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="notification-system.js"></script>
+    <script src="error-handler.js"></script>
+    <script src="supabase-config.js"></script>
+    <script src="auth-secure.js"></script>
+
+    <script>
+        // Capturar logs do console
+        const logDiv = document.getElementById('console-log');
+        const originalLog = console.log;
+        const originalError = console.error;
+
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            logDiv.textContent += '[LOG] ' + args.join(' ') + '\n';
+        };
+
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            logDiv.textContent += '[ERROR] ' + args.join(' ') + '\n';
+        };
+
+        // Verificar status dos scripts
+        function checkScriptStatus() {
+            const statusDiv = document.getElementById('script-status');
+            let html = '';
+
+            // Verificar Security Utils
+            if (window.RamppySecurity) {
+                html += '<div class="status success">✓ Security Utils carregado</div>';
+            } else {
+                html += '<div class="status error">✗ Security Utils NÃO carregado</div>';
+            }
+
+            // Verificar Supabase
+            if (window.supabase) {
+                html += '<div class="status success">✓ Supabase SDK carregado</div>';
+            } else {
+                html += '<div class="status error">✗ Supabase SDK NÃO carregado</div>';
+            }
+
+            // Verificar Supabase Client
+            if (window.supabaseClient || window.supabase || supabase) {
+                html += '<div class="status success">✓ Supabase Client inicializado</div>';
+            } else {
+                html += '<div class="status error">✗ Supabase Client NÃO inicializado</div>';
+            }
+
+            // Verificar funções de auth
+            if (window.loginUser) {
+                html += '<div class="status success">✓ Função loginUser disponível</div>';
+            } else {
+                html += '<div class="status error">✗ Função loginUser NÃO disponível</div>';
+            }
+
+            if (window.signupUser) {
+                html += '<div class="status success">✓ Função signupUser disponível</div>';
+            } else {
+                html += '<div class="status error">✗ Função signupUser NÃO disponível</div>';
+            }
+
+            statusDiv.innerHTML = html;
+        }
+
+        // Testar login
+        async function testLogin() {
+            const email = document.getElementById('test-email').value;
+            const password = document.getElementById('test-password').value;
+            const resultDiv = document.getElementById('login-result');
+
+            resultDiv.innerHTML = '<div class="status info">Testando login...</div>';
+
+            try {
+                if (!window.loginUser) {
+                    throw new Error('Função loginUser não está disponível');
+                }
+
+                const result = await window.loginUser(email, password);
+
+                if (result.success) {
+                    resultDiv.innerHTML = '<div class="status success">Login bem-sucedido! Usuário: ' + result.user.nome + '</div>';
+                } else {
+                    resultDiv.innerHTML = '<div class="status error">Login falhou: ' + result.error + '</div>';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = '<div class="status error">Erro: ' + error.message + '</div>';
+                console.error('Erro no teste:', error);
+            }
+        }
+
+        // Testar cadastro
+        async function testSignup() {
+            const email = document.getElementById('test-email').value;
+            const password = document.getElementById('test-password').value;
+            const resultDiv = document.getElementById('login-result');
+
+            resultDiv.innerHTML = '<div class="status info">Testando cadastro...</div>';
+
+            try {
+                if (!window.signupUser) {
+                    throw new Error('Função signupUser não está disponível');
+                }
+
+                const result = await window.signupUser(
+                    'Teste User',
+                    email,
+                    password,
+                    'Empresa Teste'
+                );
+
+                if (result.success) {
+                    resultDiv.innerHTML = '<div class="status success">Cadastro bem-sucedido! ' + result.message + '</div>';
+                } else {
+                    resultDiv.innerHTML = '<div class="status error">Cadastro falhou: ' + result.error + '</div>';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = '<div class="status error">Erro: ' + error.message + '</div>';
+                console.error('Erro no teste:', error);
+            }
+        }
+
+        // Verificar status ao carregar
+        setTimeout(checkScriptStatus, 1000);
+        setTimeout(checkScriptStatus, 2000);
+        setTimeout(checkScriptStatus, 3000);
+    </script>
+</body>
+</html>

@@ -14,12 +14,22 @@
     <link rel="apple-touch-icon" sizes="180x180" href="logo.png?v=3">
 
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="notification-system.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2" crossorigin="anonymous?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+        <!-- Security Layer -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" integrity="sha384-iZjkJXfNiMQpYqfmTPPeCCJdUuPIGNWjPuDVRaWcOfMlOoYN8lRFfpDgVmQ0K3eN" crossorigin="anonymous"></script>
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
 </head>
 <body>
     <!-- Space Background (Fixed) -->
@@ -109,22 +119,114 @@
                 </div>
                 <div class="fila-form-container">
                     <form id="waitlist-form" class="waitlist-form">
+                        <h3>Informações Pessoais</h3>
+
                         <div class="form-group">
-                            <label for="nome">Nome Completo</label>
+                            <label for="nome">Nome Completo *</label>
                             <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email Profissional</label>
-                            <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Profissional *</label>
+                                <input type="email" id="email" name="email" placeholder="seu@email.com" required autocomplete="off">
+                            </div>
+                            <div class="form-group">
+                                <label for="telefone">Telefone</label>
+                                <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="empresa">Empresa</label>
-                            <input type="text" id="empresa" name="empresa" placeholder="Nome da sua empresa" required>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="empresa">Empresa *</label>
+                                <input type="text" id="empresa" name="empresa" placeholder="Nome da sua empresa" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cargo">Cargo *</label>
+                                <input type="text" id="cargo" name="cargo" placeholder="Ex: Gerente de Vendas" required>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="cargo">Cargo</label>
-                            <input type="text" id="cargo" name="cargo" placeholder="Seu cargo atual" required>
+
+                        <h3 class="form-section-divider">Sobre sua Empresa</h3>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="tipo_empresa">Tipo de Empresa *</label>
+                                <select id="tipo_empresa" name="tipo_empresa" required>
+                                    <option value="">Selecione...</option>
+                                    <option value="B2B">B2B (Vende para empresas)</option>
+                                    <option value="B2C">B2C (Vende para consumidores)</option>
+                                    <option value="B2B2C">B2B2C (Híbrido)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="tamanho_equipe_vendas">Tamanho da Equipe de Vendas *</label>
+                                <select id="tamanho_equipe_vendas" name="tamanho_equipe_vendas" required>
+                                    <option value="">Selecione...</option>
+                                    <option value="1-5">1 a 5 vendedores</option>
+                                    <option value="6-15">6 a 15 vendedores</option>
+                                    <option value="16-50">16 a 50 vendedores</option>
+                                    <option value="51+">Mais de 50 vendedores</option>
+                                </select>
+                            </div>
                         </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="faturamento_anual">Faturamento Anual (Opcional)</label>
+                                <select id="faturamento_anual" name="faturamento_anual">
+                                    <option value="">Prefiro não informar</option>
+                                    <option value="0-500k">Até R$ 500 mil</option>
+                                    <option value="500k-2M">R$ 500 mil - R$ 2 milhões</option>
+                                    <option value="2M-10M">R$ 2 milhões - R$ 10 milhões</option>
+                                    <option value="10M-50M">R$ 10 milhões - R$ 50 milhões</option>
+                                    <option value="50M+">Acima de R$ 50 milhões</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="modelo_vendas">Modelo de Vendas *</label>
+                                <select id="modelo_vendas" name="modelo_vendas" required>
+                                    <option value="">Selecione...</option>
+                                    <option value="Inside Sales">Inside Sales (Vendas remotas)</option>
+                                    <option value="Field Sales">Field Sales (Vendas em campo)</option>
+                                    <option value="Híbrido">Híbrido</option>
+                                    <option value="E-commerce">E-commerce</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="ciclo_vendas">Ciclo Médio de Vendas</label>
+                                <select id="ciclo_vendas" name="ciclo_vendas">
+                                    <option value="">Selecione...</option>
+                                    <option value="0-7 dias">Até 7 dias</option>
+                                    <option value="7-30 dias">7 a 30 dias</option>
+                                    <option value="1-3 meses">1 a 3 meses</option>
+                                    <option value="3-6 meses">3 a 6 meses</option>
+                                    <option value="6+ meses">Mais de 6 meses</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="usa_crm">Usa CRM atualmente?</label>
+                                <select id="usa_crm" name="usa_crm">
+                                    <option value="">Selecione...</option>
+                                    <option value="Sim - Salesforce">Sim - Salesforce</option>
+                                    <option value="Sim - HubSpot">Sim - HubSpot</option>
+                                    <option value="Sim - RD Station">Sim - RD Station</option>
+                                    <option value="Sim - Pipedrive">Sim - Pipedrive</option>
+                                    <option value="Sim - Outro">Sim - Outro</option>
+                                    <option value="Não">Não utilizamos CRM</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sobre_empresa">Nos conte um pouco sobre sua empresa (Opcional)</label>
+                            <textarea id="sobre_empresa" name="sobre_empresa" rows="3" placeholder="Conte-nos sobre sua empresa, desafios, objetivos..."></textarea>
+                        </div>
+
                         <button type="submit" class="btn-primary btn-full">
                             <span>Garantir Meu Acesso Prioritário</span>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -235,18 +337,13 @@
                     </div>
                     <div class="footer-column">
                         <h4>Suporte</h4>
-                        <ul>
-                            <li><a href="central-ajuda.html">Central de Ajuda</a></li>
-                            <li><a href="contato.html">Contato</a></li>
+                        <ul><li><a href="contato.html">Contato</a></li>
                             <li><a href="faq.html">FAQ</a></li>
                         </ul>
                     </div>
                     <div class="footer-column">
                         <h4>Legal</h4>
-                        <ul>
-                            <li><a href="termos.html">Termos de Uso</a></li>
-                            <li><a href="privacidade.html">Privacidade</a></li>
-                            <li><a href="cookies.html">Cookies</a></li>
+                        <ul><li><a href="cookies.html">Cookies</a></li>
                         </ul>
                     </div>
                 </div>
@@ -257,10 +354,129 @@
         </div>
     </footer>
 
+    
+    <!-- Modal de Login -->
+    <div id="login-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Fechar">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <div class="login-header">
+                <div class="login-logo">
+                    <img src="logo.svg" alt="Ramppy" style="height: 40px;">
+                </div>
+                <h2>Bem-vindo à <span class="gradient-text">Ramppy</span></h2>
+                <p>Faça login para continuar</p>
+            </div>
+
+            <form id="login-form" class="auth-form active">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" placeholder="seu@email.com" required autocomplete="off">
+                </div>
+
+                <div class="form-group">
+                    <label for="login-senha">Senha</label>
+                    <div class="password-input">
+                        <input type="password" id="login-senha" placeholder="••••••••" required autocomplete="off">
+                        <button type="button" class="toggle-password" aria-label="Mostrar senha">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <a href="#" class="forgot-password">Esqueceu sua senha?</a>
+
+                <button type="submit" class="btn-primary btn-full btn-auth">Entrar</button>
+
+                <p class="auth-switch">
+                    Não tem uma conta? <a href="#signup" class="switch-link">Cadastre-se</a>
+                </p>
+            </form>
+
+            <p class="login-footer">© 2025 Ramppy. Todos os direitos reservados.</p>
+        </div>
+    </div>
+
+    <!-- Modal de Cadastro -->
+    <div id="signup-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Fechar">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+
+            <div class="login-header">
+                <div class="login-logo">
+                    <img src="logo.svg" alt="Ramppy" style="height: 40px;">
+                </div>
+                <h2>Criar sua conta <span class="gradient-text">Ramppy</span></h2>
+                <p>Comece a potencializar suas vendas</p>
+            </div>
+
+            <form id="signup-form" class="auth-form active">
+                <div class="form-group">
+                    <label for="signup-nome">Nome Completo</label>
+                    <input type="text" id="signup-nome" placeholder="Seu nome" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" placeholder="seu@email.com" required autocomplete="off">
+                </div>
+
+                <div class="form-group">
+                    <label for="signup-senha">Senha</label>
+                    <div class="password-input">
+                        <input type="password" id="signup-senha" placeholder="••••••••" required autocomplete="off">
+                        <button type="button" class="toggle-password" aria-label="Mostrar senha">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="signup-empresa">Empresa</label>
+                    <input type="text" id="signup-empresa" placeholder="Nome da empresa" required>
+                </div>
+
+                <button type="submit" class="btn-primary btn-full btn-auth">Criar Conta</button>
+
+                <p class="auth-terms">
+                    Ao criar uma conta, você concorda com nossos
+                    <a href="termos.html">Termos de Uso</a> e <a href="privacidade.html">Política de Privacidade</a>
+                </p>
+
+                <p class="auth-switch">
+                    Já tem uma conta? <a href="#login" class="switch-link">Faça login</a>
+                </p>
+            </form>
+
+            <p class="login-footer">© 2025 Ramppy. Todos os direitos reservados.</p>
+        </div>
+    </div>
+
+
+    <script src="notification-system.js"></script>
+    <script src="error-handler.js"></script>
     <script src="supabase-config.js"></script>
     <script src="brand-color-loader.js"></script>
-    <script src="auth.js"></script>
-    <script src="auth-handlers.js"></script>
+        <script src="security-utils.js"></script>
+    <script src="auth-secure.js"></script>
+    <script src="fix-auth-timing.js"></script>
+    <script src="auth-handlers-safe.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

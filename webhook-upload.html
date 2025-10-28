@@ -307,6 +307,13 @@
             }
         }
     </style>
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
 </head>
 <body>
     <div class="upload-container">
@@ -361,6 +368,8 @@
         </form>
     </div>
 
+        <!-- Security Layer -->
+    <script src="security-utils.js"></script>
     <script>
         const fileInput = document.getElementById('file-input');
         const fileList = document.getElementById('file-list');
@@ -485,18 +494,15 @@
                 try {
                     responseText = await response.text();
                 } catch (e) {
-                    console.log('Não foi possível ler resposta:', e);
-                }
+                    }
 
                 if (response.ok || response.status === 200) {
                     updateFileStatus(index, 'success', 'Enviado ✓');
-                    console.log(`Arquivo ${file.name} enviado com sucesso`);
                     return { success: true, file: file.name };
                 } else {
                     throw new Error(`HTTP ${response.status}`);
                 }
             } catch (error) {
-                console.error(`Erro ao enviar ${file.name}:`, error);
                 updateFileStatus(index, 'error', 'Erro ✗');
                 return { success: false, file: file.name, error: error.message };
             }
@@ -583,8 +589,7 @@
 
             // Processar fila
             const results = await processUploadQueue(selectedFiles, webhookUrl);
-            console.log('Resultados do upload:', results);
-        });
+            });
     </script>
 </body>
 </html>

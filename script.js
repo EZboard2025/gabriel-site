@@ -102,28 +102,53 @@ if (waitlistForm) {
         const formData = new FormData(waitlistForm);
         const data = Object.fromEntries(formData);
 
-        // Simulate form submission (replace with actual API call)
+        // Get submit button for loading state
+        const submitBtn = waitlistForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+
         try {
             // Show loading state
-            const submitBtn = waitlistForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<span>Processando...</span>';
             submitBtn.disabled = true;
 
-            // Simulate API call
-            await new Promise(resolve => setTimeout(resolve, 1500));
+            // Verificar se o Supabase está disponível
+            if (!window.supabase) {
+                throw new Error('Supabase não está disponível');
+            }
 
-            // Store in localStorage (for demo purposes)
-            const waitlistData = JSON.parse(localStorage.getItem('waitlist') || '[]');
-            waitlistData.push({
-                ...data,
-                timestamp: new Date().toISOString()
-            });
-            localStorage.setItem('waitlist', JSON.stringify(waitlistData));
+            // Enviar para o Supabase
+            const { data: insertedData, error } = await supabase
+                .from('fila_espera')
+                .insert([
+                    {
+                        nome: data.nome,
+                        email: data.email,
+                        telefone: data.telefone || null,
+                        empresa: data.empresa,
+                        cargo: data.cargo,
+                        tipo_empresa: data.tipo_empresa,
+                        tamanho_equipe_vendas: data.tamanho_equipe_vendas,
+                        faturamento_anual: data.faturamento_anual || null,
+                        modelo_vendas: data.modelo_vendas,
+                        ciclo_vendas: data.ciclo_vendas || null,
+                        usa_crm: data.usa_crm || null,
+                        sobre_empresa: data.sobre_empresa || null,
+                        created_at: new Date().toISOString()
+                    }
+                ]);
 
-            // Hide form and show success message
+            if (error) {
+                throw error;
+            }
+
+            // Sucesso - mostrar mensagem
             waitlistForm.style.display = 'none';
             successMessage.style.display = 'block';
+
+            // Mostrar notificação de sucesso
+            if (window.notify) {
+                notify.success('Você entrou na fila de espera! Em breve entraremos em contato.', 'Cadastro Realizado');
+            }
 
             // Optional: Send to analytics
             if (typeof gtag !== 'undefined') {
@@ -135,16 +160,22 @@ if (waitlistForm) {
 
             // Reset form
             waitlistForm.reset();
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
 
         } catch (error) {
             console.error('Erro ao enviar formulário:', error);
-            alert('Erro ao processar sua solicitação. Por favor, tente novamente.');
 
-            const submitBtn = waitlistForm.querySelector('button[type="submit"]');
+            // Restaurar botão
             submitBtn.innerHTML = originalText;
             submitBtn.disabled = false;
+
+            // Mostrar erro usando sistema de notificações
+            if (window.ramppyErrorHandler) {
+                ramppyErrorHandler.handleError(error);
+            } else if (window.notify) {
+                notify.error('Não foi possível processar seu cadastro. Por favor, tente novamente.', 'Erro no Cadastro');
+            } else {
+                alert('Erro ao processar sua solicitação. Por favor, tente novamente.');
+            }
         }
     });
 }
@@ -458,26 +489,49 @@ const signupButtons = document.querySelectorAll('.btn-signup, a[href="#signup"]'
 const modalCloseButtons = document.querySelectorAll('.modal-close');
 const loginForm = document.getElementById('login-form');
 
+console.log('=== MODAL DEBUG ===');
+console.log('loginModal found:', !!loginModal);
+console.log('signupModal found:', !!signupModal);
+console.log('loginButtons count:', loginButtons.length);
+console.log('signupButtons count:', signupButtons.length);
+console.log('===================');
+
 // Open login modal
-loginButtons.forEach(btn => {
+loginButtons.forEach((btn, index) => {
+    console.log(`Registering login button #${index}:`, btn);
     btn.addEventListener('click', (e) => {
+        console.log('LOGIN BUTTON CLICKED!');
         e.preventDefault();
-        if (signupModal) signupModal.classList.remove('active');
+        e.stopPropagation();
+
         if (loginModal) {
+            console.log('Opening login modal...');
+            if (signupModal) signupModal.classList.remove('active');
             loginModal.classList.add('active');
             document.body.style.overflow = 'hidden';
+            console.log('Login modal should be visible now');
+        } else {
+            console.error('Login modal not found!');
         }
     });
 });
 
 // Open signup modal
-signupButtons.forEach(btn => {
+signupButtons.forEach((btn, index) => {
+    console.log(`Registering signup button #${index}:`, btn);
     btn.addEventListener('click', (e) => {
+        console.log('SIGNUP BUTTON CLICKED!');
         e.preventDefault();
-        if (loginModal) loginModal.classList.remove('active');
+        e.stopPropagation();
+
         if (signupModal) {
+            console.log('Opening signup modal...');
+            if (loginModal) loginModal.classList.remove('active');
             signupModal.classList.add('active');
             document.body.style.overflow = 'hidden';
+            console.log('Signup modal should be visible now');
+        } else {
+            console.error('Signup modal not found!');
         }
     });
 });

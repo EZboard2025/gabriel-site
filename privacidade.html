@@ -16,10 +16,11 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2" crossorigin="anonymous?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <!-- Security Layer -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" integrity="sha384-iZjkJXfNiMQpYqfmTPPeCCJdUuPIGNWjPuDVRaWcOfMlOoYN8lRFfpDgVmQ0K3eN" crossorigin="anonymous"></script>
 
     <style>
         .legal-content {
@@ -105,6 +106,13 @@
             }
         }
     </style>
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
 </head>
 <body>
     <!-- Space Background (Fixed) -->
@@ -334,7 +342,7 @@
                 </ul>
 
                 <h2>14. Reclamações</h2>
-                <p>Se você acredita que seus dados pessoais foram tratados de maneira inadequada, você tem o direito de apresentar uma reclamação à Autoridade Nacional de Proteção de Dados (ANPD) através do site: <a href="https://www.gov.br/anpd" style="color: var(--primary-green);" target="_blank">www.gov.br/anpd</a></p>
+                <p>Se você acredita que seus dados pessoais foram tratados de maneira inadequada, você tem o direito de apresentar uma reclamação à Autoridade Nacional de Proteção de Dados (ANPD) através do site: <a href="https://www.gov.br/anpd"  rel="noopener noreferrer"style="color: var(--primary-green);" target="_blank">www.gov.br/anpd</a></p>
 
                 <h2>15. Contato</h2>
                 <p>Para dúvidas, solicitações ou exercício de seus direitos relacionados a esta Política de Privacidade:</p>
@@ -401,8 +409,10 @@
 
     <script src="supabase-config.js"></script>
     <script src="brand-color-loader.js"></script>
-    <script src="auth.js"></script>
-    <script src="auth-handlers.js"></script>
+        <script src="security-utils.js"></script>
+    <script src="auth-secure.js"></script>
+    <script src="fix-auth-timing.js"></script>
+    <script src="auth-handlers-safe.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

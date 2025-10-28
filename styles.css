@@ -998,9 +998,11 @@ a.feature-card:hover {
 
 .fila-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: center;
+    grid-template-columns: 400px 1fr;
+    gap: 80px;
+    align-items: start;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .benefits-list {
@@ -1024,16 +1026,44 @@ a.feature-card:hover {
 }
 
 .fila-form-container {
-    background: var(--bg-card);
+    background: rgba(20, 20, 20, 0.6);
+    backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--border-radius-lg);
     padding: 40px;
+    box-shadow: var(--shadow-lg);
+    max-width: 700px;
 }
 
 .waitlist-form {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
+}
+
+.waitlist-form h3 {
+    color: var(--text-primary);
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.waitlist-form h3::before {
+    content: '';
+    width: 4px;
+    height: 20px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+}
+
+.waitlist-form .form-section-divider {
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .form-group {
@@ -1043,35 +1073,124 @@ a.feature-card:hover {
 }
 
 .form-group label {
-    font-weight: 600;
-    font-size: 14px;
+    font-weight: 500;
+    font-size: 13px;
     color: var(--text-secondary);
+    letter-spacing: 0.3px;
 }
 
 .form-group input,
-.form-group select {
-    padding: 14px 16px;
-    background: var(--bg-dark);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: var(--border-radius);
+.form-group select,
+.form-group textarea {
+    padding: 12px 16px;
+    background: rgba(10, 10, 10, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
     color: var(--text-primary);
-    font-size: 16px;
+    font-size: 15px;
     transition: var(--transition);
     font-family: inherit;
 }
 
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(163, 163, 163, 0.5);
+}
+
+.form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23a3a3a3' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.6;
+}
+
 .form-group input:focus,
-.form-group select:focus {
+.form-group select:focus,
+.form-group textarea:focus {
     outline: none;
     border-color: var(--primary-green);
+    background: rgba(10, 10, 10, 0.95);
     box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+}
+
+.form-group input:hover:not(:focus),
+.form-group select:hover:not(:focus),
+.form-group textarea:hover:not(:focus) {
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+@media (max-width: 1200px) {
+    .fila-content {
+        grid-template-columns: 350px 1fr;
+        gap: 48px;
+    }
+}
+
+@media (max-width: 992px) {
+    .fila-content {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .fila-info {
+        text-align: center;
+    }
+
+    .fila-form-container {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .fila-form-container {
+        padding: 32px 24px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .waitlist-form h3 {
+        font-size: 14px;
+    }
+
+    .waitlist-form .form-section-divider {
+        margin-top: 24px;
+        padding-top: 24px;
+    }
 }
 
 .form-privacy {
     font-size: 12px;
     color: var(--text-tertiary);
     text-align: center;
-    margin-top: -8px;
+    margin-top: 8px;
+    line-height: 1.5;
+}
+
+.form-privacy a {
+    color: var(--primary-green);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.form-privacy a:hover {
+    text-decoration: underline;
 }
 
 .success-message {

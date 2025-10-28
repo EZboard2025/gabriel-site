@@ -14,14 +14,23 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2" crossorigin="anonymous?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="perfil.css">
 
     <!-- Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <!-- Security Layer -->
+    <script src="security-utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" integrity="sha384-iZjkJXfNiMQpYqfmTPPeCCJdUuPIGNWjPuDVRaWcOfMlOoYN8lRFfpDgVmQ0K3eN" crossorigin="anonymous"></script>
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
 </head>
 <body>
     <!-- Space Background (Fixed) -->
@@ -108,7 +117,7 @@
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="edit-email">Email</label>
-                                    <input type="email" id="edit-email" disabled>
+                                    <input type="email" id="edit-email" disabled autocomplete="off">
                                 </div>
                                 <div class="form-group">
                                     <label for="edit-telefone">Telefone</label>
@@ -228,7 +237,7 @@
     <!-- Scripts -->
     <script src="supabase-config.js"></script>
     <script src="brand-color-loader.js"></script>
-    <script src="auth.js"></script>
+    <script src="auth-secure.js"></script>
     <script src="script.js"></script>
     <script src="perfil.js"></script>
 </body>
