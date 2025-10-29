@@ -69,6 +69,9 @@
             padding: 24px;
             background: rgba(20, 30, 48, 0.1);
             border-bottom: 1px solid rgba(34, 197, 94, 0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         .chat-header h2 {
@@ -77,6 +80,34 @@
             font-weight: 600;
             color: white;
             text-align: center;
+            flex: 1;
+        }
+
+        .end-session-btn {
+            padding: 10px 20px;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 8px;
+            color: #ef4444;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        .end-session-btn.active {
+            display: block;
+        }
+
+        .end-session-btn:hover {
+            background: rgba(239, 68, 68, 0.2);
+            border-color: rgba(239, 68, 68, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .end-session-btn:active {
+            transform: translateY(0);
         }
 
         .chat-messages {
@@ -497,6 +528,7 @@
         <div class="chat-container">
             <div class="chat-header">
                 <h2>Simulação de Vendas - Ramppy</h2>
+                <button class="end-session-btn" id="endSessionBtn" onclick="endSession()">Encerrar Sessão</button>
             </div>
             <div class="chat-messages" id="messages">
             </div>
@@ -522,6 +554,7 @@
         const micBtn = document.getElementById('micBtn');
         const micText = document.getElementById('micText');
         const roleplayModal = document.getElementById('roleplayModal');
+        const endSessionBtn = document.getElementById('endSessionBtn');
 
         // Speech Recognition
         let recognition;
@@ -530,6 +563,7 @@
         let currentTranscript = '';
         let lastInterimTranscript = '';
         let isFirstClick = true; // Flag para detectar primeiro clique
+        let sessionActive = false; // Flag para controlar se a sessão está ativa
 
         if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -595,8 +629,52 @@
         function startRoleplay() {
             roleplayModal.style.display = 'none';
             isFirstClick = false;
+            sessionActive = true;
+            // Mostra o botão de encerrar sessão
+            endSessionBtn.classList.add('active');
             // Inicia a gravação automaticamente após fechar o modal
             startRecordingAfterModal();
+        }
+
+        // Função para encerrar a sessão
+        function endSession() {
+            if (!confirm('Deseja realmente encerrar a sessão de roleplay?')) {
+                return;
+            }
+
+            // Para qualquer gravação em andamento
+            if (isRecording && recognition) {
+                recognition.stop();
+                isRecording = false;
+                micBtn.classList.remove('recording');
+            }
+
+            // Limpa o chat
+            messagesDiv.innerHTML = '';
+
+            // Reseta variáveis
+            sessionActive = false;
+            isFirstClick = true;
+            currentTranscript = '';
+            lastInterimTranscript = '';
+            isAudioPlaying = false;
+
+            // Esconde o botão de encerrar sessão
+            endSessionBtn.classList.remove('active');
+
+            // Restaura estado do microfone
+            micBtn.disabled = false;
+            micBtn.style.opacity = '1';
+            micBtn.style.cursor = 'pointer';
+            micBtn.title = 'Clique para falar';
+            micText.textContent = 'Aperte aqui para começar';
+            micText.classList.remove('recording');
+
+            // Adiciona mensagem de encerramento
+            const msg = document.createElement('div');
+            msg.className = 'message system';
+            msg.textContent = 'Sessão encerrada. Clique no microfone para iniciar uma nova simulação.';
+            messagesDiv.appendChild(msg);
         }
 
         function startRecordingAfterModal() {
