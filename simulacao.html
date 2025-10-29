@@ -204,20 +204,210 @@
             height: 32px;
         }
 
-        .welcome-message {
-            text-align: center;
-            padding: 40px;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 16px;
-            line-height: 1.6;
+        .mic-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
         }
 
-        .welcome-message h3 {
-            color: white;
+        .mic-text {
+            color: #86efac;
+            font-size: 18px;
+            font-weight: 600;
+            text-shadow: 0 0 20px rgba(134, 239, 172, 0.8),
+                         0 0 40px rgba(134, 239, 172, 0.6),
+                         0 0 60px rgba(134, 239, 172, 0.4);
+            animation: glow 2s ease-in-out infinite;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .mic-text.recording {
+            color: #ef4444;
+            text-shadow: 0 0 20px rgba(239, 68, 68, 0.8),
+                         0 0 40px rgba(239, 68, 68, 0.6),
+                         0 0 60px rgba(239, 68, 68, 0.4);
+            animation: glowRed 1s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(134, 239, 172, 0.8),
+                             0 0 40px rgba(134, 239, 172, 0.6),
+                             0 0 60px rgba(134, 239, 172, 0.4);
+            }
+            50% {
+                text-shadow: 0 0 30px rgba(134, 239, 172, 1),
+                             0 0 50px rgba(134, 239, 172, 0.8),
+                             0 0 70px rgba(134, 239, 172, 0.6);
+            }
+        }
+
+        @keyframes glowRed {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(239, 68, 68, 0.8),
+                             0 0 40px rgba(239, 68, 68, 0.6),
+                             0 0 60px rgba(239, 68, 68, 0.4);
+            }
+            50% {
+                text-shadow: 0 0 30px rgba(239, 68, 68, 1),
+                             0 0 50px rgba(239, 68, 68, 0.8),
+                             0 0 70px rgba(239, 68, 68, 0.6);
+            }
+        }
+
+        /* Modal de Notificação Inicial */
+        .roleplay-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .roleplay-modal {
+            background: rgba(20, 30, 48, 0.3);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 700px;
+            max-height: 85vh;
+            width: 90%;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .roleplay-modal::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .roleplay-modal::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .roleplay-modal::-webkit-scrollbar-thumb {
+            background: rgba(34, 197, 94, 0.3);
+            border-radius: 3px;
+        }
+
+        .roleplay-modal::-webkit-scrollbar-thumb:hover {
+            background: rgba(34, 197, 94, 0.5);
+        }
+
+        .roleplay-modal h3 {
+            color: #22c55e;
             font-size: 24px;
-            margin-bottom: 16px;
+            margin: 0 0 24px 0;
+            text-align: center;
             font-weight: 600;
         }
+
+        .roleplay-modal-content {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 28px;
+            text-align: left;
+        }
+
+        .roleplay-modal-content p {
+            margin: 0 0 12px 0;
+        }
+
+        .roleplay-modal-content ul {
+            margin: 8px 0 16px 0;
+            padding-left: 20px;
+        }
+
+        .roleplay-modal-content li {
+            margin-bottom: 6px;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .roleplay-modal-content strong {
+            color: #22c55e;
+            font-weight: 600;
+        }
+
+        .roleplay-modal-buttons {
+            display: flex;
+            gap: 16px;
+            width: 100%;
+        }
+
+        .roleplay-start-btn {
+            flex: 1;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+        }
+
+        .roleplay-start-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(34, 197, 94, 0.4);
+        }
+
+        .roleplay-start-btn:active {
+            transform: translateY(0);
+        }
+
+        .roleplay-cancel-btn {
+            flex: 1;
+            padding: 16px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .roleplay-cancel-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .roleplay-cancel-btn:active {
+            transform: translateY(0);
+        }
+
     </style>
 </head>
 <body>
@@ -260,6 +450,48 @@
         </div>
     </nav>
 
+    <!-- Modal de Boas-vindas ao Roleplay -->
+    <div class="roleplay-modal-overlay" id="roleplayModal" style="display: none;">
+        <div class="roleplay-modal">
+            <h3>🎯 Simulação de Vendas</h3>
+            <div class="roleplay-modal-content" id="roleplayModalText">
+                <p><strong>Contexto do desafio:</strong><br>
+                Você é um vendedor e tem em mãos uma caneta usada que precisa vender.</p>
+
+                <p><strong>A situação:</strong></p>
+                <ul>
+                    <li>Você está na rua</li>
+                    <li>À sua frente passa um homem de terno, aparentemente apressado</li>
+                    <li>Você precisa abordá-lo e vender sua caneta</li>
+                    <li>Você não sabe nada sobre ele, sua profissão ou suas necessidades</li>
+                </ul>
+
+                <p><strong>Seu objetivo:</strong><br>
+                Convencer esse desconhecido a comprar sua caneta usada. Para isso, você precisará:</p>
+                <ul>
+                    <li>✅ Fazer uma abordagem que prenda a atenção dele</li>
+                    <li>✅ Descobrir rapidamente se ele tem alguma necessidade</li>
+                    <li>✅ Identificar problemas reais através de perguntas inteligentes</li>
+                    <li>✅ Mostrar valor antes de falar de preço</li>
+                </ul>
+
+                <p><strong>Atenção:</strong></p>
+                <ul>
+                    <li>Ele está com pressa e pode te ignorar ou encerrar a conversa a qualquer momento</li>
+                    <li>Discurso decorado ou insistência exagerada vão afastá-lo</li>
+                    <li>Você tem segundos para gerar interesse</li>
+                    <li>Se não agregar valor rapidamente, perdeu a venda</li>
+                </ul>
+
+                <p style="margin-top: 16px;"><strong>O desafio começa agora. Boa sorte! 🎯</strong></p>
+            </div>
+            <div class="roleplay-modal-buttons">
+                <button class="roleplay-cancel-btn" onclick="cancelRoleplay()">Cancelar</button>
+                <button class="roleplay-start-btn" onclick="startRoleplay()">Começar o Roleplay</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Main Content -->
     <div class="main-content">
         <div class="chat-container">
@@ -267,21 +499,19 @@
                 <h2>Simulação de Vendas - Ramppy</h2>
             </div>
             <div class="chat-messages" id="messages">
-                <div class="welcome-message">
-                    <h3>Bem-vindo ao Simulador de Vendas</h3>
-                    <p>Pratique suas habilidades de vendas com nosso agente inteligente.<br>
-                    Digite uma mensagem para começar!</p>
-                </div>
             </div>
             <div class="chat-input-area">
-                <button class="mic-btn" onclick="toggleRecording()" id="micBtn" title="Clique para falar">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
-                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                        <line x1="12" y1="19" x2="12" y2="23"/>
-                        <line x1="8" y1="23" x2="16" y2="23"/>
-                    </svg>
-                </button>
+                <div class="mic-container">
+                    <button class="mic-btn" onclick="toggleRecording()" id="micBtn" title="Clique para falar">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                            <line x1="12" y1="19" x2="12" y2="23"/>
+                            <line x1="8" y1="23" x2="16" y2="23"/>
+                        </svg>
+                    </button>
+                    <span class="mic-text" id="micText">Aperte aqui para começar</span>
+                </div>
             </div>
         </div>
     </div>
@@ -290,6 +520,8 @@
         const sessionId = 'session_' + Date.now();
         const messagesDiv = document.getElementById('messages');
         const micBtn = document.getElementById('micBtn');
+        const micText = document.getElementById('micText');
+        const roleplayModal = document.getElementById('roleplayModal');
 
         // Speech Recognition
         let recognition;
@@ -297,6 +529,7 @@
         let isAudioPlaying = false; // Controle para saber se o áudio está tocando
         let currentTranscript = '';
         let lastInterimTranscript = '';
+        let isFirstClick = true; // Flag para detectar primeiro clique
 
         if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -352,9 +585,45 @@
             alert('Reconhecimento de voz não suportado neste navegador');
         }
 
+        // Função para cancelar e fechar o modal
+        function cancelRoleplay() {
+            roleplayModal.style.display = 'none';
+            // Não muda isFirstClick, então o modal aparecerá novamente no próximo clique
+        }
+
+        // Função para fechar o modal e iniciar o roleplay
+        function startRoleplay() {
+            roleplayModal.style.display = 'none';
+            isFirstClick = false;
+            // Inicia a gravação automaticamente após fechar o modal
+            startRecordingAfterModal();
+        }
+
+        function startRecordingAfterModal() {
+            console.log('Iniciando gravação após modal');
+            currentTranscript = '';
+            lastInterimTranscript = '';
+            try {
+                recognition.start();
+                isRecording = true;
+                micBtn.classList.add('recording');
+                micBtn.title = 'Clique para parar e enviar';
+                micText.textContent = 'Finalizar sua fala';
+                micText.classList.add('recording');
+            } catch (e) {
+                console.error('Erro ao iniciar recognition:', e);
+            }
+        }
+
         function toggleRecording() {
             if (!recognition) {
                 console.error('Recognition não disponível');
+                return;
+            }
+
+            // Se é o primeiro clique, mostra o modal
+            if (isFirstClick) {
+                roleplayModal.style.display = 'flex';
                 return;
             }
 
@@ -373,6 +642,8 @@
                 isRecording = false;
                 micBtn.classList.remove('recording');
                 micBtn.title = 'Clique para falar';
+                micText.textContent = 'Aperte aqui para começar';
+                micText.classList.remove('recording');
 
                 // Combina transcript final com interim se necessário
                 let fullTranscript = currentTranscript;
@@ -401,6 +672,8 @@
                     isRecording = true;
                     micBtn.classList.add('recording');
                     micBtn.title = 'Clique para parar e enviar';
+                    micText.textContent = 'Finalizar sua fala';
+                    micText.classList.add('recording');
                 } catch (e) {
                     console.error('Erro ao iniciar recognition:', e);
                 }
@@ -431,6 +704,8 @@
                 micBtn.style.opacity = '0.5';
                 micBtn.style.cursor = 'not-allowed';
                 micBtn.title = 'Aguarde a IA terminar de falar...';
+                micText.textContent = 'Aguarde a IA falar...';
+                micText.classList.remove('recording');
 
                 // Adiciona indicador visual de que a IA está falando
                 const indicator = document.createElement('div');
@@ -466,6 +741,8 @@
                     micBtn.style.opacity = '1';
                     micBtn.style.cursor = 'pointer';
                     micBtn.title = 'Clique para falar';
+                    micText.textContent = 'Aperte aqui para começar';
+                    micText.classList.remove('recording');
 
                     // Remove o indicador de que a IA está falando
                     if (indicator.parentNode) {
@@ -481,6 +758,8 @@
                     micBtn.style.opacity = '1';
                     micBtn.style.cursor = 'pointer';
                     micBtn.title = 'Clique para falar';
+                    micText.textContent = 'Aperte aqui para começar';
+                    micText.classList.remove('recording');
                     if (indicator.parentNode) {
                         indicator.remove();
                     }
@@ -497,6 +776,8 @@
                 micBtn.style.opacity = '1';
                 micBtn.style.cursor = 'pointer';
                 micBtn.title = 'Clique para falar';
+                micText.textContent = 'Aperte aqui para começar';
+                micText.classList.remove('recording');
             }
         }
 
