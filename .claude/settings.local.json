@@ -28,7 +28,12 @@
       "Read(//d/**)",
       "Bash(git add:*)",
       "Bash(git commit -m \"$(cat <<''EOF''\nFix authentication system and remove AI mentor step from how-it-works section\n\n- Fixed login modal auto-closing issue by implementing proper async function loading\n- Created auth-handlers-safe.js with timing checks for auth functions\n- Added fix-auth-timing.js to ensure all auth functions are available before use\n- Implemented enterprise-level security features (PBKDF2 hashing, CSRF, XSS protection, rate limiting)\n- Added Supabase SDK integration with proper initialization\n- Created security-utils.js with comprehensive security utilities\n- Removed first step (AI mentor) from \"Como Funciona\" section in index.html and como-funciona.html\n- Updated step numbering from 4 steps to 3 steps\n- Fixed script loading order across all HTML files\n- Reorganized authentication flow to prevent timing issues\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(node proxy-tts.js:*)",
+      "Bash(start http://localhost:8000/simulacao.html)",
+      "Bash(curl:*)",
+      "Bash(git push:*)",
+      "Bash(rm animations.js cryptfy-styles.css proxy-tts-mock.js nul)"
     ],
     "deny": [],
     "ask": []
