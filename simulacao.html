@@ -139,6 +139,22 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
+        .message.system {
+            align-self: center;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(59, 130, 246, 0.1) 100%);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #93c5fd;
+            font-size: 0.9em;
+            font-style: italic;
+            animation: pulse 1.5s ease-in-out infinite;
+            text-align: center;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
         .chat-input-area {
             padding: 30px;
             display: flex;
@@ -278,6 +294,7 @@
         // Speech Recognition
         let recognition;
         let isRecording = false;
+        let isAudioPlaying = false; // Controle para saber se o áudio está tocando
         let currentTranscript = '';
         let lastInterimTranscript = '';
 
@@ -341,6 +358,15 @@
                 return;
             }
 
+            // Bloqueia se o áudio está tocando
+            if (isAudioPlaying) {
+                console.log('⏸️ Aguarde a IA terminar de falar...');
+                // Adiciona feedback visual
+                micBtn.style.opacity = '0.5';
+                micBtn.style.cursor = 'not-allowed';
+                return;
+            }
+
             if (isRecording) {
                 // Para a gravação e envia
                 recognition.stop();
@@ -399,6 +425,19 @@
             try {
                 console.log('Enviando texto para TTS webhook:', text);
 
+                // Marca que o áudio está tocando e desabilita o microfone
+                isAudioPlaying = true;
+                micBtn.disabled = true;
+                micBtn.style.opacity = '0.5';
+                micBtn.style.cursor = 'not-allowed';
+                micBtn.title = 'Aguarde a IA terminar de falar...';
+
+                // Adiciona indicador visual de que a IA está falando
+                const indicator = document.createElement('div');
+                indicator.className = 'message system';
+                indicator.innerHTML = '🔊 IA está falando...';
+                messagesDiv.appendChild(indicator);
+
                 // Enviar para o webhook n8n via proxy
                 const response = await fetch('http://localhost:3002/tts', {
                     method: 'POST',
@@ -420,10 +459,31 @@
                 audio.onended = () => {
                     console.log('✅ Áudio finalizado');
                     URL.revokeObjectURL(audioUrl);
+
+                    // Libera o microfone quando o áudio terminar
+                    isAudioPlaying = false;
+                    micBtn.disabled = false;
+                    micBtn.style.opacity = '1';
+                    micBtn.style.cursor = 'pointer';
+                    micBtn.title = 'Clique para falar';
+
+                    // Remove o indicador de que a IA está falando
+                    if (indicator.parentNode) {
+                        indicator.remove();
+                    }
                 };
 
                 audio.onerror = (e) => {
                     console.error('❌ Erro ao tocar áudio:', e);
+                    // Em caso de erro, libera o microfone
+                    isAudioPlaying = false;
+                    micBtn.disabled = false;
+                    micBtn.style.opacity = '1';
+                    micBtn.style.cursor = 'pointer';
+                    micBtn.title = 'Clique para falar';
+                    if (indicator.parentNode) {
+                        indicator.remove();
+                    }
                 };
 
                 await audio.play();
@@ -431,6 +491,12 @@
 
             } catch (error) {
                 console.error('Erro no TTS webhook:', error);
+                // Em caso de erro, libera o microfone
+                isAudioPlaying = false;
+                micBtn.disabled = false;
+                micBtn.style.opacity = '1';
+                micBtn.style.cursor = 'pointer';
+                micBtn.title = 'Clique para falar';
             }
         }
 
