@@ -1,80 +1,55 @@
-// Page Transitions JavaScript
+// Page Transitions
+document.addEventListener('DOMContentLoaded', function() {
+    // Fade in on page load
+    document.body.classList.remove('page-transition');
 
-// Add transition overlay to page
-function initPageTransitions() {
-    // Create transition overlay
-    const transitionOverlay = document.createElement('div');
-    transitionOverlay.className = 'page-transition';
-    document.body.appendChild(transitionOverlay);
+    // Add smooth transition for navigation links
+    const links = document.querySelectorAll('a[href]');
 
-    // Create loader
-    const loader = document.createElement('div');
-    loader.className = 'page-loader';
-    loader.innerHTML = '<div class="loader-spinner"></div>';
-    document.body.appendChild(loader);
-
-    // Fade in page on load
-    window.addEventListener('load', () => {
-        document.body.classList.remove('loading');
-        document.body.classList.add('loaded');
-    });
-
-    // Handle all internal links
-    document.addEventListener('click', (e) => {
-        const link = e.target.closest('a');
-
-        if (!link) return;
-
+    links.forEach(link => {
+        // Skip links that open in new tab, are anchors, or have specific classes to ignore
         const href = link.getAttribute('href');
+        const target = link.getAttribute('target');
 
-        // Skip external links, anchors, and special links
-        if (!href ||
+        if (
+            target === '_blank' ||
             href.startsWith('#') ||
-            href.startsWith('http') ||
             href.startsWith('mailto:') ||
             href.startsWith('tel:') ||
-            link.target === '_blank') {
+            link.classList.contains('no-transition')
+        ) {
             return;
         }
 
-        // Only transition for internal page links
-        if (href.endsWith('.html') || href === 'index.html' || href === 'perfil.html') {
-            e.preventDefault();
-            navigateWithTransition(href);
-        }
+        link.addEventListener('click', function(e) {
+            // Check if it's a valid internal link
+            if (href && !href.startsWith('http://') && !href.startsWith('https://')) {
+                e.preventDefault();
+
+                // Add transition class
+                document.body.classList.add('page-transition');
+
+                // Navigate after transition
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 800); // Match the CSS transition duration
+            } else if (href && (href.startsWith(window.location.origin) || href.startsWith('/'))) {
+                // Handle absolute URLs on same domain
+                e.preventDefault();
+
+                document.body.classList.add('page-transition');
+
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 800);
+            }
+        });
     });
-}
+});
 
-// Navigate with smooth transition
-function navigateWithTransition(url) {
-    const transitionOverlay = document.querySelector('.page-transition');
-    const loader = document.querySelector('.page-loader');
-
-    // Show transition
-    transitionOverlay.classList.add('active');
-    loader.classList.add('active');
-
-    // Navigate after transition
-    setTimeout(() => {
-        window.location.href = url;
-    }, 150);
-}
-
-// Add body class for initial load
-document.body.classList.add('loading');
-
-// Initialize on DOM ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initPageTransitions);
-} else {
-    initPageTransitions();
-}
-
-// Smooth page transitions for specific navigation
-window.navigateToProfile = function() {
-    navigateWithTransition('perfil.html');
-};
-
-window.navigateToHome = function() {
-    navigateWithTransition('index.html');
-};
+// Ensure page fades in when using back/forward buttons
+window.addEventListener('pageshow', function(event) {
+    if (event.persisted) {
+        document.body.classList.remove('page-transition');
+    }
+});

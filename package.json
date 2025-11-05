@@ -4,9 +4,9 @@
   "description": "Landing page oficial da Ramppy - Plataforma de Inteligência Comercial com IA",
   "main": "index.html",
   "scripts": {
-    "dev": "npx http-server -p 8000 -o",
-    "start": "npx http-server -p 8000",
-    "preview": "npx http-server -p 8000 -o"
+    "dev": "npx http-server -p 8000 -a 0.0.0.0 -o",
+    "start": "npx http-server -p 8000 -a 0.0.0.0",
+    "preview": "npx http-server -p 8000 -a 0.0.0.0 -o"
   },
   "keywords": [
     "ramppy",
@@ -17,5 +17,8 @@
   ],
   "author": "Ramppy Team",
   "license": "UNLICENSED",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "pg": "^8.16.3"
+  }
 }

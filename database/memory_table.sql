@@ -1,15 +1,23 @@
--- Tabela simples para memória do agente n8n
--- Baseada na estrutura solicitada
+-- Tabela para armazenar mensagens do chat com contexto
+-- Para uso com n8n e PostgreSQL Memory
 
-CREATE TABLE IF NOT EXISTS memory (
+CREATE TABLE IF NOT EXISTS chat_messages (
     id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
     session_id TEXT NOT NULL,
-    message JSONB NOT NULL,
+    role TEXT NOT NULL, -- 'user' ou 'assistant'
+    message TEXT NOT NULL,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
--- Criar índice para melhorar performance de busca por session_id
-CREATE INDEX IF NOT EXISTS idx_memory_session_id ON memory(session_id);
+-- Índice para buscar mensagens por session_id (performance)
+CREATE INDEX IF NOT EXISTS idx_chat_messages_session_id ON chat_messages(session_id);
 
--- Criar índice para ordenação por data
-CREATE INDEX IF NOT EXISTS idx_memory_created_at ON memory(created_at DESC);
+-- Índice composto para buscar mensagens de uma sessão ordenadas por data
+CREATE INDEX IF NOT EXISTS idx_chat_messages_session_created ON chat_messages(session_id, created_at);
+
+-- Comentários para documentação
+COMMENT ON TABLE chat_messages IS 'Armazena histórico de mensagens do chat para contexto da conversa';
+COMMENT ON COLUMN chat_messages.session_id IS 'ID único da sessão de roleplay';
+COMMENT ON COLUMN chat_messages.role IS 'Quem enviou a mensagem: user ou assistant';
+COMMENT ON COLUMN chat_messages.message IS 'Conteúdo da mensagem';
+COMMENT ON COLUMN chat_messages.created_at IS 'Data e hora da mensagem';

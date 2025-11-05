@@ -49,6 +49,12 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
+    opacity: 1;
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.page-transition {
+    opacity: 0;
 }
 
 body::before {
