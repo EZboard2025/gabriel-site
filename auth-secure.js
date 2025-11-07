@@ -27,90 +27,53 @@
 
     window.signupUser = async function(nome, email, senha, empresa) {
         try {
-            // Rate limiting
-            security.checkRateLimit('signup', email, 3, 300000); // 3 tentativas em 5 minutos
-
-            // Validações rigorosas
-            if (!security.validateInput(nome, 'name')) {
-                throw new Error('Nome inválido. Use apenas letras e espaços.');
+            // Validações básicas
+            if (!nome || nome.trim().length < 2) {
+                throw new Error('Nome deve ter pelo menos 2 caracteres.');
             }
 
-            if (!security.validateEmail(email)) {
-                throw new Error('Email inválido ou temporário não permitido.');
+            if (!email || !email.includes('@')) {
+                throw new Error('Email inválido.');
             }
 
-            if (!security.validateInput(empresa, 'company')) {
-                throw new Error('Nome da empresa inválido.');
+            if (!senha || senha.length < 6) {
+                throw new Error('Senha deve ter pelo menos 6 caracteres.');
             }
-
-            // Validar força da senha
-            if (senha.length < 8) {
-                throw new Error('Senha deve ter pelo menos 8 caracteres.');
-            }
-
-            if (!/[A-Z]/.test(senha)) {
-                throw new Error('Senha deve conter pelo menos uma letra maiúscula.');
-            }
-
-            if (!/[a-z]/.test(senha)) {
-                throw new Error('Senha deve conter pelo menos uma letra minúscula.');
-            }
-
-            if (!/[0-9]/.test(senha)) {
-                throw new Error('Senha deve conter pelo menos um número.');
-            }
-
-            if (!/[^A-Za-z0-9]/.test(senha)) {
-                throw new Error('Senha deve conter pelo menos um caractere especial.');
-            }
-
-            // Hash seguro da senha
-            const passwordHash = await security.hashPassword(senha);
 
             // Sanitizar dados
             const sanitizedData = {
-                nome: security.sanitizeHTML(nome),
+                id: Date.now().toString(),
+                nome: nome.trim(),
                 email: email.toLowerCase().trim(),
-                password_hash: passwordHash,
-                empresa: security.sanitizeHTML(empresa),
-                created_at: new Date().toISOString(),
-                email_verified: false,
-                verification_token: security.generateSecureToken(),
-                last_login: null,
-                login_attempts: 0,
-                locked_until: null
+                senha: btoa(senha), // Base64 simples (temporário)
+                empresa: empresa ? empresa.trim() : '',
+                created_at: new Date().toISOString()
             };
 
-            // Verificar se email já existe (sem revelar informação)
-            const { data: existingUser, error: checkError } = await supabaseRef
-                .from('users')
-                .select('id')
-                .eq('email', sanitizedData.email)
-                .maybeSingle();
+            // Verificar se email já existe
+            const users = JSON.parse(localStorage.getItem('ramppy_users') || '[]');
+            const existingUser = users.find(u => u.email === sanitizedData.email);
 
             if (existingUser) {
-                // Mensagem genérica para não revelar que email existe
-                throw new Error('Erro ao criar conta. Verifique os dados e tente novamente.');
+                throw new Error('Este email já está cadastrado.');
             }
 
-            // Inserir usuário
-            const { data, error } = await supabaseRef
-                .from('users')
-                .insert([sanitizedData])
-                .select()
-                .single();
+            // Adicionar novo usuário
+            users.push(sanitizedData);
+            localStorage.setItem('ramppy_users', JSON.stringify(users));
 
-            if (error) {
-                console.error('Erro Supabase:', error);
-                throw new Error('Erro ao criar conta. Tente novamente mais tarde.');
-            }
-
-            // Enviar email de verificação (simulado por enquanto)
-            console.log('Token de verificação:', sanitizedData.verification_token);
+            // Fazer login automático
+            const userSession = {
+                id: sanitizedData.id,
+                nome: sanitizedData.nome,
+                email: sanitizedData.email,
+                empresa: sanitizedData.empresa
+            };
+            localStorage.setItem('ramppy_current_user', JSON.stringify(userSession));
 
             return {
                 success: true,
-                message: 'Conta criada! Verifique seu email para ativar sua conta.'
+                message: 'Conta criada com sucesso! Bem-vindo à Ramppy.'
             };
 
         } catch (error) {
@@ -127,9 +90,6 @@
 
     window.loginUser = async function(email, senha) {
         try {
-            // Rate limiting
-            security.checkRateLimit('login', email, 5, 300000); // 5 tentativas em 5 minutos
-
             // Validação básica
             if (!email || !senha) {
                 throw new Error('Email e senha são obrigatórios.');
@@ -137,83 +97,31 @@
 
             email = email.toLowerCase().trim();
 
-            // Buscar usuário
-            const { data: user, error } = await supabaseRef
-                .from('users')
-                .select('*')
-                .eq('email', email)
-                .maybeSingle();
+            // Buscar usuário no localStorage
+            const users = JSON.parse(localStorage.getItem('ramppy_users') || '[]');
+            const user = users.find(u => u.email === email);
 
-            // Mensagem genérica para não revelar se usuário existe
-            const genericError = 'Email ou senha incorretos.';
-
-            if (error || !user) {
-                // Delay artificial para prevenir timing attacks
-                await new Promise(resolve => setTimeout(resolve, Math.random() * 1000 + 500));
-                throw new Error(genericError);
-            }
-
-            // Verificar se conta está bloqueada
-            if (user.locked_until && new Date(user.locked_until) > new Date()) {
-                const minutesLeft = Math.ceil((new Date(user.locked_until) - new Date()) / 60000);
-                throw new Error(`Conta bloqueada. Tente novamente em ${minutesLeft} minutos.`);
+            if (!user) {
+                throw new Error('Email ou senha incorretos.');
             }
 
             // Verificar senha
-            const isValidPassword = await security.verifyPassword(senha, user.password_hash);
-
-            if (!isValidPassword) {
-                // Incrementar tentativas de login
-                const newAttempts = (user.login_attempts || 0) + 1;
-                let updateData = { login_attempts: newAttempts };
-
-                // Bloquear após 5 tentativas
-                if (newAttempts >= 5) {
-                    const lockUntil = new Date(Date.now() + 30 * 60 * 1000); // 30 minutos
-                    updateData.locked_until = lockUntil.toISOString();
-                    updateData.login_attempts = 0;
-                }
-
-                await supabaseRef
-                    .from('users')
-                    .update(updateData)
-                    .eq('id', user.id);
-
-                // Delay artificial
-                await new Promise(resolve => setTimeout(resolve, Math.random() * 1000 + 500));
-                throw new Error(genericError);
+            if (user.senha !== btoa(senha)) {
+                throw new Error('Email ou senha incorretos.');
             }
 
-            // Verificar se email foi verificado
-            if (!user.email_verified) {
-                throw new Error('Por favor, verifique seu email antes de fazer login.');
-            }
-
-            // Login bem-sucedido - resetar tentativas e atualizar último login
-            await supabaseRef
-                .from('users')
-                .update({
-                    login_attempts: 0,
-                    locked_until: null,
-                    last_login: new Date().toISOString()
-                })
-                .eq('id', user.id);
-
-            // Criar sessão segura
-            const session = security.createSecureSession({
+            // Login bem-sucedido
+            const userSession = {
                 id: user.id,
                 nome: user.nome,
                 email: user.email,
                 empresa: user.empresa
-            });
+            };
+            localStorage.setItem('ramppy_current_user', JSON.stringify(userSession));
 
             return {
                 success: true,
-                user: {
-                    nome: user.nome,
-                    email: user.email,
-                    empresa: user.empresa
-                }
+                user: userSession
             };
 
         } catch (error) {
