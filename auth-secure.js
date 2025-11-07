@@ -154,22 +154,21 @@
     // ==========================================
 
     window.getCurrentUser = function() {
-        // Validar sessão primeiro
-        if (!security.validateSession()) {
-            return null;
-        }
-
         // Obter dados do usuário de localStorage
         const userStr = localStorage.getItem('ramppy_user');
         if (!userStr) return null;
 
         try {
             const userData = JSON.parse(userStr);
-            return {
-                ...userData,
-                isLoggedIn: true
-            };
+            if (userData && userData.email) {
+                return {
+                    ...userData,
+                    isLoggedIn: true
+                };
+            }
+            return null;
         } catch (e) {
+            console.error('Erro ao ler usuário:', e);
             return null;
         }
     };

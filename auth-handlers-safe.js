@@ -80,16 +80,10 @@
                         // Atualizar UI
                         updateAuthButtons();
 
-                        // Redirecionar após 1.5 segundos
+                        // Recarregar página após 1 segundo para mostrar usuário logado
                         setTimeout(() => {
-                            // Verificar se existe página de simulação
-                            if (document.getElementById('simulacao-page') || window.location.pathname.includes('simulacao')) {
-                                window.location.reload();
-                            } else {
-                                // Redirecionar para página de simulação
-                                window.location.href = 'simulacao.html';
-                            }
-                        }, 1500);
+                            window.location.reload();
+                        }, 1000);
                     } else {
                         const errorMsg = (result && result.error) || 'Erro ao fazer login';
                         showNotification(errorMsg, 'error');
@@ -146,16 +140,10 @@
                         // Atualizar UI
                         updateAuthButtons();
 
-                        // Redirecionar após 1.5 segundos
+                        // Recarregar página após 1 segundo para mostrar usuário logado
                         setTimeout(() => {
-                            // Verificar se existe página de simulação
-                            if (document.getElementById('simulacao-page') || window.location.pathname.includes('simulacao')) {
-                                window.location.reload();
-                            } else {
-                                // Redirecionar para página de simulação
-                                window.location.href = 'simulacao.html';
-                            }
-                        }, 1500);
+                            window.location.reload();
+                        }, 1000);
                     } else {
                         const errorMsg = (result && result.error) || 'Erro ao criar conta';
                         showNotification(errorMsg, 'error');
