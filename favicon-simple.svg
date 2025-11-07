@@ -1,0 +1,7 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fundo escuro -->
+  <rect width="32" height="32" rx="6" fill="#000000"/>
+
+  <!-- Letra R estilizada em verde -->
+  <path d="M8 24V8h7c2.5 0 4 1.5 4 3.5c0 1.2-0.7 2.2-1.8 2.8L20 24h-3l-2.5-8.5H11V24H8z M11 11h4c0.8 0 1.5-0.7 1.5-1.5S15.8 8 15 8h-4V11z" fill="#22c55e"/>
+</svg>
