@@ -31,8 +31,21 @@ jobs:
       run: |
         echo "📦 Preparando arquivos..."
 
-        # Cria arquivo com todos os arquivos do site (HTML, CSS, JS, IMAGENS, SEO)
-        tar -czf ramppy-site.tar.gz *.html *.css *.js *.png *.svg *.jpg *.jpeg *.gif *.webp *.ico *.json *.xml *.txt 2>/dev/null || true
+        # Listar arquivos que serão incluídos
+        ls -la *.html *.css *.js *.png *.svg *.ico *.json *.xml *.txt 2>/dev/null || echo "Alguns arquivos não encontrados, continuando..."
+
+        # Cria arquivo com todos os arquivos do site
+        tar -czf ramppy-site.tar.gz \
+          *.html \
+          *.css \
+          *.js \
+          *.png \
+          *.svg \
+          *.ico \
+          manifest.json \
+          robots.txt \
+          sitemap.xml \
+          2>/dev/null || tar -czf ramppy-site.tar.gz *.html *.css *.js
 
         echo "📤 Enviando para o servidor..."
 
