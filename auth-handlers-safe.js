@@ -64,6 +64,9 @@
                     const result = await window.loginUser(email, senha);
 
                     if (result && result.success) {
+                        // Mostrar mensagem de sucesso
+                        showNotification('Login realizado com sucesso! Redirecionando...', 'success');
+
                         // Fechar modal
                         const loginModal = document.getElementById('login-modal');
                         if (loginModal) {
@@ -76,6 +79,17 @@
 
                         // Atualizar UI
                         updateAuthButtons();
+
+                        // Redirecionar após 1.5 segundos
+                        setTimeout(() => {
+                            // Verificar se existe página de simulação
+                            if (document.getElementById('simulacao-page') || window.location.pathname.includes('simulacao')) {
+                                window.location.reload();
+                            } else {
+                                // Redirecionar para página de simulação
+                                window.location.href = 'simulacao.html';
+                            }
+                        }, 1500);
                     } else {
                         const errorMsg = (result && result.error) || 'Erro ao fazer login';
                         showNotification(errorMsg, 'error');
@@ -117,7 +131,7 @@
 
                     if (result && result.success) {
                         // Mostrar mensagem de sucesso
-                        showNotification(result.message || 'Conta criada com sucesso!', 'success');
+                        showNotification(result.message || 'Conta criada com sucesso! Redirecionando...', 'success');
 
                         // Fechar modal
                         const signupModal = document.getElementById('signup-modal');
@@ -131,6 +145,17 @@
 
                         // Atualizar UI
                         updateAuthButtons();
+
+                        // Redirecionar após 1.5 segundos
+                        setTimeout(() => {
+                            // Verificar se existe página de simulação
+                            if (document.getElementById('simulacao-page') || window.location.pathname.includes('simulacao')) {
+                                window.location.reload();
+                            } else {
+                                // Redirecionar para página de simulação
+                                window.location.href = 'simulacao.html';
+                            }
+                        }, 1500);
                     } else {
                         const errorMsg = (result && result.error) || 'Erro ao criar conta';
                         showNotification(errorMsg, 'error');

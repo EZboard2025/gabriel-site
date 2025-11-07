@@ -69,7 +69,7 @@
                 email: sanitizedData.email,
                 empresa: sanitizedData.empresa
             };
-            localStorage.setItem('ramppy_current_user', JSON.stringify(userSession));
+            localStorage.setItem('ramppy_user', JSON.stringify(userSession));
 
             return {
                 success: true,
@@ -117,7 +117,7 @@
                 email: user.email,
                 empresa: user.empresa
             };
-            localStorage.setItem('ramppy_current_user', JSON.stringify(userSession));
+            localStorage.setItem('ramppy_user', JSON.stringify(userSession));
 
             return {
                 success: true,
