@@ -1,0 +1,55 @@
+name: 🚀 Auto Deploy para Ramppy.com
+
+on:
+  # Ativa quando fizer push para o branch main
+  push:
+    branches: [ main ]
+
+  # Permite executar manualmente
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy Automático
+    runs-on: ubuntu-latest
+
+    steps:
+    # Passo 1: Baixa o código
+    - name: 📥 Baixar código
+      uses: actions/checkout@v3
+
+    # Passo 2: Instala sshpass para usar senha SSH
+    - name: 🔧 Preparar ferramentas
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y sshpass
+
+    # Passo 3: Envia arquivos e atualiza o site
+    - name: 🚀 Atualizar site Ramppy.com
+      env:
+        DEPLOY_PASSWORD: ${{ secrets.DEPLOY_PASSWORD }}
+      run: |
+        echo "📦 Preparando arquivos..."
+
+        # Cria arquivo com todos os arquivos do site
+        tar -czf ramppy-site.tar.gz *.html *.css *.js 2>/dev/null || true
+
+        echo "📤 Enviando para o servidor..."
+
+        # Envia arquivo para o servidor
+        sshpass -p "$DEPLOY_PASSWORD" scp -o StrictHostKeyChecking=no \
+          ramppy-site.tar.gz root@72.61.219.49:/tmp/
+
+        echo "🔄 Atualizando site..."
+
+        # Conecta no servidor e atualiza os arquivos
+        sshpass -p "$DEPLOY_PASSWORD" ssh -o StrictHostKeyChecking=no root@72.61.219.49 << 'ENDSSH'
+          cd /var/www/html
+          tar -xzf /tmp/ramppy-site.tar.gz
+          rm /tmp/ramppy-site.tar.gz
+          chown -R www-data:www-data . 2>/dev/null || true
+          nginx -s reload 2>/dev/null || true
+          echo "✅ Site atualizado com sucesso!"
+        ENDSSH
+
+        echo "🎉 Deploy concluído! Site atualizado em https://ramppy.com"

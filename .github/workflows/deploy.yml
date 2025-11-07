@@ -1,0 +1,57 @@
+name: 🚀 Deploy para Ramppy.com
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: 📦 Deploy para VPS
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 🔄 Checkout código
+      uses: actions/checkout@v3
+
+    - name: 📝 Listar arquivos (debug)
+      run: |
+        echo "📂 Arquivos no repositório:"
+        ls -la
+
+    - name: 🔐 Configurar SSH
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        SSH_HOST: ${{ secrets.SSH_HOST }}
+        SSH_USER: ${{ secrets.SSH_USER }}
+      run: |
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H $SSH_HOST >> ~/.ssh/known_hosts
+
+    - name: 🚀 Deploy para servidor
+      env:
+        SSH_HOST: ${{ secrets.SSH_HOST }}
+        SSH_USER: ${{ secrets.SSH_USER }}
+      run: |
+        echo "📤 Enviando arquivos para o servidor..."
+
+        # Remove arquivos temporários e de desenvolvimento
+        rm -rf node_modules .git .github
+
+        # Envia todos os arquivos HTML, CSS e JS
+        scp -r *.html *.css *.js $SSH_USER@$SSH_HOST:/var/www/html/ 2>/dev/null || true
+
+        # Se houver pastas de assets
+        scp -r assets img fonts $SSH_USER@$SSH_HOST:/var/www/html/ 2>/dev/null || true
+
+        echo "✅ Deploy concluído!"
+
+    - name: 🔄 Limpar cache do servidor (opcional)
+      env:
+        SSH_HOST: ${{ secrets.SSH_HOST }}
+        SSH_USER: ${{ secrets.SSH_USER }}
+      run: |
+        ssh $SSH_USER@$SSH_HOST "sudo nginx -s reload" || true
+        echo "🎉 Site atualizado com sucesso em https://ramppy.com"
