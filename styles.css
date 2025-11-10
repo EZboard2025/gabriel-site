@@ -925,14 +925,17 @@ section {
 
 /* Grid de 3 colunas */
 .features-grid-3col {
-    grid-template-columns: repeat(3, 1fr);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 32px;
     max-width: 1400px;
 }
 
-/* Centralizar terceiro card (PDI) na segunda linha */
+/* Terceiro card ocupa as duas colunas e se centraliza */
 .features-grid-3col .feature-card:nth-child(3) {
-    grid-column: 2 / 3;
+    grid-column: 1 / -1;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 /* Grid de 2 colunas */
