@@ -1066,12 +1066,15 @@ a.feature-card:hover {
     padding: 40px;
     box-shadow: var(--shadow-lg);
     max-width: 700px;
+    position: relative;
+    transform: translateZ(0);
 }
 
 .waitlist-form {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    position: relative;
 }
 
 .waitlist-form h3 {
@@ -1123,6 +1126,8 @@ a.feature-card:hover {
     font-size: 15px;
     transition: var(--transition);
     font-family: inherit;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .form-group input::placeholder,
@@ -1137,6 +1142,8 @@ a.feature-card:hover {
     background-repeat: no-repeat;
     background-position: right 16px center;
     padding-right: 40px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .form-group textarea {
