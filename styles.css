@@ -930,6 +930,11 @@ section {
     max-width: 1400px;
 }
 
+/* Centralizar último card quando ímpar */
+.features-grid-3col .feature-card:nth-child(3n+1):last-child {
+    grid-column: 2 / 3;
+}
+
 /* Grid de 2 colunas */
 .features-grid-2col {
     grid-template-columns: repeat(2, 1fr);
