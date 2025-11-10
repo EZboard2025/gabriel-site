@@ -34,6 +34,7 @@
 
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="notification-system.css">
+    <link rel="stylesheet" href="scroll-animations.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -93,14 +94,14 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1 class="hero-title">
+                    <h1 class="hero-title scroll-reveal title-reveal">
                         Aumente suas vendas com <a href="#fila-espera" class="gradient-text secret-link">Simulações de Vendas</a>
                     </h1>
-                    <p class="hero-description">
+                    <p class="hero-description scroll-reveal slide-up delay-1">
                         A Ramppy transforma treinamento em performance real simulando conversas com clientes,
                         avaliando seu desempenho e criando um plano de evolução contínuo.
                     </p>
-                    <div class="hero-cta">
+                    <div class="hero-cta scroll-reveal zoom-in delay-2">
                         <a href="#fila-espera" class="btn-primary btn-large">
                             <span>Quero fazer parte da revolução em vendas</span>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -117,15 +118,15 @@
     <section id="como-funciona" class="como-funciona">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Processo</span>
-                <h2 class="section-title">Como Funciona</h2>
-                <p class="section-description">
+                <span class="section-tag scroll-reveal fade-in">Processo</span>
+                <h2 class="section-title scroll-reveal title-reveal">Como Funciona</h2>
+                <p class="section-description scroll-reveal slide-up delay-1">
                     Um processo simples e eficaz para transformar seu time de vendas
                 </p>
             </div>
 
             <div class="steps">
-                <div class="step">
+                <div class="step scroll-reveal card-reveal">
                     <div class="step-number">1</div>
                     <div class="step-visual step-icon-svg">
                         <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
@@ -141,7 +142,7 @@
 
                 <div class="step-connector"></div>
 
-                <div class="step">
+                <div class="step scroll-reveal card-reveal delay-1">
                     <div class="step-number">2</div>
                     <div class="step-visual step-icon-svg">
                         <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
@@ -156,7 +157,7 @@
 
                 <div class="step-connector"></div>
 
-                <div class="step">
+                <div class="step scroll-reveal card-reveal delay-2">
                     <div class="step-number">3</div>
                     <div class="step-visual step-icon-svg">
                         <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
@@ -174,15 +175,15 @@
     <section id="funcionalidades" class="funcionalidades">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Plataforma</span>
-                <h2 class="section-title">Funcionalidades que aceleram resultados</h2>
-                <p class="section-description">
+                <span class="section-tag scroll-reveal fade-in">Plataforma</span>
+                <h2 class="section-title scroll-reveal title-reveal">Funcionalidades que aceleram resultados</h2>
+                <p class="section-description scroll-reveal slide-up delay-1">
                     Tudo que você precisa para transformar seu time em máquinas de vendas
                 </p>
             </div>
 
             <div class="features-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 1200px; margin: 0 auto;">
-                <div class="feature-card">
+                <div class="feature-card scroll-reveal card-reveal">
                     <div class="feature-card-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
@@ -194,13 +195,13 @@
                     <h3>Simulações de Vendas</h3>
                     <p>Simulações realistas com diferentes perfis de clientes e cenários de vendas</p>
                     <ul class="feature-bullets">
-                        <li>Múltiplos perfis de cliente (decisor, técnico, cético)</li>
-                        <li>Objeções reais do mercado</li>
-                        <li>Dificuldade adaptativa ao seu nível</li>
+                        <li class="scroll-reveal slide-up">Múltiplos perfis de cliente (decisor, técnico, cético)</li>
+                        <li class="scroll-reveal slide-up delay-1">Objeções reais do mercado</li>
+                        <li class="scroll-reveal slide-up delay-2">Dificuldade adaptativa ao seu nível</li>
                     </ul>
                 </div>
 
-                <div class="feature-card">
+                <div class="feature-card scroll-reveal card-reveal delay-1">
                     <div class="feature-card-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <line x1="12" y1="20" x2="12" y2="10"/>
@@ -211,13 +212,13 @@
                     <h3>Análise de Performance</h3>
                     <p>Métricas detalhadas e feedbacks baseados em IA sobre cada simulação</p>
                     <ul class="feature-bullets">
-                        <li>Feedbacks automáticos por IA</li>
-                        <li>Métricas SPIN (Situação, Problema, Implicação, Necessidade)</li>
-                        <li>Dashboard de evolução e progresso</li>
+                        <li class="scroll-reveal slide-up">Feedbacks automáticos por IA</li>
+                        <li class="scroll-reveal slide-up delay-1">Métricas SPIN (Situação, Problema, Implicação, Necessidade)</li>
+                        <li class="scroll-reveal slide-up delay-2">Dashboard de evolução e progresso</li>
                     </ul>
                 </div>
 
-                <div class="feature-card">
+                <div class="feature-card scroll-reveal card-reveal delay-2">
                     <div class="feature-card-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
@@ -226,9 +227,9 @@
                     <h3>PDI Personalizado</h3>
                     <p>Plano de Desenvolvimento Individual adaptado ao seu perfil e necessidades</p>
                     <ul class="feature-bullets">
-                        <li>Treinamento adaptado ao seu perfil</li>
-                        <li>Metas e conversões rastreadas</li>
-                        <li>Sugestões de próximos passos</li>
+                        <li class="scroll-reveal slide-up">Treinamento adaptado ao seu perfil</li>
+                        <li class="scroll-reveal slide-up delay-1">Metas e conversões rastreadas</li>
+                        <li class="scroll-reveal slide-up delay-2">Sugestões de próximos passos</li>
                     </ul>
                 </div>
             </div>
@@ -240,9 +241,9 @@
         <div class="container">
             <div class="fila-content">
                 <div class="fila-info">
-                    <span class="section-tag">Acesso Antecipado</span>
-                    <h2 class="section-title">Entre na Fila de Espera</h2>
-                    <p class="section-description">
+                    <span class="section-tag scroll-reveal fade-in">Acesso Antecipado</span>
+                    <h2 class="section-title scroll-reveal title-reveal">Entre na Fila de Espera</h2>
+                    <p class="section-description scroll-reveal slide-up delay-1">
                         Seja um dos primeiros a experimentar a revolução do treinamento de vendas.
                         Garanta sua vaga e receba acesso exclusivo quando lançarmos.
                     </p>
@@ -256,25 +257,25 @@
                         </div>
                     </div>
                     <div class="benefits-list">
-                        <div class="benefit-item">
+                        <div class="benefit-item scroll-reveal slide-up">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <polyline points="20 6 9 17 4 12"/>
                             </svg>
                             <span>Acesso antecipado à plataforma</span>
                         </div>
-                        <div class="benefit-item">
+                        <div class="benefit-item scroll-reveal slide-up delay-1">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <polyline points="20 6 9 17 4 12"/>
                             </svg>
                             <span>Desconto especial de lançamento</span>
                         </div>
-                        <div class="benefit-item">
+                        <div class="benefit-item scroll-reveal slide-up delay-2">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <polyline points="20 6 9 17 4 12"/>
                             </svg>
                             <span>Suporte prioritário da equipe</span>
                         </div>
-                        <div class="benefit-item">
+                        <div class="benefit-item scroll-reveal slide-up delay-3">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <polyline points="20 6 9 17 4 12"/>
                             </svg>
@@ -421,11 +422,11 @@
     <section class="faq">
         <div class="container">
             <div class="section-header">
-                <span class="section-tag">Dúvidas</span>
-                <h2 class="section-title">Perguntas Frequentes</h2>
+                <span class="section-tag scroll-reveal fade-in">Dúvidas</span>
+                <h2 class="section-title scroll-reveal title-reveal">Perguntas Frequentes</h2>
             </div>
             <div class="faq-list">
-                <div class="faq-item">
+                <div class="faq-item scroll-reveal card-reveal">
                     <button class="faq-question">
                         <span>Quando a Ramppy estará disponível?</span>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -436,7 +437,7 @@
                         <p>Estamos selecionando empresas para participar do nosso piloto teste. Entre na fila de espera para garantir sua vaga e ter acesso antecipado à plataforma.</p>
                     </div>
                 </div>
-                <div class="faq-item">
+                <div class="faq-item scroll-reveal card-reveal delay-1">
                     <button class="faq-question">
                         <span>Como funciona o treinamento com IA?</span>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -447,7 +448,7 @@
                         <p>Nossa IA foi treinada com a metodologia SPIN Selling e simula conversas reais de vendas. Ela analisa suas respostas, identifica pontos de melhoria e fornece feedback personalizado em tempo real.</p>
                     </div>
                 </div>
-                <div class="faq-item">
+                <div class="faq-item scroll-reveal card-reveal delay-2">
                     <button class="faq-question">
                         <span>Qual o investimento necessário?</span>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -458,7 +459,7 @@
                         <p>Estamos finalizando nosso modelo de precificação. Entre na fila de espera para receber condições especiais de lançamento e descontos exclusivos.</p>
                     </div>
                 </div>
-                <div class="faq-item">
+                <div class="faq-item scroll-reveal card-reveal delay-3">
                     <button class="faq-question">
                         <span>Preciso ter conhecimento em SPIN Selling?</span>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -469,7 +470,7 @@
                         <p>Não! A Ramppy ensina SPIN Selling do zero através de simulações práticas e feedbacks personalizados. Você aprende fazendo, com dificuldade progressiva adaptada ao seu nível de conhecimento.</p>
                     </div>
                 </div>
-                <div class="faq-item">
+                <div class="faq-item scroll-reveal card-reveal">
                     <button class="faq-question">
                         <span>A plataforma funciona para qualquer segmento?</span>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -480,7 +481,7 @@
                         <p>Sim! SPIN Selling é uma metodologia universal. A Ramppy pode ser customizada para diferentes segmentos, produtos e perfis de cliente.</p>
                     </div>
                 </div>
-                <div class="faq-item">
+                <div class="faq-item scroll-reveal card-reveal delay-1">
                     <button class="faq-question">
                         <span>Posso ver um exemplo do treinamento?</span>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -499,16 +500,16 @@
     <section class="funcionalidades" style="padding: 80px 0;">
         <div class="container">
             <div class="section-header" style="text-align: center;">
-                <span class="section-tag">Explore</span>
-                <h2 class="section-title">Descubra Mais Sobre a Ramppy</h2>
-                <p class="section-description">
+                <span class="section-tag scroll-reveal fade-in">Explore</span>
+                <h2 class="section-title scroll-reveal title-reveal">Descubra Mais Sobre a Ramppy</h2>
+                <p class="section-description scroll-reveal slide-up delay-1">
                     Navegue por nossa plataforma e descubra tudo que preparamos para você
                 </p>
             </div>
 
             <div class="features-grid" style="margin-top: 64px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; max-width: 800px; margin-left: auto; margin-right: auto; justify-items: center;">
 
-                <a href="carreiras.html" class="feature-card" style="text-decoration: none; cursor: pointer; transition: transform 0.3s ease; width: 100%; max-width: 350px;">
+                <a href="carreiras.html" class="feature-card scroll-reveal card-reveal" style="text-decoration: none; cursor: pointer; transition: transform 0.3s ease; width: 100%; max-width: 350px;">
                     <div class="feature-card-icon" style="background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); color: white;">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
                             <path d="M20 7h-9"/>
@@ -527,7 +528,7 @@
                     </div>
                 </a>
 
-                <a href="contato.html" class="feature-card" style="text-decoration: none; cursor: pointer; transition: transform 0.3s ease; width: 100%; max-width: 350px;">
+                <a href="contato.html" class="feature-card scroll-reveal card-reveal delay-1" style="text-decoration: none; cursor: pointer; transition: transform 0.3s ease; width: 100%; max-width: 350px;">
                     <div class="feature-card-icon" style="background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); color: white;">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
@@ -728,5 +729,8 @@
 
     <!-- Page Transitions -->
     <script src="page-transitions.js"></script>
+
+    <!-- Scroll Animations -->
+    <script src="scroll-animations.js"></script>
 </body>
 </html>
