@@ -927,15 +927,15 @@ section {
 .features-grid-3col {
     grid-template-columns: repeat(3, 1fr);
     gap: 32px;
-    max-width: 1200px;
+    max-width: 1400px;
 }
 
 /* Grid de 2 colunas */
 .features-grid-2col {
     grid-template-columns: repeat(2, 1fr);
     gap: 32px;
-    max-width: 800px;
-    justify-items: center;
+    max-width: 1000px;
+    justify-items: stretch;
 }
 
 .feature-card {
@@ -947,6 +947,8 @@ section {
     padding: 32px;
     transition: all 0.3s ease;
     position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 .feature-card:hover {
