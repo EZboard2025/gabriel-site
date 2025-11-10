@@ -930,8 +930,8 @@ section {
     max-width: 1400px;
 }
 
-/* Centralizar último card quando ímpar */
-.features-grid-3col .feature-card:nth-child(3n+1):last-child {
+/* Centralizar terceiro card (PDI) na segunda linha */
+.features-grid-3col .feature-card:nth-child(3) {
     grid-column: 2 / 3;
 }
 
