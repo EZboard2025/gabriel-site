@@ -1490,25 +1490,34 @@ a.feature-card:hover {
 
     .hero-content {
         text-align: center;
-        padding: 0 8px;
+        padding: 0;
+        max-width: 100%;
+    }
+
+    .hero-text {
+        padding: 0 24px;
     }
 
     .hero-title {
-        font-size: 36px;
+        font-size: 32px;
         line-height: 1.2;
         margin-bottom: 20px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     .hero-description {
-        font-size: 16px;
-        line-height: 1.5;
+        font-size: 15px;
+        line-height: 1.6;
         margin-bottom: 24px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     .hero-cta {
         display: flex;
         justify-content: center;
-        padding: 0 16px;
+        padding: 0;
     }
 
     .btn-primary {
