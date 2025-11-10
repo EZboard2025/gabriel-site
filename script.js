@@ -138,6 +138,19 @@ if (waitlistForm) {
                 ]);
 
             if (error) {
+                // Verificar se é erro de email duplicado
+                if (error.code === '23505' || error.message?.includes('unique') || error.message?.includes('duplicate')) {
+                    // Email já cadastrado
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+
+                    if (window.notify) {
+                        notify.info('Este email já está cadastrado em nossa fila de espera! Sua inscrição já foi enviada anteriormente.', 'Já Cadastrado');
+                    } else {
+                        alert('Este email já está cadastrado em nossa fila de espera! Sua inscrição já foi enviada anteriormente.');
+                    }
+                    return;
+                }
                 throw error;
             }
 
