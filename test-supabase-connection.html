@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Conexão Supabase</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #0a0a0a;
+            color: #fff;
+        }
+        .test-box {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .test-result {
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-family: monospace;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+        .success {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #22c55e;
+        }
+        .error {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #ef4444;
+        }
+        .info {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #3b82f6;
+        }
+        button {
+            background: #22c55e;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        button:hover {
+            background: #16a34a;
+        }
+        h1 { color: #22c55e; }
+        h2 { color: #888; font-size: 18px; margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Teste de Conexão Supabase - Ramppy</h1>
+
+    <div class="test-box">
+        <h2>1. Carregar SDK do Supabase</h2>
+        <button onclick="testSDK()">Testar SDK</button>
+        <div id="sdk-result"></div>
+    </div>
+
+    <div class="test-box">
+        <h2>2. Inicializar Cliente Supabase</h2>
+        <button onclick="testClient()">Testar Cliente</button>
+        <div id="client-result"></div>
+    </div>
+
+    <div class="test-box">
+        <h2>3. Verificar Tabela fila_espera</h2>
+        <button onclick="testTable()">Verificar Tabela</button>
+        <div id="table-result"></div>
+    </div>
+
+    <div class="test-box">
+        <h2>4. Testar Inserção de Dados</h2>
+        <button onclick="testInsert()">Testar Inserção</button>
+        <div id="insert-result"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" integrity="sha384-iZjkJXfNiMQpYqfmTPPeCCJdUuPIGNWjPuDVRaWcOfMlOoYN8lRFfpDgVmQ0K3eN" crossorigin="anonymous"></script>
+    <script src="supabase-config.js"></script>
+
+    <script>
+        function log(elementId, message, type = 'info') {
+            const element = document.getElementById(elementId);
+            const div = document.createElement('div');
+            div.className = `test-result ${type}`;
+            div.textContent = message;
+            element.appendChild(div);
+        }
+
+        function clear(elementId) {
+            document.getElementById(elementId).innerHTML = '';
+        }
+
+        function testSDK() {
+            clear('sdk-result');
+
+            if (typeof window.supabase !== 'undefined') {
+                log('sdk-result', '✓ SDK do Supabase carregado com sucesso!', 'success');
+                log('sdk-result', `Versão: ${JSON.stringify(window.supabase)}`, 'info');
+            } else {
+                log('sdk-result', '✗ SDK do Supabase NÃO foi carregado!', 'error');
+                log('sdk-result', 'Verifique se o script está carregando corretamente.', 'error');
+            }
+        }
+
+        function testClient() {
+            clear('client-result');
+
+            if (window.supabaseClient) {
+                log('client-result', '✓ Cliente Supabase inicializado!', 'success');
+                log('client-result', `URL: ${window.supabaseClient.supabaseUrl}`, 'info');
+            } else if (window.supabase) {
+                try {
+                    const SUPABASE_URL = 'https://pisvpbscqgoyhnnartwj.supabase.co';
+                    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBpc3ZwYnNjcWdveWhubmFydHdqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAzNTc4NjUsImV4cCI6MjA3NTkzMzg2NX0.IbjiMUc7E7pBtHElwR54DlrylSUNtiCZ5-9skxllUjM';
+
+                    window.testClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+                    log('client-result', '✓ Cliente criado manualmente!', 'success');
+                    log('client-result', `URL: ${SUPABASE_URL}`, 'info');
+                } catch (error) {
+                    log('client-result', `✗ Erro ao criar cliente: ${error.message}`, 'error');
+                }
+            } else {
+                log('client-result', '✗ Supabase não está disponível!', 'error');
+            }
+        }
+
+        async function testTable() {
+            clear('table-result');
+
+            const client = window.supabaseClient || window.testClient;
+
+            if (!client) {
+                log('table-result', '✗ Cliente não está inicializado. Execute o teste 2 primeiro.', 'error');
+                return;
+            }
+
+            try {
+                log('table-result', '⏳ Verificando tabela fila_espera...', 'info');
+
+                // Tentar fazer um SELECT vazio (só para verificar se a tabela existe)
+                const { data, error } = await client
+                    .from('fila_espera')
+                    .select('id')
+                    .limit(0);
+
+                if (error) {
+                    log('table-result', `✗ Erro ao acessar tabela: ${error.message}`, 'error');
+                    log('table-result', `Código: ${error.code}`, 'error');
+                    log('table-result', `Detalhes: ${error.details}`, 'error');
+                    log('table-result', `Hint: ${error.hint}`, 'error');
+                } else {
+                    log('table-result', '✓ Tabela fila_espera existe e está acessível!', 'success');
+                }
+            } catch (error) {
+                log('table-result', `✗ Erro de conexão: ${error.message}`, 'error');
+                log('table-result', `Stack: ${error.stack}`, 'error');
+            }
+        }
+
+        async function testInsert() {
+            clear('insert-result');
+
+            const client = window.supabaseClient || window.testClient;
+
+            if (!client) {
+                log('insert-result', '✗ Cliente não está inicializado. Execute o teste 2 primeiro.', 'error');
+                return;
+            }
+
+            const testData = {
+                nome: 'Teste Claude',
+                email: `teste-${Date.now()}@ramppy.com`,
+                telefone: '(11) 99999-9999',
+                empresa: 'Ramppy Teste',
+                cargo: 'Testador',
+                tipo_empresa: 'B2B',
+                tamanho_equipe_vendas: '1-5',
+                faturamento_anual: '0-500k',
+                modelo_vendas: 'Inside Sales',
+                ciclo_vendas: '0-7 dias',
+                usa_crm: 'Não',
+                sobre_empresa: 'Empresa de teste do Claude'
+            };
+
+            try {
+                log('insert-result', '⏳ Tentando inserir dados de teste...', 'info');
+                log('insert-result', `Dados: ${JSON.stringify(testData, null, 2)}`, 'info');
+
+                const { data, error } = await client
+                    .from('fila_espera')
+                    .insert([testData])
+                    .select();
+
+                if (error) {
+                    log('insert-result', `✗ ERRO ao inserir: ${error.message}`, 'error');
+                    log('insert-result', `Código: ${error.code}`, 'error');
+                    log('insert-result', `Detalhes: ${error.details}`, 'error');
+                    log('insert-result', `Hint: ${error.hint}`, 'error');
+
+                    // Informações adicionais para debug
+                    if (error.code === 'PGRST204') {
+                        log('insert-result', '⚠️ A inserção pode ter funcionado, mas a política SELECT impede ler os dados.', 'info');
+                    }
+                } else {
+                    log('insert-result', '✓ Dados inseridos com sucesso!', 'success');
+                    log('insert-result', `Resposta: ${JSON.stringify(data, null, 2)}`, 'success');
+                }
+            } catch (error) {
+                log('insert-result', `✗ Erro de conexão: ${error.message}`, 'error');
+                log('insert-result', `Stack: ${error.stack}`, 'error');
+            }
+        }
+
+        // Auto-executar teste inicial
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                testSDK();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
