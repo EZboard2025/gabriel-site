@@ -1143,6 +1143,9 @@ a.feature-card:hover {
     resize: vertical;
     min-height: 100px;
     line-height: 1.6;
+    touch-action: manipulation;
+    -webkit-user-select: text;
+    user-select: text;
 }
 
 .form-group input:focus,
@@ -1152,6 +1155,8 @@ a.feature-card:hover {
     border-color: var(--primary-green);
     background: rgba(10, 10, 10, 0.95);
     box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+    position: relative;
+    z-index: 10;
 }
 
 .form-group input:hover:not(:focus),
