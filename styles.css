@@ -1526,8 +1526,10 @@ a.feature-card:hover {
 
     .hero-title .gradient-text,
     .hero-title a {
-        display: inline;
+        display: inline-block;
         text-align: center;
+        word-wrap: break-word;
+        hyphens: auto;
     }
 
     .section-title {
