@@ -235,9 +235,9 @@
                 color: ${color} !important;
             }
 
-            /* Step connector lines */
+            /* Step connector lines - REMOVED */
             .step-connector {
-                background: linear-gradient(90deg, transparent, rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.3), transparent) !important;
+                display: none !important;
             }
 
             /* Customization info box */
