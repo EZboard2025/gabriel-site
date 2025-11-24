@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!-- Deploy automático ativado: 06/11/2025 | Imagens corrigidas -->
 <html lang="pt-BR">
 <head>
@@ -42,14 +42,11 @@
     <!-- Supabase -->
         <!-- Security Layer -->
     <script src="security-utils.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" integrity="sha384-iZjkJXfNiMQpYqfmTPPeCCJdUuPIGNWjPuDVRaWcOfMlOoYN8lRFfpDgVmQ0K3eN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
 
-    <!-- Security Headers -->
-    <meta http-equiv="X-Frame-Options" content="DENY">
+    <!-- Security Headers (apenas os válidos via meta tag) -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
 </head>
 <body>
     <!-- Space Background (Fixed) -->
