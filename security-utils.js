@@ -318,7 +318,7 @@
         // ==========================================
 
         setupSecurityHeaders() {
-            // CSP via meta tag
+            // CSP via meta tag (sem frame-ancestors que causa erro)
             if (!document.querySelector('meta[http-equiv="Content-Security-Policy"]')) {
                 const csp = document.createElement('meta');
                 csp.httpEquiv = 'Content-Security-Policy';
@@ -331,14 +331,13 @@
                     "frame-src https://www.google.com; " +
                     "object-src 'none'; " +
                     "base-uri 'self'; " +
-                    "form-action 'self'; " +
-                    "frame-ancestors 'none';";
+                    "form-action 'self';";
+                    // Removido frame-ancestors - só funciona via HTTP header, não meta tag
                 document.head.appendChild(csp);
             }
 
             // Headers de segurança devem ser definidos via servidor HTTP
-            // Não via meta tags JavaScript para evitar erros no console
-            // Use .htaccess, nginx.conf ou vercel.json para configurar headers
+            // frame-ancestors deve ser configurado via .htaccess ou vercel.json
         }
 
         // ==========================================
