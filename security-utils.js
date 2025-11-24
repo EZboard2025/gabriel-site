@@ -336,17 +336,9 @@
                 document.head.appendChild(csp);
             }
 
-            // X-Frame-Options
-            const xframe = document.createElement('meta');
-            xframe.httpEquiv = 'X-Frame-Options';
-            xframe.content = 'DENY';
-            document.head.appendChild(xframe);
-
-            // X-Content-Type-Options
-            const xcontent = document.createElement('meta');
-            xcontent.httpEquiv = 'X-Content-Type-Options';
-            xcontent.content = 'nosniff';
-            document.head.appendChild(xcontent);
+            // Headers de segurança devem ser definidos via servidor HTTP
+            // Não via meta tags JavaScript para evitar erros no console
+            // Use .htaccess, nginx.conf ou vercel.json para configurar headers
         }
 
         // ==========================================
