@@ -804,3 +804,41 @@ document.querySelectorAll('.explore-card').forEach(card => {
     // Initialize
     updateStack();
 })();
+
+// ============================================
+// PRICING INFO TOOLTIPS
+// ============================================
+
+function togglePricingInfo(btn) {
+    const tooltip = btn.nextElementSibling;
+
+    // Close other tooltips first
+    document.querySelectorAll('.pricing-info-tooltip.active').forEach(t => {
+        if (t !== tooltip) t.classList.remove('active');
+    });
+
+    // Toggle current tooltip
+    tooltip.classList.toggle('active');
+}
+
+function closePricingInfo(btn) {
+    btn.closest('.pricing-info-tooltip').classList.remove('active');
+}
+
+// Close tooltips when clicking outside
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.pricing-info-btn') && !e.target.closest('.pricing-info-tooltip')) {
+        document.querySelectorAll('.pricing-info-tooltip.active').forEach(t => {
+            t.classList.remove('active');
+        });
+    }
+});
+
+// Close tooltips with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        document.querySelectorAll('.pricing-info-tooltip.active').forEach(t => {
+            t.classList.remove('active');
+        });
+    }
+});

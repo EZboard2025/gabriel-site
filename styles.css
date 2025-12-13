@@ -122,7 +122,7 @@ body::before {
 }
 
 .logo-img {
-    height: 24px;
+    height: 36px;
     width: auto;
     display: block;
 }
@@ -2399,6 +2399,112 @@ a.feature-card:hover {
 .pricing-card:hover {
     border-color: rgba(34, 197, 94, 0.3);
     transform: translateY(-4px);
+}
+
+/* Info Button for Pricing Cards */
+.pricing-info-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.pricing-info-btn:hover {
+    background: var(--primary-green);
+    border-color: var(--primary-green);
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.pricing-info-tooltip {
+    position: absolute;
+    top: 50px;
+    right: 16px;
+    width: 280px;
+    background: rgba(20, 20, 20, 0.98);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 100;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.pricing-info-tooltip.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.pricing-info-tooltip h4 {
+    color: var(--primary-green);
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.pricing-info-tooltip ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pricing-info-tooltip ul li {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 13px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.pricing-info-tooltip ul li:last-child {
+    border-bottom: none;
+}
+
+.pricing-info-tooltip ul li svg {
+    flex-shrink: 0;
+    color: var(--primary-green);
+    margin-top: 2px;
+}
+
+.pricing-info-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+
+.pricing-info-close:hover {
+    color: #fff;
 }
 
 .pricing-card.featured {
