@@ -649,3 +649,18 @@ featureCards.forEach(card => {
 });
 
 // All authentication logic is handled by auth-handlers.js
+
+// Explore Cards - Flip on click
+document.querySelectorAll('.explore-card').forEach(card => {
+    card.addEventListener('click', (e) => {
+        // Don't flip if clicking on CTA button
+        if (e.target.classList.contains('card-cta')) return;
+
+        // Remove active from other cards
+        document.querySelectorAll('.explore-card').forEach(c => {
+            if (c !== card) c.classList.remove('active');
+        });
+        // Toggle active on clicked card
+        card.classList.toggle('active');
+    });
+});

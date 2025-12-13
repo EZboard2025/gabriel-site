@@ -89,17 +89,31 @@ class RamppyErrorHandler {
     }
 
     setupErrorHandlers() {
-        // Capturar erros não tratados
+        // Verificar se está em ambiente de desenvolvimento local
+        this.isLocalDev = window.location.hostname === 'localhost' ||
+                          window.location.hostname === '127.0.0.1' ||
+                          window.location.hostname.includes('192.168');
+
+        // Capturar erros não tratados (menos agressivo)
         window.addEventListener('unhandledrejection', (event) => {
+            // Ignorar erros de fetch em dev local
+            if (this.isLocalDev && event.reason?.message?.includes('fetch')) {
+                console.warn('Erro de fetch ignorado em dev:', event.reason);
+                event.preventDefault();
+                return;
+            }
             event.preventDefault();
             this.handleError(event.reason);
         });
 
-        // Capturar erros de JavaScript
+        // Capturar erros de JavaScript (desativado para fetch em dev)
         window.addEventListener('error', (event) => {
             if (event.message && event.message.includes('fetch')) {
                 event.preventDefault();
-                this.handleError(new Error('Failed to fetch'));
+                // Não mostrar modal para erros de fetch em dev
+                if (!this.isLocalDev) {
+                    this.handleError(new Error('Failed to fetch'));
+                }
             }
         });
 
@@ -122,6 +136,12 @@ class RamppyErrorHandler {
 
                 return response;
             } catch (error) {
+                // Em dev local, apenas logar no console sem mostrar modal
+                if (this.isLocalDev) {
+                    console.warn('Erro de fetch em dev (ignorado):', error.message);
+                    throw error;
+                }
+
                 // Verificar tipo de erro
                 if (error.name === 'TypeError' && error.message.includes('Failed to fetch')) {
                     this.handleError(new Error('Failed to fetch'));

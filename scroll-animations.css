@@ -265,3 +265,23 @@
 .scroll-reveal.visible {
     will-change: auto;
 }
+
+/* ========================================
+   FALLBACK - Forçar visibilidade imediata
+   Desabilita as animações para garantir que
+   todos os elementos fiquem visíveis
+   ======================================== */
+.scroll-reveal,
+.scroll-reveal.fade-in,
+.scroll-reveal.slide-up,
+.scroll-reveal.slide-down,
+.scroll-reveal.slide-left,
+.scroll-reveal.slide-right,
+.scroll-reveal.zoom-in,
+.scroll-reveal.zoom-out,
+.scroll-reveal.card-reveal,
+.scroll-reveal.title-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+}
