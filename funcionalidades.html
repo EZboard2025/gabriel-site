@@ -62,8 +62,7 @@
                 </div>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="como-funciona.html">Como Funciona</a></li>
-                    <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                                        <li><a href="funcionalidades.html">Funcionalidades</a></li>
                     <li><a href="contato.html">Contato</a></li>
                     <li><a href="index.html#get-started">Começar</a></li>
                 </ul>
@@ -98,77 +97,70 @@
         </div>
     </section>
 
-    <!-- Funcionalidades Detalhadas -->
+    <!-- Funcionalidades - Card Stack -->
     <section class="funcionalidades" style="padding: 80px 0;">
         <div class="container">
-            <div class="features-grid features-grid-3" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 1400px; margin: 0 auto;">
-                <div class="feature-card featured">
-                    <div class="feature-card-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                        </svg>
+            <!-- Card Stack -->
+            <div class="card-stack-container">
+                <!-- Navigation Buttons -->
+                <button class="stack-nav stack-nav-prev" id="stackPrev">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"/>
+                    </svg>
+                </button>
+
+                <div class="card-stack" id="cardStack">
+                    <div class="stack-card" data-id="1">
+                        <img src="Simulação de vendas.png" alt="Simulação de Vendas" draggable="false">
+                        <div class="stack-card-info">
+                            <h3>Simulação de Vendas</h3>
+                            <p>Pratique com nosso cliente virtual inteligente</p>
+                        </div>
                     </div>
-                    <h3>Roleplay Inteligente</h3>
-                    <p>Simulações realistas com diferentes perfis de clientes e cenários de vendas.</p>
-                    <ul class="feature-bullets">
-                        <li>Múltiplos perfis de cliente (decisor, técnico, cético)</li>
-                        <li>Objeções reais do mercado</li>
-                        <li>Dificuldade adaptativa ao seu nível</li>
-                        <li>Cenários customizáveis por indústria</li>
-                        <li>Gravação e replay de simulações</li>
-                    </ul>
-                    <div class="feature-details">
-                        <h4>Como funciona:</h4>
-                        <p>Escolha o perfil de cliente que deseja usar para treinar e inicie uma conversa simulada. Nossa IA adapta as respostas com base no seu desempenho, aumentando gradualmente a dificuldade e apresentando objeções cada vez mais complexas.</p>
+                    <div class="stack-card" data-id="2">
+                        <img src="Dashboard de vendedores .png" alt="Dashboard" draggable="false">
+                        <div class="stack-card-info">
+                            <h3>Dashboard</h3>
+                            <p>Métricas detalhadas e evolução do time</p>
+                        </div>
+                    </div>
+                    <div class="stack-card" data-id="3">
+                        <img src="Perfil .png" alt="Meu Perfil" draggable="false">
+                        <div class="stack-card-info">
+                            <h3>Meu Perfil</h3>
+                            <p>Seu progresso e histórico de simulações</p>
+                        </div>
+                    </div>
+                    <div class="stack-card" data-id="4">
+                        <img src="Roleplay publico .png" alt="Roleplay Público" draggable="false">
+                        <div class="stack-card-info">
+                            <h3>Roleplay Público</h3>
+                            <p>Avalie candidatos em processos seletivos</p>
+                        </div>
+                    </div>
+                    <div class="stack-card" data-id="5">
+                        <img src="Detalhes da sessão.png" alt="Detalhes da Sessão" draggable="false">
+                        <div class="stack-card-info">
+                            <h3>Detalhes da Sessão</h3>
+                            <p>Análise completa de cada simulação</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="feature-card featured">
-                    <div class="feature-card-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="12" y1="20" x2="12" y2="10"/>
-                            <line x1="18" y1="20" x2="18" y2="4"/>
-                            <line x1="6" y1="20" x2="6" y2="16"/>
-                        </svg>
-                    </div>
-                    <h3>Análise de Performance</h3>
-                    <p>Métricas detalhadas e feedbacks baseados em IA sobre cada simulação.</p>
-                    <ul class="feature-bullets">
-                        <li>Feedbacks automáticos por IA</li>
-                        <li>Métricas SPIN (Situação, Problema, Implicação, Necessidade)</li>
-                        <li>Dashboard de evolução e progresso</li>
-                        <li>Comparação com benchmarks do mercado</li>
-                        <li>Identificação de pontos fortes e fracos</li>
-                    </ul>
-                    <div class="feature-details">
-                        <h4>Como funciona:</h4>
-                        <p>Após cada simulação, nossa IA analisa profundamente sua performance: quantas perguntas SPIN você fez, qualidade das suas respostas, gestão de objeções e técnicas de fechamento. Você recebe um relatório detalhado com pontos de melhoria.</p>
-                    </div>
-                </div>
+                <button class="stack-nav stack-nav-next" id="stackNext">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </button>
+            </div>
 
-                <div class="feature-card featured">
-                    <div class="feature-card-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-                        </svg>
-                    </div>
-                    <h3>PDI Personalizado</h3>
-                    <p>Plano de Desenvolvimento Individual adaptado ao seu perfil e necessidades.</p>
-                    <ul class="feature-bullets">
-                        <li>Treinamento adaptado ao seu perfil</li>
-                        <li>Metas e conversões rastreadas</li>
-                        <li>Sugestões de próximos passos</li>
-                        <li>Trilhas de aprendizado personalizadas</li>
-                        <li>Acompanhamento de evolução ao longo do tempo</li>
-                    </ul>
-                    <div class="feature-details">
-                        <h4>Como funciona:</h4>
-                        <p>Com base nas suas simulações e performance, criamos um plano de desenvolvimento único para você. O PDI sugere quais áreas focar, exercícios específicos e metas alcançáveis que acelerarão sua curva de aprendizado.</p>
-                    </div>
-                </div>
+            <!-- Progress Indicator -->
+            <div class="stack-progress" id="stackProgress">
+                <div class="progress-dot active"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
             </div>
         </div>
     </section>
@@ -287,8 +279,7 @@
                         <h4>Produto</h4>
                         <ul>
                             <li><a href="funcionalidades.html">Funcionalidades</a></li>
-                            <li><a href="como-funciona.html">Como Funciona</a></li>
-                            <li><a href="index.html#get-started">Começar</a></li>
+                                                        <li><a href="index.html#get-started">Começar</a></li>
                         </ul>
                     </div>
                     <div class="footer-column">

@@ -664,3 +664,138 @@ document.querySelectorAll('.explore-card').forEach(card => {
         card.classList.toggle('active');
     });
 });
+
+// ============================================
+// CARD STACK - Funcionalidades
+// ============================================
+
+(function() {
+    const stack = document.getElementById('cardStack');
+    if (!stack) return;
+    
+    const cards = Array.from(stack.querySelectorAll('.stack-card'));
+    const prevBtn = document.getElementById('stackPrev');
+    const nextBtn = document.getElementById('stackNext');
+    const progressDots = document.querySelectorAll('.progress-dot');
+    
+    let currentIndex = 0;
+    let isDragging = false;
+    let startY = 0;
+    let currentY = 0;
+    let dragOffset = 0;
+    
+    const config = {
+        offset: 12,
+        scaleStep: 0.06,
+        dimStep: 0.15,
+        swipeThreshold: 50
+    };
+    
+    function updateStack() {
+        cards.forEach((card, i) => {
+            const relativeIndex = (i - currentIndex + cards.length) % cards.length;
+            const offsetY = relativeIndex * -config.offset;
+            const scale = 1 - relativeIndex * config.scaleStep;
+            const brightness = Math.max(0.3, 1 - relativeIndex * config.dimStep);
+            const zIndex = cards.length - relativeIndex;
+            
+            card.style.transform = `translateY(${offsetY}%) scale(${scale})`;
+            card.style.filter = `brightness(${brightness})`;
+            card.style.zIndex = zIndex;
+            card.style.opacity = relativeIndex < 4 ? 1 : 0;
+            
+            if (relativeIndex === 0) {
+                card.classList.add('front');
+            } else {
+                card.classList.remove('front');
+            }
+        });
+        
+        // Update progress dots
+        progressDots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
+        });
+    }
+    
+    function moveToNext() {
+        currentIndex = (currentIndex + 1) % cards.length;
+        updateStack();
+    }
+    
+    function moveToPrev() {
+        currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+        updateStack();
+    }
+    
+    // Navigation buttons
+    if (nextBtn) nextBtn.addEventListener('click', moveToNext);
+    if (prevBtn) prevBtn.addEventListener('click', moveToPrev);
+    
+    // Drag functionality
+    function handleDragStart(e) {
+        const frontCard = cards[currentIndex];
+        if (e.target.closest('.stack-card') !== frontCard) return;
+        
+        isDragging = true;
+        startY = e.type === 'mousedown' ? e.clientY : e.touches[0].clientY;
+        frontCard.classList.add('dragging');
+        frontCard.style.transition = 'none';
+    }
+    
+    function handleDragMove(e) {
+        if (!isDragging) return;
+        e.preventDefault();
+        
+        currentY = e.type === 'mousemove' ? e.clientY : e.touches[0].clientY;
+        dragOffset = currentY - startY;
+        
+        const frontCard = cards[currentIndex];
+        const rotateX = (dragOffset / 200) * -15;
+        const scale = 1 + Math.abs(dragOffset) / 2000;
+        
+        frontCard.style.transform = `translateY(${dragOffset}px) rotateX(${rotateX}deg) scale(${scale})`;
+    }
+    
+    function handleDragEnd() {
+        if (!isDragging) return;
+        isDragging = false;
+        
+        const frontCard = cards[currentIndex];
+        frontCard.classList.remove('dragging');
+        frontCard.style.transition = '';
+        
+        if (Math.abs(dragOffset) > config.swipeThreshold) {
+            if (dragOffset < 0) {
+                moveToNext();
+            } else {
+                moveToPrev();
+            }
+        } else {
+            updateStack();
+        }
+        
+        dragOffset = 0;
+    }
+    
+    // Mouse events
+    stack.addEventListener('mousedown', handleDragStart);
+    document.addEventListener('mousemove', handleDragMove);
+    document.addEventListener('mouseup', handleDragEnd);
+    
+    // Touch events
+    stack.addEventListener('touchstart', handleDragStart, { passive: true });
+    document.addEventListener('touchmove', handleDragMove, { passive: false });
+    document.addEventListener('touchend', handleDragEnd);
+    
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+            moveToPrev();
+        } else if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+            moveToNext();
+        }
+    });
+    
+    // Initialize
+    updateStack();
+})();

@@ -67,8 +67,7 @@
                 </div>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="como-funciona.html">Como Funciona</a></li>
-                    <li><a href="funcionalidades.html">Funcionalidades</a></li>
+                                        <li><a href="funcionalidades.html">Funcionalidades</a></li>
                     <li><a href="contato.html">Contato</a></li>
                     <li><a href="#pricing">Planos</a></li>
                 </ul>
@@ -124,74 +123,82 @@
         </div>
     </section>
 
-    <!-- Funcionalidades Section - Cards com Imagens -->
+    <!-- Funcionalidades Section - Card Stack -->
     <section id="funcionalidades" class="funcionalidades">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">PLATAFORMA</span>
                 <h2 class="section-title">Conheça as Funcionalidades</h2>
                 <p class="section-description">
-                    Explore todas as ferramentas para transformar seu time de vendas
+                    Arraste para cima ou para baixo para explorar
                 </p>
             </div>
 
-            <!-- Primeira linha: Simulação de Vendas + Dashboard -->
-            <div class="explore-row">
-                <div class="explore-card">
-                    <div class="explore-card-inner">
-                        <div class="explore-card-front">
-                            <img src="Simulação de vendas.png" alt="Simulação de Vendas">
-                        </div>
-                        <div class="explore-card-back">
+            <!-- Card Stack -->
+            <div class="card-stack-container">
+                <!-- Navigation Buttons -->
+                <button class="stack-nav stack-nav-prev" id="stackPrev">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"/>
+                    </svg>
+                </button>
+
+                <div class="card-stack" id="cardStack">
+                    <div class="stack-card" data-id="1">
+                        <img src="Simulação de vendas.png" alt="Simulação de Vendas" draggable="false">
+                        <div class="stack-card-info">
                             <h3>Simulação de Vendas</h3>
-                            <p>Pratique suas habilidades de vendas com nosso cliente virtual inteligente. Múltiplos perfis de cliente e objeções reais do mercado.</p>
-                            <a href="simulacao.html" class="card-cta">Acessar</a>
+                            <p>Pratique com nosso cliente virtual inteligente</p>
                         </div>
                     </div>
-                </div>
-                <div class="explore-card">
-                    <div class="explore-card-inner">
-                        <div class="explore-card-front">
-                            <img src="Dashboard de vendedores .png" alt="Dashboard">
-                        </div>
-                        <div class="explore-card-back">
+                    <div class="stack-card" data-id="2">
+                        <img src="Dashboard de vendedores .png" alt="Dashboard" draggable="false">
+                        <div class="stack-card-info">
                             <h3>Dashboard</h3>
-                            <p>Acompanhe métricas detalhadas, evolução do time e feedbacks automáticos baseados em IA.</p>
-                            <a href="#" class="card-cta">Ver mais</a>
+                            <p>Métricas detalhadas e evolução do time</p>
+                        </div>
+                    </div>
+                    <div class="stack-card" data-id="3">
+                        <img src="Perfil .png" alt="Meu Perfil" draggable="false">
+                        <div class="stack-card-info">
+                            <h3>Meu Perfil</h3>
+                            <p>Seu progresso e histórico de simulações</p>
+                        </div>
+                    </div>
+                    <div class="stack-card" data-id="4">
+                        <img src="Roleplay publico .png" alt="Roleplay Público" draggable="false">
+                        <div class="stack-card-info">
+                            <h3>Roleplay Público</h3>
+                            <p>Avalie candidatos em processos seletivos</p>
+                        </div>
+                    </div>
+                    <div class="stack-card" data-id="5">
+                        <img src="Detalhes da sessão.png" alt="Detalhes da Sessão" draggable="false">
+                        <div class="stack-card-info">
+                            <h3>Detalhes da Sessão</h3>
+                            <p>Análise completa de cada simulação</p>
                         </div>
                     </div>
                 </div>
+
+                <button class="stack-nav stack-nav-next" id="stackNext">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </button>
             </div>
 
-            <!-- Segunda linha: Meu Perfil + Processo Seletivo -->
-            <div class="explore-row">
-                <div class="explore-card">
-                    <div class="explore-card-inner">
-                        <div class="explore-card-front">
-                            <img src="Perfil .png" alt="Meu Perfil">
-                        </div>
-                        <div class="explore-card-back">
-                            <h3>Meu Perfil</h3>
-                            <p>Visualize seu progresso, histórico de simulações e plano de desenvolvimento individual personalizado.</p>
-                            <a href="#" class="card-cta">Ver mais</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="explore-card">
-                    <div class="explore-card-inner">
-                        <div class="explore-card-front">
-                            <img src="Roleplay publico .png" alt="Processo Seletivo">
-                        </div>
-                        <div class="explore-card-back">
-                            <h3>Processo Seletivo</h3>
-                            <p>Configure o Roleplay Público para avaliar candidatos em processos seletivos de vendas.</p>
-                            <a href="#" class="card-cta">Ver mais</a>
-                        </div>
-                    </div>
-                </div>
+            <!-- Progress Indicator -->
+            <div class="stack-progress" id="stackProgress">
+                <div class="progress-dot active"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
             </div>
         </div>
     </section>
+
 
     <!-- Pricing Section -->
     <section id="pricing" class="pricing-section">
@@ -328,67 +335,6 @@
                             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                         </svg>
                     </a>
-                </div>
-            </div>
-
-            <!-- Comparação de Features -->
-            <div class="features-comparison scroll-reveal slide-up">
-                <h3>Comparação de Recursos</h3>
-                <div class="comparison-table">
-                    <div class="comparison-header">
-                        <div class="comparison-feature">Recurso</div>
-                        <div class="comparison-plan">PRO</div>
-                        <div class="comparison-plan">MAX</div>
-                    </div>
-                    <div class="comparison-row">
-                        <div class="comparison-feature">Simulações por semana</div>
-                        <div class="comparison-value">4 por vendedor</div>
-                        <div class="comparison-value highlight">Ilimitadas</div>
-                    </div>
-                    <div class="comparison-row">
-                        <div class="comparison-feature">Feedback detalhado</div>
-                        <div class="comparison-value">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-green)" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"/>
-                            </svg>
-                        </div>
-                        <div class="comparison-value">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-green)" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="comparison-row">
-                        <div class="comparison-feature">Dashboard do gestor</div>
-                        <div class="comparison-value">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-green)" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"/>
-                            </svg>
-                        </div>
-                        <div class="comparison-value">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-green)" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="comparison-row">
-                        <div class="comparison-feature">Cenários personalizados</div>
-                        <div class="comparison-value">—</div>
-                        <div class="comparison-value">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-green)" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="comparison-row">
-                        <div class="comparison-feature">Suporte prioritário</div>
-                        <div class="comparison-value">—</div>
-                        <div class="comparison-value">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--primary-green)" stroke-width="2">
-                                <polyline points="20 6 9 17 4 12"/>
-                            </svg>
-                        </div>
-                    </div>
                 </div>
             </div>
 
@@ -591,13 +537,13 @@
             <div class="faq-list">
                 <div class="faq-item scroll-reveal card-reveal">
                     <button class="faq-question">
-                        <span>Quando a Ramppy estará disponível?</span>
+                        <span>Como começo a usar a Ramppy?</span>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="6 9 12 15 18 9"/>
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>Estamos selecionando empresas para participar do nosso piloto teste. Entre na fila de espera para garantir sua vaga e ter acesso antecipado à plataforma.</p>
+                        <p>Basta criar sua conta e escolher o plano ideal para sua equipe. Em poucos minutos você já pode começar a treinar seus vendedores com nossa IA.</p>
                     </div>
                 </div>
                 <div class="faq-item scroll-reveal card-reveal delay-1">
@@ -619,7 +565,7 @@
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>Estamos finalizando nosso modelo de precificação. Entre na fila de espera para receber condições especiais de lançamento e descontos exclusivos.</p>
+                        <p>Temos planos a partir de R$95 por vendedor/mês no Ramppy PRO. Quanto maior sua equipe, menor o custo por vendedor. Confira nossos planos na seção de preços.</p>
                     </div>
                 </div>
                 <div class="faq-item scroll-reveal card-reveal delay-3">
@@ -652,7 +598,7 @@
                         </svg>
                     </button>
                     <div class="faq-answer">
-                        <p>Em breve disponibilizaremos uma demonstração completa da plataforma. Entre na fila de espera para ser um dos primeiros a testar e receber acesso à versão demo.</p>
+                        <p>Sim! Você pode testar a plataforma criando uma conta gratuita ou agendar uma demonstração personalizada com nossa equipe através da página de contato.</p>
                     </div>
                 </div>
             </div>
@@ -727,13 +673,13 @@
                         <h4>Produto</h4>
                         <ul>
                             <li><a href="funcionalidades.html">Funcionalidades</a></li>
-                            <li><a href="como-funciona.html">Como Funciona</a></li>
-                            <li><a href="#pricing">Planos</a></li>
+                                                        <li><a href="#pricing">Planos</a></li>
                         </ul>
                     </div>
                     <div class="footer-column">
                         <h4>Empresa</h4>
                         <ul>
+                            <li><a href="sobre.html">Sobre Nós</a></li>
                             <li><a href="carreiras.html">Carreiras</a></li>
                             <li><a href="contato.html">Contato</a></li>
                         </ul>

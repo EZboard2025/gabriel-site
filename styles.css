@@ -318,22 +318,24 @@ body::before {
         0 30px 100px rgba(0, 0, 0, 0.6);
 }
 
-/* Fade verde na parte inferior da imagem */
+/* Fumaça preta na parte inferior */
 .plataforma-image-wrapper::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 150px;
+    height: 35%;
     background: linear-gradient(
         to top,
-        rgba(0, 0, 0, 0.95) 0%,
+        rgba(0, 0, 0, 1) 0%,
         rgba(0, 0, 0, 0.7) 30%,
-        rgba(0, 0, 0, 0) 100%
+        rgba(0, 0, 0, 0.3) 60%,
+        transparent 100%
     );
     pointer-events: none;
     z-index: 2;
+    border-radius: 0 0 16px 16px;
 }
 
 .plataforma-img {
@@ -2668,4 +2670,431 @@ a.feature-card:hover {
     opacity: 1 !important;
     transform: translateY(0) scale(1) !important;
     filter: none !important;
+}
+/* ============================================
+   CARD STACK - Funcionalidades
+   ============================================ */
+
+.card-stack-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 60px 0;
+    min-height: 500px;
+}
+
+.card-stack {
+    position: relative;
+    width: 600px;
+    height: 380px;
+    perspective: 1000px;
+}
+
+.stack-card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.4s ease,
+                filter 0.4s ease,
+                box-shadow 0.4s ease;
+    border: 2px solid rgba(34, 197, 94, 0.3);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(34, 197, 94, 0.1);
+}
+
+.stack-card:active {
+    cursor: grabbing;
+}
+
+.stack-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.stack-card-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 24px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.stack-card.front .stack-card-info {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.stack-card-info h3 {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.stack-card-info p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+}
+
+/* Navigation Buttons */
+.stack-nav {
+    position: relative;
+    z-index: 10;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(20, 20, 20, 0.8);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.stack-nav:hover {
+    background: rgba(34, 197, 94, 0.2);
+    border-color: rgba(34, 197, 94, 0.6);
+    transform: scale(1.1);
+}
+
+.stack-nav:active {
+    transform: scale(0.95);
+}
+
+.stack-nav svg {
+    stroke: #22c55e;
+}
+
+/* Progress Indicator */
+.stack-progress {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 30px;
+}
+
+.progress-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.progress-dot.active {
+    width: 32px;
+    border-radius: 4px;
+    background: #22c55e;
+}
+
+/* Dragging state */
+.stack-card.dragging {
+    transition: none !important;
+    z-index: 100 !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card-stack-container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 40px 20px;
+    }
+    
+    .card-stack {
+        width: 100%;
+        max-width: 350px;
+        height: 220px;
+    }
+    
+    .stack-nav {
+        display: none;
+    }
+    
+    .stack-card-info h3 {
+        font-size: 1.2rem;
+    }
+    
+    .stack-card-info p {
+        font-size: 0.85rem;
+    }
+}
+
+/* ============================================
+   SOBRE NÓS SECTION
+   ============================================ */
+
+.sobre-section {
+    padding: 120px 0;
+    background: linear-gradient(180deg, #000 0%, #0a0a0a 50%, #000 100%);
+    position: relative;
+}
+
+/* História */
+.sobre-historia {
+    max-width: 800px;
+    margin: 0 auto 80px;
+    text-align: center;
+}
+
+.sobre-historia h3 {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 24px;
+    font-weight: 700;
+}
+
+.sobre-historia p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 16px;
+}
+
+/* Fundadores */
+.fundadores {
+    margin-bottom: 100px;
+}
+
+.fundadores-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-style: italic;
+    color: #fff;
+    margin-bottom: 50px;
+    font-weight: 400;
+}
+
+.fundadores-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.fundador-card {
+    text-align: center;
+}
+
+.fundador-img {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 20px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 3px solid rgba(34, 197, 94, 0.3);
+    transition: all 0.3s ease;
+}
+
+.fundador-img:hover {
+    border-color: #22c55e;
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(34, 197, 94, 0.3);
+}
+
+.fundador-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.fundador-card h4 {
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.fundador-cargo {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Acelerações */
+.aceleracoes {
+    text-align: center;
+    margin-bottom: 100px;
+    padding: 60px 0;
+    background: rgba(34, 197, 94, 0.03);
+    border-radius: 24px;
+    border: 1px solid rgba(34, 197, 94, 0.1);
+}
+
+.aceleracoes-title {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 40px;
+    font-weight: 500;
+}
+
+.aceleracoes-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 30px;
+}
+
+.parceiro-logo {
+    padding: 20px 40px;
+}
+
+.logo-text {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.logo-text.newhack {
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+}
+
+.logo-text.growthway {
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+}
+
+.logo-text .underscore {
+    color: #f97316;
+}
+
+.aceleracoes-desc {
+    max-width: 600px;
+    margin: 0 auto;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* Timeline */
+.timeline {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 50px;
+    font-weight: 700;
+}
+
+.timeline-items {
+    position: relative;
+    padding-left: 40px;
+}
+
+.timeline-items::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #22c55e, rgba(34, 197, 94, 0.2));
+}
+
+.timeline-item {
+    position: relative;
+    padding-bottom: 40px;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -36px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #22c55e;
+    border: 3px solid #000;
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+}
+
+.timeline-content {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 24px;
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+    background: rgba(34, 197, 94, 0.05);
+    border-color: rgba(34, 197, 94, 0.3);
+}
+
+.timeline-date {
+    display: inline-block;
+    color: #22c55e;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.timeline-content h4 {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.timeline-content p {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .sobre-section {
+        padding: 80px 0;
+    }
+    
+    .fundadores-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .fundador-img {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .aceleracoes-logos {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .timeline-items {
+        padding-left: 30px;
+    }
+    
+    .timeline-dot {
+        left: -26px;
+    }
 }
