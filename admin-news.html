@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Edicao - RamppyNews</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fff;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: #000;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .header h1 span {
+            color: #2ed573;
+        }
+
+        .header a {
+            color: #888;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .main {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .card {
+            background: #fafafa;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .input-row:last-child {
+            margin-bottom: 0;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e8e8e8;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #2ed573;
+        }
+
+        .emoji-input {
+            width: 56px;
+            text-align: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        textarea {
+            min-height: 200px;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        .btn {
+            padding: 14px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-add {
+            background: #000;
+            color: #fff;
+            width: 100%;
+            margin-top: 12px;
+        }
+
+        .btn-add:hover {
+            background: #222;
+        }
+
+        .btn-publish {
+            background: #2ed573;
+            color: #000;
+            width: 100%;
+            padding: 18px;
+            font-size: 16px;
+        }
+
+        .btn-publish:hover {
+            background: #26b862;
+        }
+
+        .list {
+            margin-top: 20px;
+        }
+
+        .list-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px;
+            background: #fff;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border: 1px solid #eee;
+        }
+
+        .list-item .emoji {
+            font-size: 18px;
+        }
+
+        .list-item .text {
+            flex: 1;
+            font-size: 14px;
+        }
+
+        .list-item .remove {
+            color: #ff4757;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 4px 8px;
+        }
+
+        .list-item .remove:hover {
+            background: #fff5f5;
+            border-radius: 4px;
+        }
+
+        .article-item {
+            padding: 16px;
+            padding-left: 24px;
+            background: #fff;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            margin-left: 8px;
+            border: 1px solid #eee;
+            position: relative;
+        }
+
+        .article-item .tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            color: #ff4757;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .article-item h4 {
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+
+        .article-item p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .article-item .actions {
+            margin-top: 12px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .article-item .actions button {
+            padding: 6px 12px;
+            font-size: 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .article-item .actions .edit {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .article-item .actions .delete {
+            background: #fff5f5;
+            color: #ff4757;
+        }
+
+        .image-upload {
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            padding: 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 12px;
+        }
+
+        .image-upload:hover {
+            border-color: #2ed573;
+            background: #f9fff9;
+        }
+
+        .image-upload input {
+            display: none;
+        }
+
+        .image-upload .icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .image-upload .text {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .image-preview {
+            margin-bottom: 12px;
+        }
+
+        .image-preview img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .divider {
+            height: 1px;
+            background: #eee;
+            margin: 32px 0;
+        }
+
+        select {
+            padding: 14px 16px;
+            border: 2px solid #e8e8e8;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            background: #fff;
+            cursor: pointer;
+            min-width: 140px;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #2ed573;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 24px;
+            color: #999;
+            font-size: 14px;
+        }
+
+        .help-text {
+            font-size: 12px;
+            color: #999;
+            margin-top: 8px;
+        }
+
+        .emoji-picker {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-bottom: 12px;
+            padding: 12px;
+            background: #fff;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+
+        .emoji-picker button {
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: transparent;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.15s;
+        }
+
+        .emoji-picker button:hover {
+            background: #f0f0f0;
+            transform: scale(1.1);
+        }
+
+        .emoji-picker button.selected {
+            background: #2ed573;
+            transform: scale(1.1);
+        }
+
+        .selected-emoji {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .selected-emoji span {
+            font-size: 24px;
+        }
+
+        .btn-new-article {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, #2ed573, #26b862);
+            color: #000;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 16px;
+        }
+
+        .btn-new-article:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(46, 213, 115, 0.4);
+        }
+
+        .article-form {
+            margin-top: 20px;
+            padding: 20px;
+            background: #fff;
+            border: 2px solid #2ed573;
+            border-radius: 12px;
+        }
+
+        .form-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .form-header span {
+            font-weight: 600;
+            color: #2ed573;
+        }
+
+        .btn-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #999;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .btn-close:hover {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .btn-cancel {
+            flex: 1;
+            background: #f0f0f0;
+            color: #666;
+        }
+
+        .btn-cancel:hover {
+            background: #e0e0e0;
+        }
+
+        .btn-save {
+            flex: 2;
+            background: #2ed573;
+            color: #000;
+        }
+
+        .btn-save:hover {
+            background: #26b862;
+        }
+
+        #articles-count {
+            color: #2ed573;
+            font-weight: 700;
+        }
+
+        .article-number {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            width: 24px;
+            height: 24px;
+            background: #2ed573;
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* Formatting Toolbar */
+        .formatting-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            padding: 10px;
+            background: #f5f5f5;
+            border: 2px solid #e8e8e8;
+            border-bottom: none;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .formatting-toolbar button {
+            padding: 8px 12px;
+            border: none;
+            background: #fff;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            transition: all 0.15s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .formatting-toolbar button:hover {
+            background: #2ed573;
+            color: #000;
+        }
+
+        .formatting-toolbar button svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .formatting-toolbar .separator {
+            width: 1px;
+            background: #ddd;
+            margin: 0 4px;
+        }
+
+        .textarea-with-toolbar {
+            border-radius: 0 0 8px 8px !important;
+            border-top: none !important;
+        }
+
+        /* Link Modal */
+        .link-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .link-modal.active {
+            display: flex;
+        }
+
+        .link-modal-content {
+            background: #fff;
+            padding: 24px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .link-modal-content h3 {
+            margin-bottom: 16px;
+            font-size: 18px;
+        }
+
+        .link-modal-content input {
+            margin-bottom: 12px;
+        }
+
+        .link-modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .link-modal-actions button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .link-modal-actions .cancel {
+            background: #f0f0f0;
+            color: #666;
+        }
+
+        .link-modal-actions .confirm {
+            background: #2ed573;
+            color: #000;
+        }
+
+        .toolbar-tip {
+            font-size: 11px;
+            color: #999;
+            margin-top: 8px;
+            padding: 0 4px;
+        }
+
+        /* Live Preview */
+        .preview-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 16px;
+            margin-bottom: 8px;
+        }
+
+        .preview-toggle input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #2ed573;
+        }
+
+        .preview-toggle label {
+            font-size: 14px;
+            color: #666;
+            cursor: pointer;
+        }
+
+        .live-preview {
+            background: #fff;
+            border: 2px solid #2ed573;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 12px;
+            min-height: 100px;
+            display: none;
+        }
+
+        .live-preview.active {
+            display: block;
+        }
+
+        .preview-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #2ed573;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .preview-content {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #333;
+        }
+
+        .preview-content strong {
+            font-weight: 700;
+            color: #000;
+        }
+
+        .preview-content em {
+            font-style: italic;
+        }
+
+        .preview-content u {
+            text-decoration: underline;
+        }
+
+        .preview-content mark {
+            background: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .preview-content a {
+            color: #2ed573;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px solid #2ed573;
+        }
+
+        .preview-content h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #000;
+            margin: 16px 0 8px;
+        }
+
+        .preview-content blockquote {
+            border-left: 4px solid #2ed573;
+            background: #f8f9fa;
+            padding: 12px 16px;
+            margin: 12px 0;
+            font-style: italic;
+            color: #555;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .preview-content ul {
+            padding-left: 0;
+            margin: 12px 0;
+        }
+
+        .preview-content li {
+            padding: 6px 0 6px 20px;
+            position: relative;
+            list-style: none;
+        }
+
+        .preview-content li::before {
+            content: "•";
+            color: #2ed573;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .preview-empty {
+            color: #999;
+            font-style: italic;
+        }
+    </style>
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="header">
+        <h1>Ramppy<span>News</span></h1>
+        <a href="ramppynews.html">Ver site</a>
+    </header>
+
+    <main class="main">
+        <!-- Titulo da Edicao -->
+        <div class="card">
+            <input type="text" id="edition-title" placeholder="Titulo da edicao (ex: O futuro das vendas)">
+        </div>
+
+        <!-- Destaques -->
+        <p class="section-title">Destaques da edicao</p>
+        <div class="card">
+            <div class="selected-emoji">Emoji selecionado: <span id="selected-emoji">📰</span></div>
+            <div class="emoji-picker" id="emoji-picker">
+                <button onclick="selectEmoji('📰')">📰</button>
+                <button onclick="selectEmoji('🚀')">🚀</button>
+                <button onclick="selectEmoji('💰')">💰</button>
+                <button onclick="selectEmoji('📈')">📈</button>
+                <button onclick="selectEmoji('📉')">📉</button>
+                <button onclick="selectEmoji('💡')">💡</button>
+                <button onclick="selectEmoji('🎯')">🎯</button>
+                <button onclick="selectEmoji('⚡')">⚡</button>
+                <button onclick="selectEmoji('🔥')">🔥</button>
+                <button onclick="selectEmoji('✨')">✨</button>
+                <button onclick="selectEmoji('🏆')">🏆</button>
+                <button onclick="selectEmoji('💼')">💼</button>
+                <button onclick="selectEmoji('🤝')">🤝</button>
+                <button onclick="selectEmoji('💬')">💬</button>
+                <button onclick="selectEmoji('📊')">📊</button>
+                <button onclick="selectEmoji('🌍')">🌍</button>
+                <button onclick="selectEmoji('🇧🇷')">🇧🇷</button>
+                <button onclick="selectEmoji('🏢')">🏢</button>
+                <button onclick="selectEmoji('🛒')">🛒</button>
+                <button onclick="selectEmoji('💳')">💳</button>
+                <button onclick="selectEmoji('📱')">📱</button>
+                <button onclick="selectEmoji('💻')">💻</button>
+                <button onclick="selectEmoji('🤖')">🤖</button>
+                <button onclick="selectEmoji('🧠')">🧠</button>
+                <button onclick="selectEmoji('📚')">📚</button>
+                <button onclick="selectEmoji('✅')">✅</button>
+                <button onclick="selectEmoji('❌')">❌</button>
+                <button onclick="selectEmoji('⚠️')">⚠️</button>
+                <button onclick="selectEmoji('🔔')">🔔</button>
+                <button onclick="selectEmoji('🎉')">🎉</button>
+                <button onclick="selectEmoji('👀')">👀</button>
+                <button onclick="selectEmoji('👆')">👆</button>
+                <button onclick="selectEmoji('💪')">💪</button>
+                <button onclick="selectEmoji('🎧')">🎧</button>
+                <button onclick="selectEmoji('📢')">📢</button>
+            </div>
+            <input type="text" id="topic-text" placeholder="Titulo do destaque" style="margin-bottom: 12px;">
+            <button class="btn btn-add" onclick="addTopic()">+ Adicionar destaque</button>
+
+            <div class="list" id="topics-list">
+                <div class="empty-state">Nenhum destaque adicionado</div>
+            </div>
+        </div>
+
+        <!-- Artigos -->
+        <p class="section-title">Artigos <span id="articles-count">(0)</span></p>
+        <div class="card">
+            <div class="list" id="articles-list">
+                <div class="empty-state">Nenhum artigo adicionado</div>
+            </div>
+
+            <button class="btn btn-new-article" id="btn-new-article" onclick="showArticleForm()">
+                + Novo Artigo
+            </button>
+
+            <div class="article-form" id="article-form" style="display: none;">
+                <div class="form-header">
+                    <span>Criando novo artigo</span>
+                    <button class="btn-close" onclick="hideArticleForm()">×</button>
+                </div>
+                <div class="input-row">
+                    <select id="article-category">
+                        <option value="BRASIL">BRASIL</option>
+                        <option value="MUNDO">MUNDO</option>
+                        <option value="VENDAS">VENDAS</option>
+                        <option value="TECH">TECH</option>
+                        <option value="MERCADO">MERCADO</option>
+                    </select>
+                    <input type="text" id="article-title" placeholder="Titulo do artigo">
+                </div>
+
+                <div class="image-upload" onclick="document.getElementById('article-image').click()">
+                    <input type="file" id="article-image" accept="image/*" onchange="previewImage(this)">
+                    <div class="icon">🖼️</div>
+                    <div class="text">Clique para adicionar imagem</div>
+                </div>
+                <div class="image-preview" id="image-preview"></div>
+
+                <!-- Formatting Toolbar -->
+                <div class="formatting-toolbar">
+                    <button type="button" onclick="formatText('bold')" title="Negrito (Ctrl+B)">
+                        <strong>B</strong>
+                    </button>
+                    <button type="button" onclick="formatText('italic')" title="Italico (Ctrl+I)">
+                        <em>I</em>
+                    </button>
+                    <button type="button" onclick="formatText('underline')" title="Sublinhado">
+                        <u>U</u>
+                    </button>
+                    <div class="separator"></div>
+                    <button type="button" onclick="openLinkModal()" title="Inserir link">
+                        🔗 Link
+                    </button>
+                    <button type="button" onclick="formatText('quote')" title="Citacao">
+                        " Citacao
+                    </button>
+                    <div class="separator"></div>
+                    <button type="button" onclick="formatText('heading')" title="Titulo">
+                        H Titulo
+                    </button>
+                    <button type="button" onclick="formatText('list')" title="Lista">
+                        • Lista
+                    </button>
+                    <button type="button" onclick="formatText('highlight')" title="Destaque">
+                        ✨ Destaque
+                    </button>
+                </div>
+                <textarea id="article-content" class="textarea-with-toolbar" placeholder="Escreva o conteudo do artigo..." oninput="updatePreview()"></textarea>
+                <p class="toolbar-tip">💡 Selecione um texto e clique nos botoes para formatar</p>
+
+                <div class="preview-toggle">
+                    <input type="checkbox" id="show-preview" onchange="togglePreview()" checked>
+                    <label for="show-preview">Mostrar preview ao vivo</label>
+                </div>
+
+                <div class="live-preview active" id="live-preview">
+                    <div class="preview-label">👁️ Preview</div>
+                    <div class="preview-content" id="preview-content">
+                        <span class="preview-empty">Digite algo para ver o preview...</span>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button class="btn btn-cancel" onclick="hideArticleForm()">Cancelar</button>
+                    <button class="btn btn-save" onclick="addArticle()">Salvar Artigo</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <button class="btn btn-publish" onclick="publishEdition()">
+            Publicar Edicao
+        </button>
+        <p class="help-text" style="text-align: center; margin-top: 12px;">
+            A edicao sera salva e ficara disponivel para os leitores
+        </p>
+    </main>
+
+    <!-- Link Modal -->
+    <div class="link-modal" id="link-modal">
+        <div class="link-modal-content">
+            <h3>🔗 Inserir Link</h3>
+            <input type="text" id="link-text" placeholder="Texto do link (ex: clique aqui)">
+            <input type="url" id="link-url" placeholder="URL (ex: https://exemplo.com)">
+            <div class="link-modal-actions">
+                <button class="cancel" onclick="closeLinkModal()">Cancelar</button>
+                <button class="confirm" onclick="insertLink()">Inserir Link</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========== SUPABASE CONFIG ==========
+        const SUPABASE_URL = 'https://pisvpbscqgoyhnnartwj.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBpc3ZwYnNjcWdveWhubmFydHdqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjAzNTc4NjUsImV4cCI6MjA3NTkzMzg2NX0.IbjiMUc7E7pBtHElwR54DlrylSUNtiCZ5-9skxllUjM';
+        let supabaseClient = null;
+
+        // Initialize Supabase
+        function initSupabase() {
+            if (window.supabase && window.supabase.createClient) {
+                supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+                console.log('Supabase inicializado com sucesso');
+                return true;
+            }
+            return false;
+        }
+
+        // Try to initialize
+        if (!initSupabase()) {
+            document.addEventListener('DOMContentLoaded', initSupabase);
+        }
+
+        let topics = [];
+        let articles = [];
+        let currentImage = null;
+        let selectedEmoji = '📰';
+        let savedSelection = null;
+
+        // ========== MARKDOWN PARSER ==========
+        function parseMarkdown(text) {
+            if (!text) return '';
+
+            let html = text;
+
+            // Escape HTML first (security)
+            html = html.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+            // Bold: **text**
+            html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+            // Italic: *text* (but not inside ** **)
+            html = html.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+
+            // Underline: __text__
+            html = html.replace(/__(.+?)__/g, '<u>$1</u>');
+
+            // Highlight: ==text==
+            html = html.replace(/==(.+?)==/g, '<mark>$1</mark>');
+
+            // Links: [text](url)
+            html = html.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank">$1</a>');
+
+            // Headings: ## text
+            html = html.replace(/^## (.+)$/gm, '<h3>$1</h3>');
+
+            // Blockquote: > text
+            html = html.replace(/^&gt; (.+)$/gm, '<blockquote>$1</blockquote>');
+
+            // Bullet list: • item
+            html = html.replace(/^• (.+)$/gm, '<li>$1</li>');
+            html = html.replace(/(<li>.+<\/li>\n?)+/g, '<ul>$&</ul>');
+
+            // Line breaks
+            html = html.replace(/\n/g, '<br>');
+
+            // Clean up
+            html = html.replace(/<\/(h3|blockquote|ul)><br>/g, '</$1>');
+            html = html.replace(/<br><(h3|blockquote|ul)/g, '<$1');
+
+            return html;
+        }
+
+        // ========== LIVE PREVIEW ==========
+        function updatePreview() {
+            const content = document.getElementById('article-content').value;
+            const previewContent = document.getElementById('preview-content');
+
+            if (!content.trim()) {
+                previewContent.innerHTML = '<span class="preview-empty">Digite algo para ver o preview...</span>';
+            } else {
+                previewContent.innerHTML = parseMarkdown(content);
+            }
+        }
+
+        function togglePreview() {
+            const checkbox = document.getElementById('show-preview');
+            const preview = document.getElementById('live-preview');
+
+            if (checkbox.checked) {
+                preview.classList.add('active');
+                updatePreview();
+            } else {
+                preview.classList.remove('active');
+            }
+        }
+
+        // ========== FORMATTING FUNCTIONS ==========
+        function formatText(type) {
+            const textarea = document.getElementById('article-content');
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            const text = textarea.value;
+            const selectedText = text.substring(start, end);
+
+            let formattedText = '';
+            let newStart = start;
+            let newEnd = end;
+
+            // Check for existing formatting and toggle
+            const formats = {
+                bold: { prefix: '**', suffix: '**', pattern: /^\*\*(.+)\*\*$/ },
+                italic: { prefix: '*', suffix: '*', pattern: /^\*([^*]+)\*$/ },
+                underline: { prefix: '__', suffix: '__', pattern: /^__(.+)__$/ },
+                highlight: { prefix: '==', suffix: '==', pattern: /^==(.+)==$/ }
+            };
+
+            if (formats[type]) {
+                const { prefix, suffix, pattern } = formats[type];
+                const prefixLen = prefix.length;
+                const suffixLen = suffix.length;
+
+                // Check if selected text already has this formatting
+                if (selectedText && pattern.test(selectedText)) {
+                    // Remove formatting from selected text
+                    formattedText = selectedText.slice(prefixLen, -suffixLen);
+                }
+                // Check if formatting is around the selection
+                else if (start >= prefixLen && end + suffixLen <= text.length) {
+                    const before = text.substring(start - prefixLen, start);
+                    const after = text.substring(end, end + suffixLen);
+
+                    if (before === prefix && after === suffix) {
+                        // Remove surrounding formatting
+                        textarea.value = text.substring(0, start - prefixLen) + selectedText + text.substring(end + suffixLen);
+                        textarea.selectionStart = start - prefixLen;
+                        textarea.selectionEnd = end - prefixLen;
+                        textarea.focus();
+                        updatePreview();
+                        return;
+                    } else {
+                        // Add formatting
+                        formattedText = prefix + (selectedText || 'texto') + suffix;
+                    }
+                } else {
+                    // Add formatting
+                    formattedText = prefix + (selectedText || 'texto') + suffix;
+                }
+            } else {
+                // Non-toggleable formats
+                switch(type) {
+                    case 'quote':
+                        if (selectedText && selectedText.startsWith('> ')) {
+                            // Remove quote
+                            formattedText = selectedText.replace(/^> /gm, '');
+                        } else if (selectedText) {
+                            formattedText = selectedText.split('\n').map(line => `> ${line}`).join('\n');
+                        } else {
+                            formattedText = '\n> citacao\n';
+                        }
+                        break;
+                    case 'heading':
+                        if (selectedText && selectedText.startsWith('## ')) {
+                            // Remove heading
+                            formattedText = selectedText.replace(/^## /gm, '');
+                        } else if (selectedText) {
+                            formattedText = `## ${selectedText}`;
+                        } else {
+                            formattedText = '\n## Titulo\n';
+                        }
+                        break;
+                    case 'list':
+                        if (selectedText && selectedText.includes('• ')) {
+                            // Remove list formatting
+                            formattedText = selectedText.replace(/^• /gm, '');
+                        } else if (selectedText) {
+                            const lines = selectedText.split('\n');
+                            formattedText = lines.map(line => `• ${line}`).join('\n');
+                        } else {
+                            formattedText = '\n• item\n• item\n• item\n';
+                        }
+                        break;
+                }
+            }
+
+            // Insert formatted text
+            textarea.value = text.substring(0, start) + formattedText + text.substring(end);
+
+            // Set cursor/selection position
+            if (!selectedText) {
+                // Position cursor inside the formatting
+                const cursorPos = start + (formats[type] ? formats[type].prefix.length : 0);
+                textarea.selectionStart = cursorPos;
+                textarea.selectionEnd = cursorPos + (formats[type] ? 5 : formattedText.length); // Select placeholder
+            } else {
+                textarea.selectionStart = start;
+                textarea.selectionEnd = start + formattedText.length;
+            }
+
+            textarea.focus();
+            updatePreview();
+        }
+
+        function openLinkModal() {
+            const textarea = document.getElementById('article-content');
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            const selectedText = textarea.value.substring(start, end);
+
+            // Save selection
+            savedSelection = { start, end };
+
+            // Pre-fill link text if text is selected
+            document.getElementById('link-text').value = selectedText || '';
+            document.getElementById('link-url').value = '';
+
+            document.getElementById('link-modal').classList.add('active');
+            document.getElementById('link-url').focus();
+        }
+
+        function closeLinkModal() {
+            document.getElementById('link-modal').classList.remove('active');
+            savedSelection = null;
+        }
+
+        function insertLink() {
+            const linkText = document.getElementById('link-text').value || 'clique aqui';
+            const linkUrl = document.getElementById('link-url').value;
+
+            if (!linkUrl) {
+                alert('Digite a URL do link');
+                return;
+            }
+
+            const textarea = document.getElementById('article-content');
+            const formattedLink = `[${linkText}](${linkUrl})`;
+
+            if (savedSelection) {
+                textarea.value = textarea.value.substring(0, savedSelection.start) + formattedLink + textarea.value.substring(savedSelection.end);
+                textarea.selectionStart = textarea.selectionEnd = savedSelection.start + formattedLink.length;
+            } else {
+                // Insert at cursor position
+                const pos = textarea.selectionStart;
+                textarea.value = textarea.value.substring(0, pos) + formattedLink + textarea.value.substring(pos);
+            }
+
+            closeLinkModal();
+            textarea.focus();
+            updatePreview();
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            const textarea = document.getElementById('article-content');
+            if (document.activeElement !== textarea) return;
+
+            if (e.ctrlKey || e.metaKey) {
+                switch(e.key.toLowerCase()) {
+                    case 'b':
+                        e.preventDefault();
+                        formatText('bold');
+                        break;
+                    case 'i':
+                        e.preventDefault();
+                        formatText('italic');
+                        break;
+                    case 'k':
+                        e.preventDefault();
+                        openLinkModal();
+                        break;
+                }
+            }
+        });
+
+        // Close modal on escape or click outside
+        document.getElementById('link-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeLinkModal();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLinkModal();
+        });
+
+        function selectEmoji(emoji) {
+            selectedEmoji = emoji;
+            document.getElementById('selected-emoji').textContent = emoji;
+
+            // Atualizar visual dos botoes
+            document.querySelectorAll('.emoji-picker button').forEach(btn => {
+                btn.classList.remove('selected');
+                if (btn.textContent === emoji) {
+                    btn.classList.add('selected');
+                }
+            });
+        }
+
+        function addTopic() {
+            const text = document.getElementById('topic-text').value;
+
+            if (!text) {
+                alert('Digite o titulo do destaque');
+                return;
+            }
+
+            topics.push({ emoji: selectedEmoji, text });
+            renderTopics();
+
+            document.getElementById('topic-text').value = '';
+        }
+
+        function renderTopics() {
+            const list = document.getElementById('topics-list');
+            if (topics.length === 0) {
+                list.innerHTML = '<div class="empty-state">Nenhum destaque adicionado</div>';
+                return;
+            }
+
+            list.innerHTML = topics.map((t, i) => `
+                <div class="list-item">
+                    <span class="emoji">${t.emoji}</span>
+                    <span class="text">${t.text}</span>
+                    <button class="remove" onclick="removeTopic(${i})">×</button>
+                </div>
+            `).join('');
+        }
+
+        function removeTopic(index) {
+            topics.splice(index, 1);
+            renderTopics();
+        }
+
+        function previewImage(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    currentImage = e.target.result;
+                    document.getElementById('image-preview').innerHTML = `<img src="${e.target.result}">`;
+                    document.querySelector('.image-upload').style.display = 'none';
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function showArticleForm() {
+            document.getElementById('article-form').style.display = 'block';
+            document.getElementById('btn-new-article').style.display = 'none';
+            document.getElementById('article-title').focus();
+        }
+
+        function hideArticleForm() {
+            document.getElementById('article-form').style.display = 'none';
+            document.getElementById('btn-new-article').style.display = 'block';
+
+            // Limpar formulario
+            document.getElementById('article-title').value = '';
+            document.getElementById('article-content').value = '';
+            document.getElementById('image-preview').innerHTML = '';
+            document.querySelector('.image-upload').style.display = 'block';
+            document.getElementById('preview-content').innerHTML = '<span class="preview-empty">Digite algo para ver o preview...</span>';
+            currentImage = null;
+        }
+
+        function addArticle() {
+            const category = document.getElementById('article-category').value;
+            const title = document.getElementById('article-title').value;
+            const content = document.getElementById('article-content').value;
+
+            if (!title || !content) {
+                alert('Preencha o titulo e conteudo do artigo');
+                return;
+            }
+
+            articles.push({ category, title, image: currentImage, content });
+            renderArticles();
+            hideArticleForm();
+        }
+
+        function renderArticles() {
+            const list = document.getElementById('articles-list');
+            const count = document.getElementById('articles-count');
+
+            count.textContent = `(${articles.length})`;
+
+            if (articles.length === 0) {
+                list.innerHTML = '<div class="empty-state">Nenhum artigo adicionado</div>';
+                return;
+            }
+
+            list.innerHTML = articles.map((a, i) => `
+                <div class="article-item">
+                    <span class="article-number">${i + 1}</span>
+                    <span class="tag">${a.category}</span>
+                    <h4>${a.title}</h4>
+                    <p>${a.content.substring(0, 100).replace(/\*\*/g, '')}...</p>
+                    <div class="actions">
+                        <button class="delete" onclick="removeArticle(${i})">Remover</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function removeArticle(index) {
+            articles.splice(index, 1);
+            renderArticles();
+        }
+
+        async function publishEdition() {
+            const title = document.getElementById('edition-title').value;
+
+            if (!title) {
+                alert('Digite o titulo da edicao');
+                return;
+            }
+
+            if (topics.length === 0) {
+                alert('Adicione pelo menos um destaque');
+                return;
+            }
+
+            if (articles.length === 0) {
+                alert('Adicione pelo menos um artigo');
+                return;
+            }
+
+            // Verificar se Supabase está disponível
+            if (!supabaseClient) {
+                alert('Erro: Conexão com banco de dados não disponível. Recarregue a página.');
+                return;
+            }
+
+            const publishBtn = document.querySelector('.btn-publish');
+            const originalText = publishBtn.textContent;
+            publishBtn.textContent = 'Publicando...';
+            publishBtn.disabled = true;
+
+            try {
+                // 1. Criar a edição
+                const { data: editionData, error: editionError } = await supabaseClient
+                    .from('editions')
+                    .insert([{ title: title }])
+                    .select()
+                    .single();
+
+                if (editionError) throw editionError;
+
+                const editionId = editionData.id;
+
+                // 2. Criar os tópicos (destaques)
+                const topicsToInsert = topics.map((t, index) => ({
+                    edition_id: editionId,
+                    emoji: t.emoji,
+                    text: t.text,
+                    display_order: index
+                }));
+
+                const { error: topicsError } = await supabaseClient
+                    .from('edition_topics')
+                    .insert(topicsToInsert);
+
+                if (topicsError) throw topicsError;
+
+                // 3. Criar os artigos
+                const articlesToInsert = articles.map((a, index) => ({
+                    edition_id: editionId,
+                    category: a.category,
+                    title: a.title,
+                    content: a.content,
+                    image_url: a.image || null,
+                    display_order: index
+                }));
+
+                const { error: articlesError } = await supabaseClient
+                    .from('articles')
+                    .insert(articlesToInsert);
+
+                if (articlesError) throw articlesError;
+
+                alert('Edição publicada com sucesso!');
+
+                // Limpar tudo
+                document.getElementById('edition-title').value = '';
+                topics = [];
+                articles = [];
+                currentImage = null;
+                renderTopics();
+                renderArticles();
+
+            } catch (error) {
+                console.error('Erro ao publicar:', error);
+                alert('Erro ao publicar edição: ' + error.message);
+            } finally {
+                publishBtn.textContent = originalText;
+                publishBtn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html>
