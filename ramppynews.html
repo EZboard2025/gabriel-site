@@ -591,7 +591,7 @@
             color: var(--primary-green);
         }
 
-        /* ========== DYNAMIC EDITIONS STYLES ========== */
+        /* ========== DYNAMIC EDITIONS STYLES - MODERN CARD GRID ========== */
         .loading-editions, .no-editions {
             text-align: center;
             padding: 60px 20px;
@@ -603,37 +603,237 @@
             margin: 8px 0;
         }
 
-        .edition-card {
-            background: #fff;
-            border-radius: 16px;
-            padding: 32px;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        /* Search and Filters */
+        .editions-search-container {
+            margin-bottom: 24px;
         }
 
-        .edition-header {
+        .editions-search {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            background: #f5f5f5;
+            border-radius: 12px;
             margin-bottom: 16px;
         }
 
-        .edition-number {
+        .editions-search svg {
+            color: #999;
+            flex-shrink: 0;
+        }
+
+        .editions-search input {
+            border: none;
+            background: none;
+            font-size: 15px;
+            width: 100%;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .editions-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .filter-tag {
+            padding: 10px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: 700;
+            background: #fff;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+        }
+
+        .filter-tag:hover {
+            border-color: #2ed573;
+            background: #e8f8e8;
+        }
+
+        .filter-tag.active {
+            border-color: #2ed573;
             background: #2ed573;
             color: #000;
+        }
+
+        /* Editions Grid */
+        .editions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 968px) {
+            .editions-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .editions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Edition Card */
+        .edition-card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .edition-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+        }
+
+        .edition-card-image {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .edition-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .edition-card-image .placeholder-icon {
+            font-size: 56px;
+            opacity: 0.5;
+        }
+
+        .edition-card-category {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: #2ed573;
+            color: #000;
+            font-size: 11px;
+            font-weight: 700;
             padding: 6px 14px;
-            border-radius: 20px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .edition-card-info {
+            background: #2ed573;
+            padding: 20px;
+        }
+
+        .edition-card-date {
+            font-size: 12px;
+            color: rgba(0,0,0,0.6);
+            margin-bottom: 6px;
+        }
+
+        .edition-card-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .edition-card-subtitle {
+            font-size: 14px;
+            color: rgba(0,0,0,0.7);
+        }
+
+        .edition-card-stats {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 12px;
             font-size: 13px;
+            color: rgba(0,0,0,0.5);
+        }
+
+        /* Edition Modal/Expanded View */
+        .edition-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 40px 20px;
+        }
+
+        .edition-modal.active {
+            display: block;
+        }
+
+        .edition-modal-content {
+            background: #fff;
+            border-radius: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            position: relative;
+        }
+
+        .edition-modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #f0f0f0;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .edition-modal-close:hover {
+            background: #e0e0e0;
+        }
+
+        .edition-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .edition-modal-number {
+            background: #2ed573;
+            color: #000;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
             font-weight: 700;
         }
 
-        .edition-date {
+        .edition-modal-date {
             color: #888;
             font-size: 14px;
         }
 
-        .edition-title {
-            font-size: 28px;
+        .edition-modal-title {
+            font-size: 32px;
             font-weight: 800;
             color: #000;
             margin-bottom: 24px;
@@ -980,12 +1180,34 @@
                 <h2 class="news-editions-title">Edições</h2>
             </div>
 
+            <!-- Search and Filters -->
+            <div class="editions-search-container">
+                <div class="editions-search">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <input type="text" id="editions-search-input" placeholder="Pesquisar posts..." oninput="filterPublicEditions()">
+                </div>
+                <div class="editions-filters" id="editions-filters">
+                    <button class="filter-tag active" data-filter="todas" onclick="setPublicFilter('todas')">TODAS</button>
+                </div>
+            </div>
+
             <!-- Dynamic Editions Container -->
             <div id="editions-container">
                 <div class="loading-editions">Carregando edições...</div>
             </div>
         </div>
     </section>
+
+    <!-- Edition Modal -->
+    <div class="edition-modal" id="edition-modal">
+        <div class="edition-modal-content">
+            <button class="edition-modal-close" onclick="closeEditionModal()">×</button>
+            <div id="edition-modal-body"></div>
+        </div>
+    </div>
 
     <!-- CTA Section -->
     <section class="news-cta">
@@ -1283,7 +1505,22 @@
             return html;
         }
 
-        // ========== LOAD EDITIONS FROM SUPABASE ==========
+        // ========== LOAD EDITIONS FROM SUPABASE - CARD GRID ==========
+        let allPublicEditions = [];
+        let currentPublicFilter = 'todas';
+
+        // Gradients para cards sem imagem
+        const publicCardGradients = [
+            'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+            'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+            'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+            'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+            'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
+            'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)',
+            'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)'
+        ];
+
         async function loadEditions() {
             const container = document.getElementById('editions-container');
             if (!container) return;
@@ -1312,7 +1549,10 @@
                     .select(`
                         id,
                         title,
-                        published_at,
+                        created_at,
+                        cover_image,
+                        cover_image_position,
+                        cover_image_zoom,
                         edition_topics (
                             emoji,
                             text,
@@ -1326,8 +1566,7 @@
                             display_order
                         )
                     `)
-                    .eq('is_published', true)
-                    .order('published_at', { ascending: false });
+                    .order('created_at', { ascending: false });
 
                 if (error) throw error;
 
@@ -1351,33 +1590,9 @@
                     }
                 });
 
-                container.innerHTML = editions.map((edition, index) => `
-                    <article class="edition-card" id="edition-${edition.id}">
-                        <div class="edition-header">
-                            <span class="edition-number">Edição #${editions.length - index}</span>
-                            <span class="edition-date">${formatDate(edition.published_at)}</span>
-                        </div>
-                        <h2 class="edition-title">${escapeHtml(edition.title)}</h2>
-
-                        <div class="edition-highlights">
-                            <h4>Nesta edição:</h4>
-                            <ul>
-                                ${(edition.edition_topics || []).map(t => `<li><span class="topic-emoji">${t.emoji}</span> ${escapeHtml(t.text)}</li>`).join('')}
-                            </ul>
-                        </div>
-
-                        <div class="edition-articles">
-                            ${(edition.articles || []).map(article => `
-                                <div class="article-card">
-                                    <span class="article-category">${escapeHtml(article.category)}</span>
-                                    <h3 class="article-title">${escapeHtml(article.title)}</h3>
-                                    ${article.image_url ? `<img src="${escapeHtml(article.image_url)}" alt="${escapeHtml(article.title)}" class="article-image">` : ''}
-                                    <div class="article-content">${parseMarkdown(article.content)}</div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </article>
-                `).join('');
+                allPublicEditions = editions;
+                updatePublicFilters();
+                renderPublicEditions(editions);
 
             } catch (error) {
                 console.error('Erro ao carregar edições:', error);
@@ -1389,6 +1604,174 @@
                 `;
             }
         }
+
+        function updatePublicFilters() {
+            const categories = new Set();
+            allPublicEditions.forEach(edition => {
+                (edition.articles || []).forEach(article => {
+                    if (article.category) categories.add(article.category);
+                });
+            });
+
+            const filtersContainer = document.getElementById('editions-filters');
+            if (!filtersContainer) return;
+
+            let filtersHtml = '<button class="filter-tag active" data-filter="todas" onclick="setPublicFilter(\'todas\')">TODAS</button>';
+            categories.forEach(category => {
+                filtersHtml += `<button class="filter-tag" data-filter="${category}" onclick="setPublicFilter('${category}')">${category}</button>`;
+            });
+            filtersContainer.innerHTML = filtersHtml;
+        }
+
+        function setPublicFilter(filter) {
+            currentPublicFilter = filter;
+            document.querySelectorAll('.editions-filters .filter-tag').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.filter === filter) btn.classList.add('active');
+            });
+            filterPublicEditions();
+        }
+
+        function filterPublicEditions() {
+            const searchInput = document.getElementById('editions-search-input');
+            const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+
+            let filtered = allPublicEditions.filter(edition => {
+                const matchesSearch = edition.title.toLowerCase().includes(searchTerm);
+                let matchesCategory = currentPublicFilter === 'todas';
+                if (!matchesCategory && edition.articles) {
+                    matchesCategory = edition.articles.some(a => a.category === currentPublicFilter);
+                }
+                return matchesSearch && matchesCategory;
+            });
+
+            renderPublicEditions(filtered);
+        }
+
+        function renderPublicEditions(editions) {
+            const container = document.getElementById('editions-container');
+            if (!container) return;
+
+            if (editions.length === 0) {
+                container.innerHTML = '<div class="no-editions"><p>Nenhuma edição encontrada.</p></div>';
+                return;
+            }
+
+            container.innerHTML = `
+                <div class="editions-grid">
+                    ${editions.map((edition, index) => {
+                        const topicsCount = edition.edition_topics?.length || 0;
+                        const articlesCount = edition.articles?.length || 0;
+                        const firstArticle = edition.articles?.[0];
+                        const category = firstArticle?.category || 'EDIÇÃO';
+                        // Use cover image from edition
+                        const imageUrl = edition.cover_image;
+                        const imagePosition = edition.cover_image_position || 'center center';
+                        const imageZoom = edition.cover_image_zoom || 100;
+                        const gradient = publicCardGradients[index % publicCardGradients.length];
+
+                        const date = new Date(edition.created_at);
+                        const timeAgo = getPublicTimeAgo(date);
+                        const formattedDate = date.toLocaleDateString('pt-BR');
+
+                        // Calcular estilos baseado no zoom
+                        let imageStyles = '';
+                        if (imageUrl) {
+                            if (imageZoom < 100) {
+                                imageStyles = `object-fit: contain; width: ${imageZoom}%; height: ${imageZoom}%; object-position: center center;`;
+                            } else {
+                                imageStyles = `object-position: ${imagePosition}; transform: scale(${imageZoom / 100});`;
+                            }
+                        }
+
+                        return `
+                            <div class="edition-card" onclick="openEditionModal('${edition.id}')">
+                                <div class="edition-card-image" style="${!imageUrl ? `background: ${gradient}` : 'display: flex; align-items: center; justify-content: center;'}">
+                                    ${imageUrl ? `<img src="${imageUrl}" alt="${escapeHtml(edition.title)}" style="${imageStyles}">` : '<span class="placeholder-icon">📰</span>'}
+                                    <span class="edition-card-category">${escapeHtml(category)}</span>
+                                </div>
+                                <div class="edition-card-info">
+                                    <div class="edition-card-date">${timeAgo}</div>
+                                    <div class="edition-card-title">${escapeHtml(edition.title)}</div>
+                                    <div class="edition-card-subtitle">${formattedDate}</div>
+                                    <div class="edition-card-stats">
+                                        <span>📌 ${topicsCount} destaque${topicsCount !== 1 ? 's' : ''}</span>
+                                        <span>📰 ${articlesCount} artigo${articlesCount !== 1 ? 's' : ''}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+        }
+
+        function getPublicTimeAgo(date) {
+            const now = new Date();
+            const diffMs = now - date;
+            const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+            const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+            if (diffHours < 1) return 'Agora';
+            if (diffHours < 24) return `${diffHours} hora${diffHours !== 1 ? 's' : ''} atrás`;
+            if (diffDays < 7) return `${diffDays} dia${diffDays !== 1 ? 's' : ''} atrás`;
+            return date.toLocaleDateString('pt-BR', { day: 'numeric', month: 'short', year: 'numeric' });
+        }
+
+        function openEditionModal(editionId) {
+            const edition = allPublicEditions.find(e => e.id === editionId);
+            if (!edition) return;
+
+            const modal = document.getElementById('edition-modal');
+            const body = document.getElementById('edition-modal-body');
+
+            const editionIndex = allPublicEditions.indexOf(edition);
+            const editionNumber = allPublicEditions.length - editionIndex;
+
+            body.innerHTML = `
+                <div class="edition-modal-header">
+                    <span class="edition-modal-number">Edição #${editionNumber}</span>
+                    <span class="edition-modal-date">${formatDate(edition.created_at)}</span>
+                </div>
+                <h2 class="edition-modal-title">${escapeHtml(edition.title)}</h2>
+
+                <div class="edition-highlights">
+                    <h4>Nesta edição:</h4>
+                    <ul>
+                        ${(edition.edition_topics || []).map(t => `<li><span class="topic-emoji">${t.emoji}</span> ${escapeHtml(t.text)}</li>`).join('')}
+                    </ul>
+                </div>
+
+                <div class="edition-articles">
+                    ${(edition.articles || []).map(article => `
+                        <div class="article-card">
+                            <span class="article-category">${escapeHtml(article.category)}</span>
+                            <h3 class="article-title">${escapeHtml(article.title)}</h3>
+                            ${article.image_url ? `<img src="${escapeHtml(article.image_url)}" alt="${escapeHtml(article.title)}" class="article-image" style="width: 100%; border-radius: 12px; margin: 16px 0;">` : ''}
+                            <div class="article-content">${parseMarkdown(article.content)}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeEditionModal() {
+            document.getElementById('edition-modal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Fechar modal clicando fora
+        document.getElementById('edition-modal')?.addEventListener('click', function(e) {
+            if (e.target === this) closeEditionModal();
+        });
+
+        // Fechar com Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeEditionModal();
+        });
 
         function escapeHtml(text) {
             if (!text) return '';

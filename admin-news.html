@@ -44,6 +44,29 @@
             font-size: 14px;
         }
 
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .btn-header {
+            background: #2ed573;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-header:hover {
+            background: #26b862;
+            transform: translateY(-1px);
+        }
+
         .main {
             max-width: 700px;
             margin: 0 auto;
@@ -268,6 +291,93 @@
             max-height: 200px;
             object-fit: cover;
             border-radius: 8px;
+        }
+
+        .image-position-controls {
+            margin-bottom: 12px;
+            padding: 16px;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+
+        .image-position-controls label {
+            display: block;
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .position-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+
+        .position-btn {
+            padding: 12px 8px;
+            border: 2px solid #e0e0e0;
+            background: #fff;
+            border-radius: 8px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .position-btn:hover {
+            border-color: #2ed573;
+        }
+
+        .position-btn.active {
+            border-color: #2ed573;
+            background: #e8f8e8;
+        }
+
+        .zoom-control {
+            margin-top: 12px;
+        }
+
+        .zoom-control label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .zoom-control label span {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .zoom-slider {
+            width: 100%;
+            height: 6px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: #e0e0e0;
+            border-radius: 3px;
+            outline: none;
+        }
+
+        .zoom-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            background: #2ed573;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .zoom-slider::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            background: #2ed573;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
         }
 
         .divider {
@@ -689,6 +799,628 @@
             color: #999;
             font-style: italic;
         }
+
+        /* Editions Panel - Modern Card Design */
+        .editions-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            max-width: 900px;
+            height: 100%;
+            background: #fff;
+            box-shadow: -4px 0 30px rgba(0,0,0,0.2);
+            z-index: 1000;
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .editions-panel.active {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .editions-panel-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+
+        .editions-panel-overlay.active {
+            display: block;
+        }
+
+        .editions-panel-header {
+            background: #fff;
+            padding: 24px 32px 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            border-bottom: 1px solid #eee;
+        }
+
+        .editions-panel-header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .editions-panel-header h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #2ed573;
+        }
+
+        .editions-panel-close {
+            background: #f5f5f5;
+            border: none;
+            color: #666;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 8px 14px;
+            border-radius: 8px;
+            line-height: 1;
+            transition: all 0.2s;
+        }
+
+        .editions-panel-close:hover {
+            background: #eee;
+            color: #333;
+        }
+
+        .editions-search {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: #f8f8f8;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .editions-search svg {
+            color: #999;
+            flex-shrink: 0;
+        }
+
+        .editions-search input {
+            border: none;
+            background: none;
+            font-size: 15px;
+            width: 100%;
+            outline: none;
+            padding: 0;
+        }
+
+        .editions-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding-bottom: 16px;
+        }
+
+        .filter-tag {
+            padding: 8px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            background: #fff;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+        }
+
+        .filter-tag:hover {
+            border-color: #2ed573;
+            background: #e8f8e8;
+        }
+
+        .filter-tag.active {
+            border-color: #2ed573;
+            background: #2ed573;
+            color: #000;
+        }
+
+        .editions-panel-content {
+            padding: 24px 32px;
+        }
+
+        .editions-loading {
+            text-align: center;
+            padding: 60px 40px;
+            color: #666;
+        }
+
+        .editions-empty {
+            text-align: center;
+            padding: 60px 40px;
+            color: #999;
+        }
+
+        .editions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .edition-card {
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .edition-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        }
+
+        .edition-card-image {
+            position: relative;
+            width: 100%;
+            height: 160px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .edition-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .edition-card-image .placeholder-icon {
+            font-size: 48px;
+            opacity: 0.5;
+        }
+
+        .edition-card-category {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: #2ed573;
+            color: #000;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .edition-card-info {
+            background: #2ed573;
+            padding: 16px;
+        }
+
+        .edition-card-date {
+            font-size: 12px;
+            color: rgba(0,0,0,0.6);
+            margin-bottom: 4px;
+        }
+
+        .edition-card-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .edition-card-subtitle {
+            font-size: 13px;
+            color: rgba(0,0,0,0.7);
+        }
+
+        .edition-card-stats {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 8px;
+            font-size: 12px;
+            color: rgba(0,0,0,0.5);
+        }
+
+        .edition-card-actions {
+            display: flex;
+            gap: 8px;
+            padding: 12px 16px;
+            background: #fff;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .edition-card-actions button {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .btn-edit {
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        .btn-edit:hover {
+            background: #eee;
+        }
+
+        .btn-delete {
+            background: #fff0f0;
+            color: #e74c3c;
+        }
+
+        .btn-delete:hover {
+            background: #ffe0e0;
+        }
+
+        .btn-view {
+            background: #e8f8e8;
+            color: #27ae60;
+        }
+
+        .btn-view:hover {
+            background: #d4f0d4;
+        }
+
+        /* Confirm Modal */
+        .confirm-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 1100;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .confirm-modal.active {
+            display: flex;
+        }
+
+        .confirm-modal-content {
+            background: #fff;
+            padding: 32px;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .confirm-modal-content h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #ff4757;
+        }
+
+        .confirm-modal-content p {
+            color: #666;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+
+        .confirm-modal-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .confirm-modal-actions button {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-confirm-cancel {
+            background: #f0f0f0;
+            color: #666;
+        }
+
+        .btn-confirm-delete {
+            background: #ff4757;
+            color: #fff;
+        }
+
+        .btn-confirm-delete:hover {
+            background: #e8404f;
+        }
+
+        /* Article Image Upload */
+        .article-image-upload {
+            margin: 16px 0;
+        }
+
+        .article-image-upload label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .image-upload-small {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: #f5f5f5;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .image-upload-small:hover {
+            border-color: #2ed573;
+            background: #e8f8e8;
+        }
+
+        .image-upload-small input {
+            display: none;
+        }
+
+        .image-upload-small span {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .article-image-preview {
+            position: relative;
+            display: inline-block;
+            margin-top: 12px;
+        }
+
+        .article-image-preview img {
+            max-width: 200px;
+            max-height: 150px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .article-image-preview .remove-btn {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 24px;
+            height: 24px;
+            background: #ff4757;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Image Editor Section */
+        .image-editor-section {
+            display: none;
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .image-editor-section.active {
+            display: block;
+        }
+
+        .image-editor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .image-editor-header h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .image-editor-header .remove-image-btn {
+            background: #ff4757;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .image-editor-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .image-editor-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card-preview-container {
+            background: #fff;
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .card-preview-container h5 {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-preview {
+            width: 100%;
+            max-width: 280px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin: 0 auto;
+        }
+
+        .card-preview-image {
+            width: 100%;
+            height: 140px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-preview-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.2s ease;
+        }
+
+        .card-preview-image img.contain-mode {
+            object-fit: contain;
+        }
+
+        .card-preview-info {
+            background: #2ed573;
+            padding: 12px;
+        }
+
+        .card-preview-info .preview-category {
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: rgba(0,0,0,0.5);
+        }
+
+        .card-preview-info .preview-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #000;
+            margin-top: 4px;
+        }
+
+        .image-controls-panel {
+            background: #fff;
+            border-radius: 12px;
+            padding: 16px;
+        }
+
+        .control-group {
+            margin-bottom: 16px;
+        }
+
+        .control-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .control-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .position-grid-visual {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4px;
+            background: #f0f0f0;
+            padding: 4px;
+            border-radius: 8px;
+        }
+
+        .pos-btn {
+            aspect-ratio: 1;
+            border: none;
+            background: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pos-btn:hover {
+            background: #e8f8e8;
+        }
+
+        .pos-btn.active {
+            background: #2ed573;
+        }
+
+        .zoom-control-visual {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .zoom-control-visual .zoom-label {
+            font-size: 11px;
+            color: #666;
+            min-width: 35px;
+        }
+
+        .zoom-control-visual input[type="range"] {
+            flex: 1;
+            height: 6px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: #e0e0e0;
+            border-radius: 3px;
+            outline: none;
+        }
+
+        .zoom-control-visual input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #2ed573;
+            border-radius: 50%;
+            cursor: pointer;
+        }
     </style>
     <!-- Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" crossorigin="anonymous"></script>
@@ -696,13 +1428,72 @@
 <body>
     <header class="header">
         <h1>Ramppy<span>News</span></h1>
-        <a href="ramppynews.html">Ver site</a>
+        <div class="header-actions">
+            <button class="btn-header" onclick="openEditionsPanel()">📋 Ver Edições</button>
+            <a href="ramppynews.html">Ver site →</a>
+        </div>
     </header>
 
     <main class="main">
         <!-- Titulo da Edicao -->
         <div class="card">
             <input type="text" id="edition-title" placeholder="Titulo da edicao (ex: O futuro das vendas)">
+        </div>
+
+        <!-- Imagem de Capa da Edição -->
+        <p class="section-title">Imagem de Capa</p>
+        <div class="card">
+            <div class="image-upload" id="cover-image-upload-btn" onclick="document.getElementById('cover-image-input').click()">
+                <input type="file" id="cover-image-input" accept="image/*" onchange="previewCoverImage(this)">
+                <div class="icon">🖼️</div>
+                <div class="text">Clique para adicionar a imagem de capa da edição</div>
+            </div>
+
+            <!-- Visual Cover Image Editor Section -->
+            <div class="image-editor-section" id="cover-image-editor-section">
+                <div class="image-editor-header">
+                    <h4>🖼️ Editar Imagem de Capa</h4>
+                    <button type="button" class="remove-image-btn" onclick="removeCoverImage()">🗑️ Remover</button>
+                </div>
+                <div class="image-editor-content">
+                    <div class="card-preview-container">
+                        <h5>Preview do Card</h5>
+                        <div class="card-preview">
+                            <div class="card-preview-image" id="cover-card-preview-image">
+                                <img id="cover-card-preview-img" src="" alt="Preview">
+                            </div>
+                            <div class="card-preview-info">
+                                <div class="preview-category" id="cover-preview-category">EDIÇÃO</div>
+                                <div class="preview-title" id="cover-preview-title">Título da edição</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-controls-panel">
+                        <div class="control-group">
+                            <label>📍 Posição da imagem</label>
+                            <div class="position-grid-visual" id="cover-position-grid">
+                                <button type="button" class="pos-btn" data-position="left top" onclick="setCoverImagePosition('left top')">↖️</button>
+                                <button type="button" class="pos-btn" data-position="center top" onclick="setCoverImagePosition('center top')">⬆️</button>
+                                <button type="button" class="pos-btn" data-position="right top" onclick="setCoverImagePosition('right top')">↗️</button>
+                                <button type="button" class="pos-btn" data-position="left center" onclick="setCoverImagePosition('left center')">⬅️</button>
+                                <button type="button" class="pos-btn active" data-position="center center" onclick="setCoverImagePosition('center center')">⬛</button>
+                                <button type="button" class="pos-btn" data-position="right center" onclick="setCoverImagePosition('right center')">➡️</button>
+                                <button type="button" class="pos-btn" data-position="left bottom" onclick="setCoverImagePosition('left bottom')">↙️</button>
+                                <button type="button" class="pos-btn" data-position="center bottom" onclick="setCoverImagePosition('center bottom')">⬇️</button>
+                                <button type="button" class="pos-btn" data-position="right bottom" onclick="setCoverImagePosition('right bottom')">↘️</button>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>🔍 Zoom da imagem</label>
+                            <div class="zoom-control-visual">
+                                <span class="zoom-label">10%</span>
+                                <input type="range" id="cover-zoom-slider" min="10" max="300" value="100" oninput="setCoverImageZoom(this.value)">
+                                <span class="zoom-label" id="cover-zoom-value">100%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Destaques -->
@@ -781,13 +1572,6 @@
                     <input type="text" id="article-title" placeholder="Titulo do artigo">
                 </div>
 
-                <div class="image-upload" onclick="document.getElementById('article-image').click()">
-                    <input type="file" id="article-image" accept="image/*" onchange="previewImage(this)">
-                    <div class="icon">🖼️</div>
-                    <div class="text">Clique para adicionar imagem</div>
-                </div>
-                <div class="image-preview" id="image-preview"></div>
-
                 <!-- Formatting Toolbar -->
                 <div class="formatting-toolbar">
                     <button type="button" onclick="formatText('bold')" title="Negrito (Ctrl+B)">
@@ -819,6 +1603,19 @@
                 </div>
                 <textarea id="article-content" class="textarea-with-toolbar" placeholder="Escreva o conteudo do artigo..." oninput="updatePreview()"></textarea>
                 <p class="toolbar-tip">💡 Selecione um texto e clique nos botoes para formatar</p>
+
+                <!-- Imagem do Artigo -->
+                <div class="article-image-upload">
+                    <label>🖼️ Imagem do artigo (opcional)</label>
+                    <div class="image-upload-small" id="article-image-upload-btn" onclick="document.getElementById('article-image-input').click()">
+                        <input type="file" id="article-image-input" accept="image/*" onchange="previewArticleImage(this)">
+                        <span>+ Adicionar imagem</span>
+                    </div>
+                    <div class="article-image-preview" id="article-image-preview" style="display: none;">
+                        <img id="article-image-preview-img" src="" alt="Preview">
+                        <button type="button" class="remove-btn" onclick="removeArticleImage()">×</button>
+                    </div>
+                </div>
 
                 <div class="preview-toggle">
                     <input type="checkbox" id="show-preview" onchange="togglePreview()" checked>
@@ -862,6 +1659,44 @@
         </div>
     </div>
 
+    <!-- Editions Panel Overlay -->
+    <div class="editions-panel-overlay" id="editions-overlay" onclick="closeEditionsPanel()"></div>
+
+    <!-- Editions Panel -->
+    <div class="editions-panel" id="editions-panel">
+        <div class="editions-panel-header">
+            <div class="editions-panel-header-top">
+                <h2>Edições</h2>
+                <button class="editions-panel-close" onclick="closeEditionsPanel()">×</button>
+            </div>
+            <div class="editions-search">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <input type="text" id="editions-search-input" placeholder="Pesquisar edições..." oninput="filterEditions()">
+            </div>
+            <div class="editions-filters" id="editions-filters">
+                <button class="filter-tag active" data-filter="todas" onclick="setFilter('todas')">TODAS</button>
+            </div>
+        </div>
+        <div class="editions-panel-content" id="editions-list-container">
+            <div class="editions-loading">Carregando edições...</div>
+        </div>
+    </div>
+
+    <!-- Confirm Delete Modal -->
+    <div class="confirm-modal" id="confirm-modal">
+        <div class="confirm-modal-content">
+            <h3>⚠️ Excluir Edição</h3>
+            <p id="confirm-message">Tem certeza que deseja excluir esta edição? Esta ação não pode ser desfeita.</p>
+            <div class="confirm-modal-actions">
+                <button class="btn-confirm-cancel" onclick="closeConfirmModal()">Cancelar</button>
+                <button class="btn-confirm-delete" id="btn-confirm-delete">Excluir</button>
+            </div>
+        </div>
+    </div>
+
     <script>
         // ========== SUPABASE CONFIG ==========
         const SUPABASE_URL = 'https://pisvpbscqgoyhnnartwj.supabase.co';
@@ -885,9 +1720,13 @@
 
         let topics = [];
         let articles = [];
-        let currentImage = null;
         let selectedEmoji = '📰';
         let savedSelection = null;
+
+        // Cover Image (Edition level)
+        let coverImage = null;
+        let coverImagePosition = 'center center';
+        let coverImageZoom = 100;
 
         // ========== MARKDOWN PARSER ==========
         function parseMarkdown(text) {
@@ -1190,16 +2029,123 @@
             renderTopics();
         }
 
-        function previewImage(input) {
+        // ========== COVER IMAGE FUNCTIONS ==========
+        function previewCoverImage(input) {
             if (input.files && input.files[0]) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    currentImage = e.target.result;
-                    document.getElementById('image-preview').innerHTML = `<img src="${e.target.result}">`;
-                    document.querySelector('.image-upload').style.display = 'none';
+                    coverImage = e.target.result;
+                    coverImagePosition = 'center center';
+                    coverImageZoom = 100;
+
+                    // Hide upload button, show editor
+                    document.getElementById('cover-image-upload-btn').style.display = 'none';
+                    document.getElementById('cover-image-editor-section').classList.add('active');
+
+                    // Set preview image
+                    document.getElementById('cover-card-preview-img').src = e.target.result;
+                    updateCoverImagePreview();
+
+                    // Reset position buttons
+                    document.querySelectorAll('#cover-position-grid .pos-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                        if (btn.dataset.position === 'center center') btn.classList.add('active');
+                    });
+
+                    // Reset zoom slider
+                    document.getElementById('cover-zoom-slider').value = 100;
+                    document.getElementById('cover-zoom-value').textContent = '100%';
+
+                    // Update preview info
+                    updateCoverPreviewInfo();
                 };
                 reader.readAsDataURL(input.files[0]);
             }
+        }
+
+        function setCoverImagePosition(position) {
+            coverImagePosition = position;
+            updateCoverImagePreview();
+            document.querySelectorAll('#cover-position-grid .pos-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.position === position) btn.classList.add('active');
+            });
+        }
+
+        function setCoverImageZoom(value) {
+            coverImageZoom = parseInt(value);
+            document.getElementById('cover-zoom-value').textContent = value + '%';
+            updateCoverImagePreview();
+        }
+
+        function updateCoverImagePreview() {
+            const img = document.getElementById('cover-card-preview-img');
+            if (img && coverImage) {
+                if (coverImageZoom < 100) {
+                    // Zoom out: mostra imagem completa sem cortar
+                    img.classList.add('contain-mode');
+                    img.style.transform = 'none';
+                    img.style.width = coverImageZoom + '%';
+                    img.style.height = coverImageZoom + '%';
+                    img.style.objectPosition = 'center center';
+                } else {
+                    // Zoom in: amplia e corta
+                    img.classList.remove('contain-mode');
+                    img.style.width = '100%';
+                    img.style.height = '100%';
+                    const scale = coverImageZoom / 100;
+                    img.style.objectPosition = coverImagePosition;
+                    img.style.transform = `scale(${scale})`;
+                }
+            }
+        }
+
+        function updateCoverPreviewInfo() {
+            const title = document.getElementById('edition-title').value || 'Título da edição';
+            document.getElementById('cover-preview-category').textContent = 'EDIÇÃO';
+            document.getElementById('cover-preview-title').textContent = title.length > 30 ? title.substring(0, 30) + '...' : title;
+        }
+
+        function removeCoverImage() {
+            coverImage = null;
+            coverImagePosition = 'center center';
+            coverImageZoom = 100;
+            document.getElementById('cover-image-input').value = '';
+            document.getElementById('cover-image-editor-section').classList.remove('active');
+            document.getElementById('cover-image-upload-btn').style.display = 'block';
+            document.getElementById('cover-card-preview-img').src = '';
+        }
+
+        // Update cover preview when edition title changes
+        document.addEventListener('DOMContentLoaded', function() {
+            const editionTitleInput = document.getElementById('edition-title');
+            if (editionTitleInput) {
+                editionTitleInput.addEventListener('input', updateCoverPreviewInfo);
+            }
+        });
+
+        // ========== ARTICLE IMAGE FUNCTIONS ==========
+        let currentArticleImage = null;
+
+        function previewArticleImage(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    currentArticleImage = e.target.result;
+                    document.getElementById('article-image-preview-img').src = e.target.result;
+                    document.getElementById('article-image-preview').style.display = 'inline-block';
+                    document.getElementById('article-image-upload-btn').style.display = 'none';
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function removeArticleImage() {
+            currentArticleImage = null;
+            document.getElementById('article-image-input').value = '';
+            document.getElementById('article-image-preview').style.display = 'none';
+            document.getElementById('article-image-upload-btn').style.display = 'inline-flex';
+            document.getElementById('article-image-preview-img').src = '';
         }
 
         function showArticleForm() {
@@ -1215,10 +2161,8 @@
             // Limpar formulario
             document.getElementById('article-title').value = '';
             document.getElementById('article-content').value = '';
-            document.getElementById('image-preview').innerHTML = '';
-            document.querySelector('.image-upload').style.display = 'block';
+            removeArticleImage();
             document.getElementById('preview-content').innerHTML = '<span class="preview-empty">Digite algo para ver o preview...</span>';
-            currentImage = null;
         }
 
         function addArticle() {
@@ -1231,7 +2175,8 @@
                 return;
             }
 
-            articles.push({ category, title, image: currentImage, content });
+            articles.push({ category, title, content, image: currentArticleImage });
+            currentArticleImage = null;
             renderArticles();
             hideArticleForm();
         }
@@ -1251,6 +2196,7 @@
                 <div class="article-item">
                     <span class="article-number">${i + 1}</span>
                     <span class="tag">${a.category}</span>
+                    ${a.image ? '<span class="tag" style="background: #2ed573; color: #000;">🖼️ Imagem</span>' : ''}
                     <h4>${a.title}</h4>
                     <p>${a.content.substring(0, 100).replace(/\*\*/g, '')}...</p>
                     <div class="actions">
@@ -1295,10 +2241,15 @@
             publishBtn.disabled = true;
 
             try {
-                // 1. Criar a edição
+                // 1. Criar a edição com imagem de capa
                 const { data: editionData, error: editionError } = await supabaseClient
                     .from('editions')
-                    .insert([{ title: title }])
+                    .insert([{
+                        title: title,
+                        cover_image: coverImage || null,
+                        cover_image_position: coverImagePosition || 'center center',
+                        cover_image_zoom: coverImageZoom || 100
+                    }])
                     .select()
                     .single();
 
@@ -1342,7 +2293,7 @@
                 document.getElementById('edition-title').value = '';
                 topics = [];
                 articles = [];
-                currentImage = null;
+                removeCoverImage();
                 renderTopics();
                 renderArticles();
 
@@ -1354,6 +2305,364 @@
                 publishBtn.disabled = false;
             }
         }
+
+        // ========== EDITIONS PANEL FUNCTIONS ==========
+        let editionToDelete = null;
+        let allEditions = [];
+        let currentFilter = 'todas';
+
+        // Cores de gradiente para cards sem imagem
+        const cardGradients = [
+            'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+            'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+            'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+            'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+            'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
+            'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)',
+            'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)'
+        ];
+
+        function openEditionsPanel() {
+            document.getElementById('editions-panel').classList.add('active');
+            document.getElementById('editions-overlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            loadExistingEditions();
+        }
+
+        function closeEditionsPanel() {
+            document.getElementById('editions-panel').classList.remove('active');
+            document.getElementById('editions-overlay').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        async function loadExistingEditions() {
+            const container = document.getElementById('editions-list-container');
+            container.innerHTML = '<div class="editions-loading">Carregando edições...</div>';
+
+            if (!supabaseClient) {
+                container.innerHTML = '<div class="editions-empty">⚠️ Erro: Conexão com banco de dados não disponível</div>';
+                return;
+            }
+
+            try {
+                // Buscar edições com tópicos e artigos
+                const { data: editions, error } = await supabaseClient
+                    .from('editions')
+                    .select(`
+                        *,
+                        edition_topics(emoji, text),
+                        articles(category, title)
+                    `)
+                    .order('created_at', { ascending: false });
+
+                if (error) throw error;
+
+                if (!editions || editions.length === 0) {
+                    container.innerHTML = '<div class="editions-empty">📭 Nenhuma edição publicada ainda</div>';
+                    return;
+                }
+
+                allEditions = editions;
+                updateFilters();
+                renderEditions(editions);
+
+            } catch (error) {
+                console.error('Erro ao carregar edições:', error);
+                container.innerHTML = `<div class="editions-empty">⚠️ Erro ao carregar: ${error.message}</div>`;
+            }
+        }
+
+        function updateFilters() {
+            // Extrair categorias únicas dos artigos
+            const categories = new Set();
+            allEditions.forEach(edition => {
+                (edition.articles || []).forEach(article => {
+                    if (article.category) categories.add(article.category);
+                });
+            });
+
+            const filtersContainer = document.getElementById('editions-filters');
+            let filtersHtml = '<button class="filter-tag active" data-filter="todas" onclick="setFilter(\'todas\')">TODAS</button>';
+
+            categories.forEach(category => {
+                filtersHtml += `<button class="filter-tag" data-filter="${category}" onclick="setFilter('${category}')">${category}</button>`;
+            });
+
+            filtersContainer.innerHTML = filtersHtml;
+        }
+
+        function setFilter(filter) {
+            currentFilter = filter;
+
+            // Atualizar visual dos filtros
+            document.querySelectorAll('.filter-tag').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.filter === filter) {
+                    btn.classList.add('active');
+                }
+            });
+
+            filterEditions();
+        }
+
+        function filterEditions() {
+            const searchTerm = document.getElementById('editions-search-input').value.toLowerCase();
+
+            let filtered = allEditions.filter(edition => {
+                // Filtro de busca
+                const matchesSearch = edition.title.toLowerCase().includes(searchTerm);
+
+                // Filtro de categoria
+                let matchesCategory = currentFilter === 'todas';
+                if (!matchesCategory && edition.articles) {
+                    matchesCategory = edition.articles.some(a => a.category === currentFilter);
+                }
+
+                return matchesSearch && matchesCategory;
+            });
+
+            renderEditions(filtered);
+        }
+
+        function renderEditions(editions) {
+            const container = document.getElementById('editions-list-container');
+
+            if (editions.length === 0) {
+                container.innerHTML = '<div class="editions-empty">Nenhuma edição encontrada</div>';
+                return;
+            }
+
+            container.innerHTML = `
+                <div class="editions-grid">
+                    ${editions.map((edition, index) => {
+                        const topicsCount = edition.edition_topics?.length || 0;
+                        const articlesCount = edition.articles?.length || 0;
+                        const firstArticle = edition.articles?.[0];
+                        const category = firstArticle?.category || 'EDIÇÃO';
+                        // Use cover image from edition
+                        const imageUrl = edition.cover_image;
+                        const imagePosition = edition.cover_image_position || 'center center';
+                        const imageZoom = edition.cover_image_zoom || 100;
+                        const gradient = cardGradients[index % cardGradients.length];
+
+                        const date = new Date(edition.created_at);
+                        const timeAgo = getTimeAgo(date);
+                        const formattedDate = date.toLocaleDateString('pt-BR');
+
+                        // Calcular estilos baseado no zoom
+                        let imageStyles = '';
+                        if (imageUrl) {
+                            if (imageZoom < 100) {
+                                imageStyles = `object-fit: contain; width: ${imageZoom}%; height: ${imageZoom}%; object-position: center center;`;
+                            } else {
+                                imageStyles = `object-position: ${imagePosition}; transform: scale(${imageZoom / 100});`;
+                            }
+                        }
+
+                        return `
+                            <div class="edition-card" data-id="${edition.id}">
+                                <div class="edition-card-image" style="${!imageUrl ? `background: ${gradient}` : 'display: flex; align-items: center; justify-content: center;'}">
+                                    ${imageUrl
+                                        ? `<img src="${imageUrl}" alt="${edition.title}" style="${imageStyles}">`
+                                        : '<span class="placeholder-icon">📰</span>'
+                                    }
+                                    <span class="edition-card-category">${category}</span>
+                                </div>
+                                <div class="edition-card-info">
+                                    <div class="edition-card-date">${timeAgo}</div>
+                                    <div class="edition-card-title">${edition.title}</div>
+                                    <div class="edition-card-subtitle">${formattedDate}</div>
+                                    <div class="edition-card-stats">
+                                        <span>📌 ${topicsCount}</span>
+                                        <span>📰 ${articlesCount}</span>
+                                    </div>
+                                </div>
+                                <div class="edition-card-actions">
+                                    <button class="btn-view" onclick="event.stopPropagation(); viewEdition('${edition.id}')">👁️</button>
+                                    <button class="btn-edit" onclick="event.stopPropagation(); editEdition('${edition.id}')">✏️</button>
+                                    <button class="btn-delete" onclick="event.stopPropagation(); confirmDeleteEdition('${edition.id}', '${edition.title.replace(/'/g, "\\'")}')">🗑️</button>
+                                </div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+        }
+
+        function getTimeAgo(date) {
+            const now = new Date();
+            const diffMs = now - date;
+            const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+            const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+            if (diffHours < 1) return 'Agora';
+            if (diffHours < 24) return `${diffHours} hora${diffHours !== 1 ? 's' : ''} atrás`;
+            if (diffDays < 7) return `${diffDays} dia${diffDays !== 1 ? 's' : ''} atrás`;
+            return date.toLocaleDateString('pt-BR', { day: 'numeric', month: 'short', year: 'numeric' });
+        }
+
+        function viewEdition(editionId) {
+            window.open(`ramppynews.html?edition=${editionId}`, '_blank');
+        }
+
+        async function editEdition(editionId) {
+            if (!supabaseClient) {
+                alert('Erro: Conexão com banco de dados não disponível');
+                return;
+            }
+
+            try {
+                // Buscar edição completa
+                const { data: edition, error: editionError } = await supabaseClient
+                    .from('editions')
+                    .select('*')
+                    .eq('id', editionId)
+                    .single();
+
+                if (editionError) throw editionError;
+
+                // Buscar tópicos
+                const { data: editionTopics, error: topicsError } = await supabaseClient
+                    .from('edition_topics')
+                    .select('*')
+                    .eq('edition_id', editionId)
+                    .order('display_order');
+
+                if (topicsError) throw topicsError;
+
+                // Buscar artigos
+                const { data: editionArticles, error: articlesError } = await supabaseClient
+                    .from('articles')
+                    .select('*')
+                    .eq('edition_id', editionId)
+                    .order('display_order');
+
+                if (articlesError) throw articlesError;
+
+                // Preencher formulário
+                document.getElementById('edition-title').value = edition.title;
+
+                // Carregar imagem de capa
+                if (edition.cover_image) {
+                    coverImage = edition.cover_image;
+                    coverImagePosition = edition.cover_image_position || 'center center';
+                    coverImageZoom = edition.cover_image_zoom || 100;
+
+                    // Mostrar editor de imagem
+                    document.getElementById('cover-image-upload-btn').style.display = 'none';
+                    document.getElementById('cover-image-editor-section').classList.add('active');
+                    document.getElementById('cover-card-preview-img').src = coverImage;
+                    updateCoverImagePreview();
+
+                    // Definir posição ativa
+                    document.querySelectorAll('#cover-position-grid .pos-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                        if (btn.dataset.position === coverImagePosition) btn.classList.add('active');
+                    });
+
+                    // Definir zoom
+                    document.getElementById('cover-zoom-slider').value = coverImageZoom;
+                    document.getElementById('cover-zoom-value').textContent = coverImageZoom + '%';
+
+                    updateCoverPreviewInfo();
+                }
+
+                // Carregar tópicos
+                topics = editionTopics.map(t => ({ emoji: t.emoji, text: t.text }));
+                renderTopics();
+
+                // Carregar artigos
+                articles = editionArticles.map(a => ({
+                    category: a.category,
+                    title: a.title,
+                    content: a.content,
+                    image: a.image_url
+                }));
+                renderArticles();
+
+                // Deletar a edição antiga (será recriada ao publicar)
+                await deleteEditionFromDB(editionId);
+
+                // Fechar painel
+                closeEditionsPanel();
+
+                // Scroll para o topo
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                alert('Edição carregada para edição. Faça as alterações e clique em "Publicar Edição" para salvar.');
+
+            } catch (error) {
+                console.error('Erro ao carregar edição:', error);
+                alert('Erro ao carregar edição: ' + error.message);
+            }
+        }
+
+        function confirmDeleteEdition(editionId, title) {
+            editionToDelete = editionId;
+            document.getElementById('confirm-message').textContent = `Tem certeza que deseja excluir a edição "${title}"? Esta ação não pode ser desfeita.`;
+            document.getElementById('confirm-modal').classList.add('active');
+
+            // Configurar botão de confirmação
+            document.getElementById('btn-confirm-delete').onclick = () => deleteEdition();
+        }
+
+        function closeConfirmModal() {
+            document.getElementById('confirm-modal').classList.remove('active');
+            editionToDelete = null;
+        }
+
+        async function deleteEdition() {
+            if (!editionToDelete) return;
+
+            try {
+                await deleteEditionFromDB(editionToDelete);
+                closeConfirmModal();
+                loadExistingEditions();
+                alert('Edição excluída com sucesso!');
+            } catch (error) {
+                console.error('Erro ao excluir edição:', error);
+                alert('Erro ao excluir edição: ' + error.message);
+            }
+        }
+
+        async function deleteEditionFromDB(editionId) {
+            // Deletar artigos primeiro (foreign key)
+            const { error: articlesError } = await supabaseClient
+                .from('articles')
+                .delete()
+                .eq('edition_id', editionId);
+
+            if (articlesError) throw articlesError;
+
+            // Deletar tópicos
+            const { error: topicsError } = await supabaseClient
+                .from('edition_topics')
+                .delete()
+                .eq('edition_id', editionId);
+
+            if (topicsError) throw topicsError;
+
+            // Deletar edição
+            const { error: editionError } = await supabaseClient
+                .from('editions')
+                .delete()
+                .eq('id', editionId);
+
+            if (editionError) throw editionError;
+        }
+
+        // Fechar painel com Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                if (document.getElementById('confirm-modal').classList.contains('active')) {
+                    closeConfirmModal();
+                } else if (document.getElementById('editions-panel').classList.contains('active')) {
+                    closeEditionsPanel();
+                }
+            }
+        });
+
     </script>
 </body>
 </html>
