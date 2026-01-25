@@ -1,3 +1,9 @@
+/* Ocultar RamppyNews temporariamente */
+a[href="ramppynews.html"],
+a[href*="ramppynews"] {
+    display: none !important;
+}
+
 /* Reset e Base */
 * {
     margin: 0;
@@ -2375,8 +2381,8 @@ a.feature-card:hover {
 .pricing-section .scroll-reveal,
 .closed-plans-section .scroll-reveal {
     opacity: 1 !important;
-    transform: none !important;
 }
+
 
 .pricing-cards {
     display: grid;
@@ -2385,6 +2391,94 @@ a.feature-card:hover {
     max-width: 900px;
     margin: 0 auto 60px;
     scroll-margin-top: 100px;
+    overflow: visible;
+}
+
+.pricing-cards.pricing-cards-4 {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1200px;
+    gap: 20px;
+}
+
+.pricing-cards-4 .pricing-card {
+    padding: 24px;
+}
+
+.pricing-cards-4 .price-value {
+    font-size: 1.8rem;
+}
+
+.pricing-extras {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.pricing-extras .extras-label {
+    font-size: 0.75rem;
+    color: var(--primary-green);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.pricing-extras .extras-value {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.pricing-card-small {
+    align-self: center;
+    padding: 20px !important;
+}
+
+.pricing-card-small .pricing-card-header {
+    margin-bottom: 12px;
+}
+
+.pricing-card-small .pricing-price {
+    margin-bottom: 12px;
+}
+
+.pricing-card-small .pricing-features {
+    margin-bottom: 12px;
+    gap: 6px;
+}
+
+.pricing-card-small .pricing-extras {
+    margin-bottom: 12px;
+    padding: 10px;
+}
+
+/* Gold Foil Effect */
+.gold-foil {
+    background: linear-gradient(
+        90deg,
+        #bf953f 0%,
+        #fcf6ba 25%,
+        #b38728 50%,
+        #fbf5b7 75%,
+        #aa771c 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gold-shine 10s linear infinite;
+}
+
+@keyframes gold-shine {
+    0% {
+        background-position: 0% center;
+    }
+    100% {
+        background-position: 200% center;
+    }
 }
 
 .pricing-card {
@@ -2393,12 +2487,22 @@ a.feature-card:hover {
     border-radius: 20px;
     padding: 32px;
     position: relative;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: scale(1);
 }
 
 .pricing-card:hover {
-    border-color: rgba(34, 197, 94, 0.3);
-    transform: translateY(-4px);
+    border-color: rgba(34, 197, 94, 0.5);
+    z-index: 10;
+    box-shadow: 0 10px 40px rgba(34, 197, 94, 0.3);
+}
+
+#pricing .pricing-card:hover,
+.pricing-cards .pricing-card:hover,
+.pricing-section .pricing-card:hover {
+    -webkit-transform: scale(1.05) !important;
+    -ms-transform: scale(1.05) !important;
+    transform: scale(1.05) !important;
 }
 
 /* Info Button for Pricing Cards */
@@ -2810,10 +2914,22 @@ a.feature-card:hover {
     }
 }
 
+@media (max-width: 1200px) {
+    .pricing-cards.pricing-cards-4 {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 700px;
+    }
+}
+
 @media (max-width: 992px) {
     .pricing-cards {
         grid-template-columns: 1fr;
         max-width: 500px;
+    }
+
+    .pricing-cards.pricing-cards-4 {
+        grid-template-columns: 1fr;
+        max-width: 400px;
     }
 
     .closed-plans-cards {
