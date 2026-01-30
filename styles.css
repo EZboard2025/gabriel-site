@@ -4,6 +4,11 @@ a[href*="ramppynews"] {
     display: none !important;
 }
 
+/* Ocultar Processo Seletivo temporariamente */
+.closed-plans-section {
+    display: none !important;
+}
+
 /* Reset e Base */
 * {
     margin: 0;
