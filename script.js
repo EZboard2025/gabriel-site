@@ -44,35 +44,9 @@ let lastScroll = 0;
 // Check if we're on the homepage
 const isHomepage = window.location.pathname === '/' || window.location.pathname.endsWith('index.html') || window.location.pathname === '/index.html';
 
-// Debug: check if navbar exists
+// Navbar sempre visível
 if (navbar) {
-    console.log('Navbar encontrado!');
-
-    // Only apply hide/show effect on homepage
-    if (isHomepage) {
-        console.log('Homepage detectada - efeito de navbar ativado');
-
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-
-            // Show navbar when scrolled down (more than 50px from top)
-            if (currentScroll > 50) {
-                navbar.classList.add('visible');
-                console.log('Navbar visível - scroll:', currentScroll);
-            } else {
-                navbar.classList.remove('visible');
-                console.log('Navbar escondido - scroll:', currentScroll);
-            }
-
-            lastScroll = currentScroll;
-        });
-    } else {
-        // On other pages, always show navbar
-        console.log('Página secundária - navbar sempre visível');
-        navbar.classList.add('visible');
-    }
-} else {
-    console.error('Navbar não encontrado!');
+    navbar.classList.add('visible');
 }
 
 // FAQ Accordion
@@ -315,12 +289,12 @@ function createStars() {
             position: absolute;
             width: ${size}px;
             height: ${size}px;
-            background: ${isGreen ? 'rgba(34, 197, 94, 0.9)' : 'white'};
+            background: ${isGreen ? 'rgba(34, 197, 94, 0.9)' : 'rgba(17, 24, 39, 0.6)'};
             border-radius: 50%;
             top: ${startY}%;
             left: ${startX}%;
             opacity: ${opacity};
-            box-shadow: 0 0 ${size * 2}px ${isGreen ? 'rgba(34, 197, 94, 0.6)' : 'rgba(255, 255, 255, 0.5)'};
+            box-shadow: 0 0 ${size * 2}px ${isGreen ? 'rgba(34, 197, 94, 0.6)' : 'rgba(17, 24, 39, 0.3)'};
             animation: moveParticle ${speed}s linear infinite, twinkleParticle ${2 + Math.random() * 3}s ease-in-out infinite;
             animation-delay: ${delay}s, ${Math.random() * 2}s;
             will-change: transform, opacity;
@@ -353,12 +327,12 @@ function createShootingStar() {
         position: absolute;
         width: 3px;
         height: 3px;
-        background: ${isGreen ? 'rgba(34, 197, 94, 1)' : 'white'};
+        background: ${isGreen ? 'rgba(34, 197, 94, 1)' : 'rgba(17, 24, 39, 0.8)'};
         border-radius: 50%;
         top: ${startY}%;
         left: ${startX}%;
-        box-shadow: 0 0 10px ${isGreen ? 'rgba(34, 197, 94, 0.9)' : 'rgba(255, 255, 255, 0.9)'},
-                    0 0 25px ${isGreen ? 'rgba(34, 197, 94, 0.5)' : 'rgba(255, 255, 255, 0.5)'};
+        box-shadow: 0 0 10px ${isGreen ? 'rgba(34, 197, 94, 0.9)' : 'rgba(17, 24, 39, 0.5)'},
+                    0 0 25px ${isGreen ? 'rgba(34, 197, 94, 0.5)' : 'rgba(17, 24, 39, 0.3)'};
         animation: shootingStar ${1 + Math.random() * 0.5}s ease-out forwards;
         pointer-events: none;
         will-change: transform, opacity;
